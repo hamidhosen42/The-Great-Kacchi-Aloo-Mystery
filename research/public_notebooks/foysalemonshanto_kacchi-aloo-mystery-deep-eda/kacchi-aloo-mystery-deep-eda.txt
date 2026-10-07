@@ -1,0 +1,315 @@
+
+######## CELL 0 [markdown] ########
+# The Great Kacchi Aloo Mystery: Deep EDA
+
+**Competition:** [the-great-kacchi-aloo-mystery](https://www.kaggle.com/competitions/the-great-kacchi-aloo-mystery) (BdAIO, World AI Week 2026)
+**Task:** binary classification. Did the guests go back for seconds (`went_back_for_seconds`)?
+**Metric:** accuracy · **Data:** 800 train / 400 test rows · **Deadline:** 2026-10-09 17:59 UTC · 5 submissions/day
+
+The host's field notes describe four traps:
+1. Some `aloo_count` values are **missing**.
+2. Some `fairy_lights` values are written in **Bangla digits** (৪৫০).
+3. Some potato counts have an **extra zero** (×10).
+4. Test weddings are **much bigger** than train weddings, so the model has to extrapolate.
+
+They also hint: *"The fanciest model doesn't always win. Thinking does."*
+
+######## CELL 1 [code] ########
+import glob, os, numpy as np, pandas as pd, matplotlib.pyplot as plt, warnings
+from scipy.optimize import minimize
+from sklearn.model_selection import StratifiedKFold, cross_val_score
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+import lightgbm as lgb
+warnings.filterwarnings('ignore')
+pd.set_option('display.width', 200)
+
+# Palette: class 1 = blue, class 0 = orange, test = gray
+C1, C0, CT = '#2a78d6', '#eb6834', '#8a8983'
+INK, INK2, GRID = '#0b0b0b', '#52514e', '#e4e3df'
+plt.rcParams.update({
+    'figure.facecolor': '#fcfcfb', 'axes.facecolor': '#fcfcfb', 'axes.edgecolor': GRID,
+    'axes.labelcolor': INK2, 'xtick.color': INK2, 'ytick.color': INK2, 'text.color': INK,
+    'axes.grid': True, 'axes.axisbelow': True, 'grid.color': GRID, 'grid.linewidth': 0.8, 'axes.spines.top': False,
+    'axes.spines.right': False, 'axes.titleweight': 'bold', 'axes.titlesize': 12,
+    'font.size': 10, 'legend.frameon': False, 'figure.dpi': 110,
+})
+NUM = ['guests', 'aloo_count', 'mutton_kg', 'borhani_glasses', 'fairy_lights',
+       'dhol_players', 'aunties_asking_when_marriage']
+
+######## CELL 2 [markdown] ########
+## 1. Raw data audit
+I read everything as strings first so dirty values stay visible.
+
+######## CELL 3 [code] ########
+DATA = os.path.dirname(sorted(glob.glob('/kaggle/input/**/train.csv', recursive=True) + glob.glob('data/train.csv'))[0])
+print('data dir:', DATA)
+raw_tr = pd.read_csv(f'{DATA}/train.csv', dtype=str)
+raw_te = pd.read_csv(f'{DATA}/test.csv', dtype=str)
+def audit(d):
+    rows = []
+    for c in d.columns:
+        s = d[c]; nonnum = s[pd.to_numeric(s, errors='coerce').isna() & s.notna()]
+        rows.append(dict(col=c, nulls=s.isna().sum(), nunique=s.nunique(),
+                         non_numeric=len(nonnum) if c in NUM else '-',
+                         examples=list(nonnum.unique()[:4]) if c in NUM else list(s.unique()[:4])))
+    return pd.DataFrame(rows).set_index('col')
+print('TRAIN'); display(audit(raw_tr)); print('TEST'); display(audit(raw_te))
+
+######## CELL 4 [markdown] ########
+**Findings**
+- `aloo_count` has **24 nulls in train and 0 in test**.
+- `fairy_lights` has **15 Bangla-digit values in train and 0 in test**.
+- Everything else is clean. Test has none of the documented dirt.
+
+######## CELL 5 [markdown] ########
+## 2. Cleaning
+
+######## CELL 6 [code] ########
+BANGLA = str.maketrans('০১২৩৪৫৬৭৮৯', '0123456789')
+def clean(d):
+    d = d.copy()
+    d['fairy_bangla'] = d.fairy_lights.str.contains('[০-৯]', regex=True).astype(int)
+    d['fairy_lights'] = d.fairy_lights.str.translate(BANGLA).astype(float)
+    for c in NUM:
+        d[c] = pd.to_numeric(d[c])
+    d['drone'] = (d.drone_photographer == 'yes').astype(int)
+    d['aloo_missing'] = d.aloo_count.isna().astype(int)
+    d['aloo_pg_raw'] = d.aloo_count / d.guests
+    # Extra-zero fix: clean aloo/guest never exceeds ~2.7, so anything above 3 is ×10
+    d['aloo_x10'] = (d.aloo_pg_raw > 3).astype(int)
+    d['aloo'] = np.where(d.aloo_x10 == 1, d.aloo_count / 10, d.aloo_count)
+    d['aloo_pg'] = d.aloo / d.guests
+    d['mutton_pg'] = d.mutton_kg / d.guests
+    d['borhani_pg'] = d.borhani_glasses / d.guests
+    d['fairy_pg'] = d.fairy_lights / d.guests
+    return d
+tr, te = clean(raw_tr), clean(raw_te)
+tr['y'] = tr.went_back_for_seconds.astype(int)
+print('extra-zero rows  train:', tr.aloo_x10.sum(), ' test:', te.aloo_x10.sum())
+tr.loc[tr.aloo_x10 == 1, ['wedding_id', 'guests', 'aloo_count', 'aloo_pg_raw', 'aloo', 'aloo_pg', 'y']].round(3)
+
+######## CELL 7 [markdown] ########
+## 3. Target
+
+######## CELL 8 [code] ########
+vc = tr.y.value_counts().sort_index()
+fig, ax = plt.subplots(figsize=(5, 2.6))
+ax.barh(['0: no seconds', '1: went back'], vc.values, color=[C0, C1], height=0.55)
+for i, v in enumerate(vc.values):
+    ax.text(v + 8, i, f'{v} ({v/len(tr):.0%})', va='center', color=INK2)
+ax.set_xlim(0, 560); ax.grid(axis='y', visible=False)
+ax.set_title('Target balance (train)'); plt.tight_layout(); plt.show()
+
+######## CELL 9 [markdown] ########
+The classes are mildly imbalanced (42% positive), so the majority-class baseline is about 58%. The sample submission (all 0) scores 0.541 on the public LB.
+
+######## CELL 10 [markdown] ########
+## 4. Train vs test shift: the big-wedding season
+
+######## CELL 11 [code] ########
+fig, axes = plt.subplots(1, 4, figsize=(15, 3.2))
+for ax, c in zip(axes, ['guests', 'aloo', 'mutton_kg', 'borhani_glasses']):
+    bins = np.linspace(0, max(tr[c].max(), te[c].max()), 40)
+    ax.hist(tr[c].dropna(), bins=bins, color=C1, alpha=0.75, label='train', density=True)
+    ax.hist(te[c], bins=bins, color=CT, alpha=0.6, label='test', density=True)
+    ax.set_title(c); ax.set_yticks([])
+axes[0].legend(); plt.suptitle('Absolute sizes: test reaches far beyond the train range', y=1.03, fontweight='bold')
+plt.tight_layout(); plt.show()
+print(pd.DataFrame({'train_max': tr[NUM].max(), 'test_max': te[NUM].max()}))
+print('test weddings with guests > train max (700):', (te.guests > 700).sum(), 'of', len(te))
+
+######## CELL 12 [code] ########
+fig, axes = plt.subplots(1, 4, figsize=(15, 3.2))
+for ax, c in zip(axes, ['aloo_pg', 'mutton_pg', 'borhani_pg', 'fairy_pg']):
+    bins = np.linspace(min(tr[c].min(), te[c].min()), max(tr[c].quantile(.999), te[c].max()), 40)
+    ax.hist(tr[c].dropna(), bins=bins, color=C1, alpha=0.75, label='train', density=True)
+    ax.hist(te[c], bins=bins, color=CT, alpha=0.6, label='test', density=True)
+    ax.set_title(c); ax.set_yticks([])
+axes[0].legend(); plt.suptitle('Per-guest ratios: train and test match', y=1.03, fontweight='bold')
+plt.tight_layout(); plt.show()
+
+######## CELL 13 [markdown] ########
+**Finding:** 145 of 400 test weddings (36%) have more guests than the largest train wedding. The **per-guest ratios** have the same distribution in both sets, though. Models that work in ratio space don't need to extrapolate, while tree models on raw counts do.
+
+######## CELL 14 [markdown] ########
+## 5. Raw features vs target: almost nothing
+
+######## CELL 15 [code] ########
+fig, axes = plt.subplots(2, 4, figsize=(15, 6)); axes = axes.ravel()
+for ax, c in zip(axes, NUM + ['fairy_pg']):
+    v = tr[c] if c != 'aloo_count' else tr.aloo
+    bins = np.linspace(v.min(), v.quantile(.995), 30)
+    ax.hist(v[tr.y == 0], bins=bins, color=C0, alpha=0.6, label='0', density=True)
+    ax.hist(v[tr.y == 1], bins=bins, color=C1, alpha=0.6, label='1', density=True)
+    ax.set_title(c if c != 'aloo_count' else 'aloo (fixed)'); ax.set_yticks([])
+axes[0].legend(title='target'); plt.tight_layout(); plt.show()
+print('Spearman with target:'); print(tr[NUM + ['drone', 'aloo_pg', 'mutton_pg', 'borhani_pg', 'fairy_pg']].corrwith(tr.y, method='spearman').round(3).sort_values())
+
+######## CELL 16 [code] ########
+cols = ['guests', 'aloo', 'mutton_kg', 'borhani_glasses', 'fairy_lights', 'dhol_players', 'aunties_asking_when_marriage', 'aloo_pg']
+cm = tr[cols].corr()
+fig, ax = plt.subplots(figsize=(7, 5.5))
+im = ax.imshow(cm, cmap='RdBu_r', vmin=-1, vmax=1)
+ax.set_xticks(range(len(cols)), cols, rotation=45, ha='right'); ax.set_yticks(range(len(cols)), cols); ax.grid(False)
+for i in range(len(cols)):
+    for j in range(len(cols)):
+        ax.text(j, i, f'{cm.iloc[i, j]:.2f}', ha='center', va='center', fontsize=8, color=INK if abs(cm.iloc[i, j]) < .6 else 'white')
+plt.colorbar(im, fraction=.046); ax.set_title('Feature correlations (train)'); plt.tight_layout(); plt.show()
+
+######## CELL 17 [markdown] ########
+- `mutton_kg`, `borhani_glasses` and `fairy_lights` mostly scale with `guests` (r = 0.94 / 0.93 / 0.68).
+- Every raw feature has |Spearman| < 0.07 with the target. Linear models on raw features score close to chance.
+
+######## CELL 18 [markdown] ########
+## 6. Categorical features
+
+######## CELL 19 [code] ########
+fig, axes = plt.subplots(1, 3, figsize=(15, 3.4), gridspec_kw={'width_ratios': [3, 8, 2]})
+for ax, c in zip(axes, ['event', 'city', 'drone_photographer']):
+    g = tr.groupby(c).y.agg(['mean', 'count']).sort_values('mean')
+    ax.bar(g.index, g['mean'], color=C1, width=0.6)
+    for i, (m, n) in enumerate(zip(g['mean'], g['count'])):
+        ax.text(i, m + .01, f'{m:.2f}\nn={n}', ha='center', fontsize=8, color=INK2)
+    ax.axhline(tr.y.mean(), color=INK2, lw=1, ls='--'); ax.set_ylim(0, .65); ax.set_title(f'P(seconds) by {c}')
+    ax.tick_params(axis='x', rotation=30)
+plt.tight_layout(); plt.show()
+print(tr.groupby('aloo_missing').y.agg(['mean', 'count'])); print(tr.groupby('fairy_bangla').y.agg(['mean', 'count']))
+
+######## CELL 20 [markdown] ########
+The differences across event, city and drone are small and within noise for groups of this size. Mymensingh (n=38) and Sylhet look low, but section 9 shows this comes from their aloo/guest mix and not from the city itself.
+
+######## CELL 21 [markdown] ########
+## 7. The reveal: aloo per guest
+
+######## CELL 22 [code] ########
+d = tr.dropna(subset=['aloo_pg'])
+bins = np.arange(0.4, 2.81, 0.05)
+fig, axes = plt.subplots(2, 1, figsize=(12, 6.5), sharex=True, gridspec_kw={'height_ratios': [2, 1.3]})
+ax = axes[0]
+ax.hist([d.aloo_pg[d.y == 0], d.aloo_pg[d.y == 1]], bins=bins, stacked=True, color=[C0, C1], label=['0: no seconds', '1: went back'], edgecolor='#fcfcfb', linewidth=1)
+for t in (1, 2): ax.axvline(t, color=INK, lw=1.2, ls='--')
+ax.legend(loc='upper right'); ax.set_ylabel('weddings'); ax.set_title('Aloo per guest (extra zeros fixed): seconds happen only in a Goldilocks band')
+ax = axes[1]
+b = d.groupby(pd.cut(d.aloo_pg, np.arange(0.4, 2.81, 0.1)), observed=True).y.agg(['mean', 'count'])
+mid = [i.mid for i in b.index]
+ax.scatter(mid, b['mean'], s=b['count'] * 2, color=C1, zorder=3, label='binned rate (size = n)')
+s = lambda z: 1 / (1 + np.exp(-z))
+nll = lambda p: -np.sum(d.y * np.log(np.clip(s(p[2]*(d.aloo_pg-p[0]))*s(p[2]*(p[1]-d.aloo_pg)), 1e-9, 1)) + (1-d.y) * np.log(np.clip(1-s(p[2]*(d.aloo_pg-p[0]))*s(p[2]*(p[1]-d.aloo_pg)), 1e-9, 1)))
+LO, HI, K = minimize(nll, [1, 2, 20], method='Nelder-Mead').x
+xx = np.linspace(.4, 2.8, 400); ax.plot(xx, s(K*(xx-LO))*s(K*(HI-xx)), color=INK, lw=2, label=f'soft-band MLE: lo={LO:.3f}, hi={HI:.3f}, k={K:.1f}')
+ax.set_ylabel('P(seconds)'); ax.set_xlabel('aloo per guest'); ax.legend(loc='center right', fontsize=8)
+plt.tight_layout(); plt.show()
+print(b.round(2).T)
+
+######## CELL 23 [markdown] ########
+### This is the mystery
+- **aloo/guest < 1.0:** not enough potato to go round. Nobody goes back (0/177 below 0.9).
+- **1.0 < aloo/guest < 2.0:** the Goldilocks zone. ~97% go back for seconds.
+- **aloo/guest > 2.0:** too much potato and not enough meat-and-rice, so it feels skimpy. Nobody goes back (0/134 above 2.3).
+
+A soft-band maximum-likelihood fit puts the edges at **0.99 and 2.00** with steepness k ≈ 20. The data was most likely generated as `p = σ(20·(apg−1)) · σ(20·(2−apg))` and then sampled, which makes the Bayes-optimal rule **1 < aloo/guest < 2**.
+
+######## CELL 24 [code] ########
+fig, ax = plt.subplots(figsize=(11, 6))
+ax.scatter(te.guests, te.aloo, s=10, color=CT, alpha=0.5, label='test (unlabelled)')
+ax.scatter(d.guests[d.y == 0], d.aloo[d.y == 0], s=12, color=C0, label='train: 0')
+ax.scatter(d.guests[d.y == 1], d.aloo[d.y == 1], s=12, color=C1, label='train: 1')
+g = np.array([0, 1520]); ax.plot(g, g, color=INK, lw=1.2, ls='--'); ax.plot(g, 2 * g, color=INK, lw=1.2, ls='--')
+ax.text(1530, 1520, 'aloo = 1×guests', va='center', color=INK2); ax.text(1530, 3040, 'aloo = 2×guests', va='center', color=INK2); ax.set_xlim(-20, 1720)
+ax.axvline(700, color=INK2, lw=1, ls=':'); ax.text(710, 3900, 'train max guests', color=INK2, fontsize=8)
+ax.set_xlabel('guests'); ax.set_ylabel('aloo (fixed)'); ax.legend(loc='upper left')
+ax.set_title('In raw space the band is a wedge between two lines, and the wedge extends into big test weddings')
+plt.tight_layout(); plt.show()
+
+######## CELL 25 [markdown] ########
+This plot shows why tree models on raw counts struggle. The decision boundary is two diagonal lines, which trees can only approximate with staircases, and those staircases stop at guests = 700, past which 36% of test weddings sit.
+
+######## CELL 26 [markdown] ########
+## 8. Rule vs models (5-fold stratified CV)
+
+######## CELL 27 [code] ########
+d = tr.dropna(subset=['aloo_pg']).reset_index(drop=True); y = d.y.values
+skf = StratifiedKFold(5, shuffle=True, random_state=0)
+def fit_band(r, yy):
+    best = (0, 1, 2)
+    for lo in np.arange(0.85, 1.15, 0.005):
+        for hi in np.arange(1.85, 2.25, 0.005):
+            a = (((r > lo) & (r < hi)).astype(int) == yy).mean()
+            if a > best[0]: best = (a, lo, hi)
+    return best[1:]
+res = {}
+r = d.aloo_pg.values
+res['Fixed rule 1<apg<2'] = [(((r[v] > 1) & (r[v] < 2)).astype(int) == y[v]).mean() for _, v in skf.split(d, y)]
+acc = []
+for t, v in skf.split(d, y):
+    lo, hi = fit_band(r[t], y[t]); acc.append((((r[v] > lo) & (r[v] < hi)).astype(int) == y[v]).mean())
+res['Fitted band rule'] = acc
+d['apg2'] = d.aloo_pg ** 2
+raw = pd.get_dummies(d[['guests', 'aloo', 'mutton_kg', 'borhani_glasses', 'fairy_lights', 'dhol_players', 'aunties_asking_when_marriage', 'drone', 'event', 'city']], drop_first=True).astype(float)
+eng = pd.get_dummies(d[['aloo_pg', 'apg2', 'mutton_pg', 'borhani_pg', 'fairy_pg', 'dhol_players', 'aunties_asking_when_marriage', 'drone', 'event', 'city']], drop_first=True).astype(float)
+models = {
+    'Logistic, raw features': (make_pipeline(StandardScaler(), LogisticRegression(max_iter=3000)), raw),
+    'LightGBM, raw features': (lgb.LGBMClassifier(n_estimators=300, learning_rate=0.03, verbose=-1), raw),
+    'Logistic, engineered (all)': (make_pipeline(StandardScaler(), LogisticRegression(C=10, max_iter=3000)), eng),
+    'LightGBM, engineered (all)': (lgb.LGBMClassifier(n_estimators=300, learning_rate=0.03, num_leaves=8, verbose=-1), eng),
+    'Logistic, apg + apg²': (make_pipeline(StandardScaler(), LogisticRegression(C=100, max_iter=3000)), d[['aloo_pg', 'apg2']]),
+    'LightGBM, apg only': (lgb.LGBMClassifier(n_estimators=200, learning_rate=0.03, num_leaves=4, verbose=-1), d[['aloo_pg']]),
+}
+for n, (m, X) in models.items():
+    res[n] = cross_val_score(m, X, y, cv=skf, scoring='accuracy')
+cv = pd.DataFrame({k: [np.mean(v), np.std(v)] for k, v in res.items()}, index=['mean', 'std']).T.sort_values('mean')
+fig, ax = plt.subplots(figsize=(9, 4))
+ax.barh(cv.index, cv['mean'], xerr=cv['std'], color=[C1 if 'rule' in i else CT for i in cv.index], height=0.6, error_kw=dict(ecolor=INK2, lw=1))
+for i, (m, sd) in enumerate(zip(cv['mean'], cv['std'])): ax.text(m + sd + .006, i, f'{m:.3f}', va='center', color=INK2)
+ax.set_xlim(.5, 1.02); ax.grid(axis='y', visible=False); ax.set_xlabel('CV accuracy'); ax.set_title('The aloo/guest ratio matters far more than the choice of model')
+plt.tight_layout(); plt.show(); print(cv.round(4))
+
+######## CELL 28 [markdown] ########
+## 9. What's left? Errors at the edges
+
+######## CELL 29 [code] ########
+BLO, BHI = fit_band(d.aloo_pg.values, y)
+print(f'Accuracy-optimal band on full train: {BLO:.3f} < apg < {BHI:.3f}')
+for lo, hi in [(1, 2), (BLO, BHI)]:
+    pred = ((d.aloo_pg > lo) & (d.aloo_pg < hi)).astype(int); err = d[pred != d.y]
+    print(f'  band ({lo:.3f}, {hi:.3f}): train acc {(pred == d.y).mean():.4f}, {len(err)} errors; '
+          f'max distance of an error from an edge = {np.minimum(abs(err.aloo_pg - lo), abs(err.aloo_pg - hi)).max():.3f}')
+# Does anything besides apg explain edge labels? Fit a band per subgroup:
+for c in ['event', 'drone_photographer', 'city']:
+    print(c, {k: tuple(np.round(fit_band(g.aloo_pg.values, g.y.values), 2)) for k, g in d.groupby(c)})
+
+######## CELL 30 [markdown] ########
+- The accuracy-optimal lower edge sits slightly below 1 (~0.97), because 7 of the 8 rows with apg between 0.97 and 0.99 are positive. The upper edge stays at ~2.0.
+- Every error lies within about 0.3 of an edge, which matches the soft (k ≈ 20) sigmoid boundary. **This is label noise, not a missing feature.**
+- Thresholds fitted per subgroup only move around in small samples. No event, city or drone effect holds up.
+- About 4–4.5% of labels are essentially coin flips, so **~95–96% is the realistic ceiling**. That's consistent with the current public LB top of 0.950.
+
+######## CELL 31 [markdown] ########
+## 10. Missing and dirty rows
+
+######## CELL 32 [code] ########
+print('Rows with missing aloo (train only):', tr.aloo_missing.sum(), '| target rate', tr.loc[tr.aloo_missing == 1, 'y'].mean().round(3))
+print('Can aloo be imputed? corr(aloo_pg, other ratios):'); print(d[['aloo_pg', 'mutton_pg', 'borhani_pg', 'fairy_pg']].corr().round(3).iloc[0])
+
+######## CELL 33 [markdown] ########
+Aloo/guest is independent of every other ratio, so a missing `aloo_count` can't be recovered and those 24 train rows carry no signal. **Drop them for training.** Test has no missing values, so the rule applies to every test row.
+
+######## CELL 34 [markdown] ########
+## 11. Test predictions and summary
+
+######## CELL 35 [code] ########
+te['pred'] = ((te.aloo_pg > BLO) & (te.aloo_pg < BHI)).astype(int)
+print('test rows where band (BLO,BHI) and (1,2) disagree:', (te.pred != ((te.aloo_pg > 1) & (te.aloo_pg < 2))).sum())
+print('test predicted positive rate:', te.pred.mean().round(3), '| train base rate:', tr.y.mean().round(3))
+print('test rows near an edge (|apg-1|<.1 or |apg-2|<.1):', ((abs(te.aloo_pg - 1) < .1) | (abs(te.aloo_pg - 2) < .1)).sum())
+te[['wedding_id']].assign(went_back_for_seconds=te.pred).to_csv('submission_rule.csv', index=False)
+print('wrote submission_rule.csv')
+
+######## CELL 36 [markdown] ########
+## Key takeaways (the "Aloo Theory")
+1. **The target depends on one engineered feature: `aloo_count / guests`.** Guests go back for seconds when there are 1–2 potatoes per guest.
+2. **Ratios solve the big-wedding shift.** Test weddings are up to 2× larger, but per-guest ratios have identical distributions in train and test.
+3. **Data cleaning matters for training only.** Fix the ×10 potato counts (apg > 3 → ÷10), convert Bangla digits, and drop the 24 rows with missing aloo. Test is clean.
+4. **Fancier models do worse.** LightGBM on raw features gets ~86%. The two-threshold rule gets ~95.5% CV (LightGBM on aloo/guest alone ties it), and the remaining errors look like irreducible noise at the soft band edges.

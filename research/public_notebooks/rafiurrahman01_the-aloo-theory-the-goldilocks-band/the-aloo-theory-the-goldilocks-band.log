@@ -1,0 +1,67 @@
+[{"stream_name":"stderr","time":8.244006646,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.244066432,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.244072915,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.244075784,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":9.000384947,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":9.000424002,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":9.000429205,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":9.000433623,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":13.203680701,"data":"(800, 12) (400, 11)\n"}
+,{"stream_name":"stdout","time":13.273733983,"data":"fairy_lights with Bangla digits: 15 (train) 0 (test)\n"}
+,{"stream_name":"stdout","time":13.273775803,"data":"empty aloo_count: 24 (train) 0 (test)\n"}
+,{"stream_name":"stdout","time":13.273781506,"data":"extra-zero aloo rows fixed: ['W0081', 'W0317', 'W0448', 'W0502', 'W0672', 'W0786'] ratios: [22.7, 9.7, 16.5, 16.6, 26.8, 23.4]\n"}
+,{"stream_name":"stdout","time":13.273785554,"data":"extra-zero aloo rows fixed: [] ratios: []\n"}
+,{"stream_name":"stdout","time":13.273789234,"data":"train rows used: 776 | test rows: 400\n"}
+,{"stream_name":"stdout","time":13.304324564,"data":"       train guests  test guests  train aloo/guest  test aloo/guest\n"}
+,{"stream_name":"stdout","time":13.304360116,"data":"count        776.00       400.00            776.00           400.00\n"}
+,{"stream_name":"stdout","time":13.304365837,"data":"mean         372.18       648.07              1.54             1.53\n"}
+,{"stream_name":"stdout","time":13.304370187,"data":"std          184.80       428.44              0.67             0.64\n"}
+,{"stream_name":"stdout","time":13.304374668,"data":"min           51.00        51.00              0.41             0.40\n"}
+,{"stream_name":"stdout","time":13.304378438,"data":"25%          217.50       288.50              0.96             0.95\n"}
+,{"stream_name":"stdout","time":13.304382226,"data":"50%          369.00       534.00              1.51             1.54\n"}
+,{"stream_name":"stdout","time":13.304386011,"data":"75%          531.00       963.50              2.13             2.07\n"}
+,{"stream_name":"stdout","time":13.304389777,"data":"max          700.00      1499.00              2.70             2.68\n"}
+,{"stream_name":"stdout","time":13.829860439,"data":"low = 0.971 aloo/guest, high = 2.010 aloo/guest\n"}
+,{"stream_name":"stdout","time":13.864837785,"data":"                    error rate  weddings\n"}
+,{"stream_name":"stdout","time":13.864881896,"data":"distance from edge                      \n"}
+,{"stream_name":"stdout","time":13.86488761,"data":"(0.0, 0.02]              0.057        35\n"}
+,{"stream_name":"stdout","time":13.864891436,"data":"(0.02, 0.05]             0.364        33\n"}
+,{"stream_name":"stdout","time":13.864894959,"data":"(0.05, 0.1]              0.141        64\n"}
+,{"stream_name":"stdout","time":13.864898992,"data":"(0.1, 0.2]               0.035       144\n"}
+,{"stream_name":"stdout","time":13.864917317,"data":"(0.2, 0.5]               0.010       387\n"}
+,{"stream_name":"stdout","time":13.864921399,"data":"(0.5, 2.0]               0.000       113\n"}
+,{"stream_name":"stdout","time":19.018178628,"data":"                        mean accuracy     std\n"}
+,{"stream_name":"stdout","time":19.018220566,"data":"band rule (2 numbers)          0.9558  0.0147\n"}
+,{"stream_name":"stdout","time":19.018226049,"data":"fixed 1.0-2.0 rule             0.9446  0.0207\n"}
+,{"stream_name":"stdout","time":19.018229771,"data":"LightGBM, all features         0.9386  0.0176\n"}
+,{"stream_name":"stdout","time":22.530673226,"data":"lower edge (0.7-1.3 aloo/guest): n=215\n"}
+,{"stream_name":"stdout","time":22.530711445,"data":"   weights: {'const': -4.8, 'log_aloo_count': 28.9, 'log_guests': -26.6, 'log_mutton_kg': -1.9}\n"}
+,{"stream_name":"stdout","time":22.530716463,"data":"   p-values: {'const': 0.21, 'log_aloo_count': 0.0, 'log_guests': 0.0, 'log_mutton_kg': 0.339}\n"}
+,{"stream_name":"stdout","time":22.530720668,"data":"upper edge (1.7-2.4 aloo/guest): n=236\n"}
+,{"stream_name":"stdout","time":22.530724218,"data":"   weights: {'const': 26.3, 'log_aloo_count': -34.3, 'log_guests': 32.4, 'log_mutton_kg': 1.9}\n"}
+,{"stream_name":"stdout","time":22.530728061,"data":"   p-values: {'const': 0.0, 'log_aloo_count': 0.0, 'log_guests': 0.0, 'log_mutton_kg': 0.217}\n"}
+,{"stream_name":"stdout","time":22.565464751,"data":"aloo / guests                                       0.9588\n"}
+,{"stream_name":"stdout","time":22.565501818,"data":"aloo / (guests + 1*dhol_players)                    0.9562\n"}
+,{"stream_name":"stdout","time":22.565507187,"data":"aloo / (guests + 1*drone)                           0.9562\n"}
+,{"stream_name":"stdout","time":22.565511134,"data":"aloo / (guests + 2*drone)                           0.9549\n"}
+,{"stream_name":"stdout","time":22.565515014,"data":"aloo / (guests + 1*aunties_asking_when_marriage)    0.9536\n"}
+,{"stream_name":"stdout","time":22.565518947,"data":"aloo / (guests + 3*drone)                           0.9536\n"}
+,{"stream_name":"stdout","time":22.565522774,"data":"aloo / (guests + 2*dhol_players)                    0.9485\n"}
+,{"stream_name":"stdout","time":22.565526609,"data":"aloo / (guests + 10)                                0.9459\n"}
+,{"stream_name":"stdout","time":22.565530103,"data":"aloo / (guests + 3*dhol_players)                    0.9433\n"}
+,{"stream_name":"stdout","time":22.565533767,"data":"aloo / (guests + 2*aunties_asking_when_marriage)    0.9381\n"}
+,{"stream_name":"stdout","time":22.565537374,"data":"aloo / (guests + 20)                                0.9304\n"}
+,{"stream_name":"stdout","time":22.565540938,"data":"aloo / (guests + 3*aunties_asking_when_marriage)    0.9227\n"}
+,{"stream_name":"stdout","time":22.565544386,"data":"aloo / (guests + 50)                                0.8814\n"}
+,{"stream_name":"stdout","time":22.602897017,"data":"{0: 218, 1: 182}\n"}
+,{"stream_name":"stderr","time":26.36913272,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":26.369178323,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":26.562222046,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":26.562251535,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":27.521966837,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":27.627418617,"data":"[NbConvertApp] Writing 142015 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":31.013153404,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":31.721251141,"data":"[NbConvertApp] Support files will be in __results___files/\n"}
+,{"stream_name":"stderr","time":31.721285688000002,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":31.721622141,"data":"[NbConvertApp] Writing 342665 bytes to __results__.html\n"}
+]

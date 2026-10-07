@@ -1,0 +1,42 @@
+=== 1. DGP fits to the binned public table (776 rows) ===
+lin_logit_sym      lo=0.9934 hi=2.0000 k=[19.15]  NLL=120.399  AIC=246.80
+lin_logit_asym     lo=0.9924 hi=1.9990 k=[27.61, 15.54]  NLL=116.453  AIC=240.91
+log_logit_sym      lo=0.9904 hi=1.9948 k=[29.76]  NLL=116.783  AIC=239.57
+log_logit_asym     lo=0.9902 hi=1.9952 k=[27.58, 30.86]  NLL=116.644  AIC=241.29
+lin_probit_sym     lo=0.9947 hi=1.9967 k=[9.91]  NLL=123.503  AIC=253.01
+lin_probit_asym    lo=0.9941 hi=1.9966 k=[15.19, 8.14]  NLL=117.703  AIC=243.41
+log_probit_sym     lo=0.9917 hi=1.9911 k=[15.82]  NLL=118.052  AIC=242.10
+log_probit_asym    lo=0.9915 hi=1.9913 k=[15.2, 16.09]  NLL=118.007  AIC=244.01
+profile 95% CI lin_logit_sym: lo in [0.9709, 1.0159]  hi in [1.9750, 2.0250]
+profile 95% CI log_logit_sym: lo in [0.9729, 1.0104]  hi in [1.9673, 2.0223]
+
+=== 2-5. Monte Carlo under DGP lin_logit_sym (theta=[0.9934, 2.0, 19.1545]) ===
+  [lin_logit_sym] 1000 replicates in 180s
+  bayes        private 0.9363 ± 0.0173  (5-95%: 0.9084-0.9635)  Δrows vs accopt +0.67  P(beat)=0.48 P(tie)=0.24  | public 0.9372 ± 0.0177
+  fixed_1_2    private 0.9362 ± 0.0173  (5-95%: 0.9041-0.9635)  Δrows vs accopt +0.66  P(beat)=0.49 P(tie)=0.22  | public 0.9373 ± 0.0177
+  accopt_band  private 0.9332 ± 0.0174  (5-95%: 0.9041-0.9589)  Δrows vs accopt +0.00  P(beat)=0.00 P(tie)=1.00  | public 0.9349 ± 0.0179
+  mle_lin      private 0.9356 ± 0.0174  (5-95%: 0.9041-0.9635)  Δrows vs accopt +0.53  P(beat)=0.45 P(tie)=0.24  | public 0.9365 ± 0.0178
+  mle_log      private 0.9357 ± 0.0175  (5-95%: 0.9041-0.9635)  Δrows vs accopt +0.54  P(beat)=0.45 P(tie)=0.26  | public 0.9366 ± 0.0176
+  knn5_log     private 0.9281 ± 0.0182  (5-95%: 0.8995-0.9543)  Δrows vs accopt -1.11  P(beat)=0.25 P(tie)=0.17  | public 0.9290 ± 0.0192
+  lgbm_log     private 0.9332 ± 0.0171  (5-95%: 0.9041-0.9589)  Δrows vs accopt -0.01  P(beat)=0.28 P(tie)=0.42  | public 0.9343 ± 0.0180
+  CV gap (accopt-CV minus fixed(1,2)): mean -0.0031, sd 0.0060; P(gap >= observed +0.0112) = 0.013
+  in-sample error reduction from optimising cut-points: mean 4.4 rows, P(>= observed 10) = 0.059
+  accopt thresholds: lo mean 0.9939 sd 0.0257 | hi mean 1.9985 sd 0.0254
+  hedge E[max(A,B)] private acc by #flipped rows m: {0: 0.9356, 2: 0.9375, 4: 0.9383, 6: 0.9385, 8: 0.9388, 12: 0.939, 16: 0.9389, 24: 0.9382}  -> best gain +0.0033 (= +0.73 rows)
+  Bayes rule public acc: mean 0.9372 sd 0.0177; P(public >= 175/181) = 0.050; P(<= 172/181) = 0.816
+
+=== 2-5. Monte Carlo under DGP log_logit_sym (theta=[0.9904, 1.9948, 29.7631]) ===
+  [log_logit_sym] 1000 replicates in 88s
+  bayes        private 0.9391 ± 0.0157  (5-95%: 0.9132-0.9635)  Δrows vs accopt +0.56  P(beat)=0.46 P(tie)=0.28  | public 0.9402 ± 0.0178
+  fixed_1_2    private 0.9388 ± 0.0156  (5-95%: 0.9132-0.9635)  Δrows vs accopt +0.50  P(beat)=0.46 P(tie)=0.24  | public 0.9401 ± 0.0177
+  accopt_band  private 0.9365 ± 0.0162  (5-95%: 0.9087-0.9589)  Δrows vs accopt +0.00  P(beat)=0.00 P(tie)=1.00  | public 0.9377 ± 0.0184
+  mle_lin      private 0.9383 ± 0.0156  (5-95%: 0.9132-0.9635)  Δrows vs accopt +0.39  P(beat)=0.41 P(tie)=0.31  | public 0.9394 ± 0.0179
+  mle_log      private 0.9384 ± 0.0156  (5-95%: 0.9132-0.9635)  Δrows vs accopt +0.42  P(beat)=0.42 P(tie)=0.30  | public 0.9396 ± 0.0179
+  knn5_log     private 0.9312 ± 0.0172  (5-95%: 0.8995-0.9589)  Δrows vs accopt -1.16  P(beat)=0.24 P(tie)=0.17  | public 0.9321 ± 0.0192
+  CV gap (accopt-CV minus fixed(1,2)): mean -0.0024, sd 0.0057; P(gap >= observed +0.0112) = 0.014
+  in-sample error reduction from optimising cut-points: mean 4.5 rows, P(>= observed 10) = 0.059
+  accopt thresholds: lo mean 0.9903 sd 0.0183 | hi mean 1.9952 sd 0.0300
+  hedge E[max(A,B)] private acc by #flipped rows m: {0: 0.9383, 2: 0.9402, 4: 0.9408, 6: 0.9413, 8: 0.9415, 12: 0.9418, 16: 0.9417, 24: 0.9406}  -> best gain +0.0035 (= +0.76 rows)
+  Bayes rule public acc: mean 0.9402 sd 0.0178; P(public >= 175/181) = 0.084; P(<= 172/181) = 0.756
+
+wrote C:/Users/PROJEC~1/AppData/Local/Temp/claude/d--Kaggle-The-Great-Kacchi-Aloo-Mystery/4452ce20-490b-47bf-968f-5d0c2c825823/scratchpad/analysis/simulation_summary.json

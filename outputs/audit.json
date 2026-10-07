@@ -1,0 +1,317 @@
+{
+ "shapes": {
+  "train": [
+   800,
+   12
+  ],
+  "test": [
+   400,
+   11
+  ]
+ },
+ "missing": {
+  "train": {
+   "aloo_count": 24
+  },
+  "test": {}
+ },
+ "non_ascii_numeric_cells": {
+  "guests": [
+   0,
+   0
+  ],
+  "aloo_count": [
+   0,
+   0
+  ],
+  "mutton_kg": [
+   0,
+   0
+  ],
+  "borhani_glasses": [
+   0,
+   0
+  ],
+  "fairy_lights": [
+   15,
+   0
+  ],
+  "dhol_players": [
+   0,
+   0
+  ],
+  "aunties_asking_when_marriage": [
+   0,
+   0
+  ]
+ },
+ "x10_rows": {
+  "train": [
+   "W0081",
+   "W0317",
+   "W0448",
+   "W0502",
+   "W0672",
+   "W0786"
+  ],
+  "test": [],
+  "raw_ratios_train": [
+   22.7,
+   9.7,
+   16.46,
+   16.58,
+   26.75,
+   23.39
+  ]
+ },
+ "post_fix_apg_range": {
+  "train": [
+   0.40601503759398494,
+   2.7
+  ],
+  "test": [
+   0.4028436018957346,
+   2.6844660194174756
+  ]
+ },
+ "per_guest_ranges": {
+  "apg": {
+   "train": [
+    0.40601503759398494,
+    2.7
+   ],
+   "test": [
+    0.4028436018957346,
+    2.6844660194174756
+   ]
+  },
+  "mutton_pg": {
+   "train": [
+    0.1803076923076923,
+    0.3198540145985401
+   ],
+   "test": [
+    0.1801163918525703,
+    0.3197278911564626
+   ]
+  },
+  "borhani_pg": {
+   "train": [
+    0.7996515679442509,
+    1.496881496881497
+   ],
+   "test": [
+    0.8006042296072508,
+    1.4964705882352942
+   ]
+  },
+  "fairy_pg": {
+   "train": [
+    0.5604075691411936,
+    8.014705882352942
+   ],
+   "test": [
+    0.524024024024024,
+    6.365853658536586
+   ]
+  }
+ },
+ "target_rate_train": 0.42,
+ "target_rate_by_flag": {
+  "aloo_missing": {
+   "mean": {
+    "0": 0.423,
+    "1": 0.333
+   },
+   "count": {
+    "0": 776,
+    "1": 24
+   }
+  },
+  "aloo_x10": {
+   "mean": {
+    "0": 0.421,
+    "1": 0.333
+   },
+   "count": {
+    "0": 794,
+    "1": 6
+   }
+  },
+  "fairy_lights_nonascii": {
+   "mean": {
+    "false": 0.423,
+    "true": 0.267
+   },
+   "count": {
+    "false": 785,
+    "true": 15
+   }
+  }
+ },
+ "duplicates": {
+  "within_train": 0,
+  "within_test": 0,
+  "train_test_exact": 0,
+  "train_test_same_guests_and_aloo": 0
+ },
+ "ids": {
+  "train": [
+   1.0,
+   800.0
+  ],
+  "test": [
+   801.0,
+   1200.0
+  ],
+  "overlap": 0
+ },
+ "leak_target_vs_id": {
+  "spearman": -0.04824211152518749,
+  "p": 0.17283424822279012,
+  "auc_id": 0.47178391830870275
+ },
+ "leak_band_errors_vs_id": {
+  "spearman": -0.013490025591587903,
+  "p": 0.7075117879017211
+ },
+ "shift": {
+  "guests": {
+   "ks": 0.36625,
+   "ks_p": 2.898242102615763e-32,
+   "psi": 0.6198059378060371,
+   "train_max": 700.0,
+   "test_max": 1499.0,
+   "test_above_train_max": 145
+  },
+  "aloo": {
+   "ks": 0.24958762886597938,
+   "ks_p": 6.0659719547210744e-15,
+   "psi": 0.3620347384142021,
+   "train_max": 1831.0,
+   "test_max": 3814.0,
+   "test_above_train_max": 71
+  },
+  "mutton_kg": {
+   "ks": 0.32375,
+   "ks_p": 3.5918326740237033e-25,
+   "psi": 0.5849462375657908,
+   "train_max": 221.3,
+   "test_max": 453.3,
+   "test_above_train_max": 111
+  },
+  "borhani_glasses": {
+   "ks": 0.3025,
+   "ks_p": 5.600492022855531e-22,
+   "psi": 0.47339884816213773,
+   "train_max": 1016.0,
+   "test_max": 2166.0,
+   "test_above_train_max": 111
+  },
+  "fairy_lights": {
+   "ks": 0.21875,
+   "ks_p": 1.2975874229822331e-11,
+   "psi": 0.324705736179024,
+   "train_max": 2861.0,
+   "test_max": 5942.0,
+   "test_above_train_max": 62
+  },
+  "dhol_players": {
+   "ks": 0.0325,
+   "ks_p": 0.9382098400347212,
+   "psi": 0.025877146184674585,
+   "train_max": 8.0,
+   "test_max": 8.0,
+   "test_above_train_max": 0
+  },
+  "aunties_asking_when_marriage": {
+   "ks": 0.03625,
+   "ks_p": 0.8708281858081758,
+   "psi": 0.009724259820927375,
+   "train_max": 16.0,
+   "test_max": 12.0,
+   "test_above_train_max": 0
+  },
+  "apg": {
+   "ks": 0.04082474226804124,
+   "ks_p": 0.7508634290928234,
+   "psi": 0.03928442992682761,
+   "train_max": 2.7,
+   "test_max": 2.6844660194174756,
+   "test_above_train_max": 0
+  },
+  "mutton_pg": {
+   "ks": 0.08625,
+   "ks_p": 0.03706890513141939,
+   "psi": 0.058188309267730394,
+   "train_max": 0.3198540145985401,
+   "test_max": 0.3197278911564626,
+   "test_above_train_max": 0
+  },
+  "borhani_pg": {
+   "ks": 0.06,
+   "ks_p": 0.2886328986615537,
+   "psi": 0.033152154030530054,
+   "train_max": 1.496881496881497,
+   "test_max": 1.4964705882352942,
+   "test_above_train_max": 0
+  },
+  "fairy_pg": {
+   "ks": 0.08625,
+   "ks_p": 0.03706890513141939,
+   "psi": 0.05261694201671976,
+   "train_max": 8.014705882352942,
+   "test_max": 6.365853658536586,
+   "test_above_train_max": 0
+  },
+  "event": {
+   "train": {
+    "Biye": 0.472,
+    "Gaye Holud": 0.298,
+    "Bou-bhat": 0.23
+   },
+   "test": {
+    "Biye": 0.422,
+    "Gaye Holud": 0.342,
+    "Bou-bhat": 0.235
+   }
+  },
+  "city": {
+   "train": {
+    "Dhaka": 0.328,
+    "Chattogram": 0.148,
+    "Rajshahi": 0.125,
+    "Khulna": 0.109,
+    "Sylhet": 0.086,
+    "Barishal": 0.082,
+    "Rangpur": 0.075,
+    "Mymensingh": 0.048
+   },
+   "test": {
+    "Dhaka": 0.338,
+    "Chattogram": 0.15,
+    "Sylhet": 0.128,
+    "Rajshahi": 0.11,
+    "Khulna": 0.095,
+    "Rangpur": 0.068,
+    "Mymensingh": 0.062,
+    "Barishal": 0.05
+   }
+  },
+  "drone_photographer": {
+   "train": {
+    "no": 0.601,
+    "yes": 0.399
+   },
+   "test": {
+    "no": 0.598,
+    "yes": 0.402
+   }
+  }
+ },
+ "adversarial_auc": {
+  "raw_features": 0.6640882731958763,
+  "per_guest_features": 0.5442364690721649,
+  "apg_only": 0.5376626932989691
+ }
+}

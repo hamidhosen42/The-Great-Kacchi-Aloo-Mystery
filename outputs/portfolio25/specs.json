@@ -1,0 +1,125 @@
+[
+ {
+  "family": "window",
+  "side": "upper",
+  "start": 2,
+  "width": 8
+ },
+ {
+  "family": "band",
+  "lo": 1.00608,
+  "hi": 2.02353
+ },
+ {
+  "family": "window",
+  "side": "upper",
+  "start": 7,
+  "width": 7
+ },
+ {
+  "family": "band",
+  "lo": 1.00689,
+  "hi": 1.98867
+ },
+ {
+  "family": "window",
+  "side": "lower",
+  "start": 5,
+  "width": 5
+ },
+ {
+  "family": "window",
+  "side": "both",
+  "start": 8,
+  "width": 6
+ },
+ {
+  "family": "band",
+  "lo": 0.95816,
+  "hi": 1.9807
+ },
+ {
+  "family": "window",
+  "side": "both",
+  "start": 19,
+  "width": 7
+ },
+ {
+  "family": "band",
+  "lo": 0.97052,
+  "hi": 2.02641
+ },
+ {
+  "family": "window",
+  "side": "lower",
+  "start": 2,
+  "width": 4
+ },
+ {
+  "family": "window",
+  "side": "both",
+  "start": 16,
+  "width": 4
+ },
+ {
+  "family": "window",
+  "side": "upper",
+  "start": 0,
+  "width": 5
+ },
+ {
+  "family": "window",
+  "side": "upper",
+  "start": 13,
+  "width": 5
+ },
+ {
+  "family": "window",
+  "side": "both",
+  "start": 12,
+  "width": 4
+ },
+ {
+  "family": "window",
+  "side": "both",
+  "start": 1,
+  "width": 5
+ },
+ {
+  "family": "band",
+  "lo": 0.9843,
+  "hi": 1.97931
+ },
+ {
+  "family": "band",
+  "lo": 0.99333,
+  "hi": 2.01654
+ },
+ {
+  "family": "window",
+  "side": "both",
+  "start": 23,
+  "width": 5
+ },
+ {
+  "family": "window",
+  "side": "both",
+  "start": 15,
+  "width": 7
+ },
+ {
+  "family": "band",
+  "lo": 0.96938,
+  "hi": 1.95509
+ },
+ {
+  "family": "band",
+  "lo": 1.00347,
+  "hi": 1.98148
+ },
+ {
+  "family": "band",
+  "lo": 0.96462,
+  "hi": 2.01953
+ }
+]

@@ -1,0 +1,801 @@
+wedding_id,event,city,guests,aloo_count,mutton_kg,borhani_glasses,fairy_lights,drone_photographer,dhol_players,aunties_asking_when_marriage,went_back_for_seconds
+W0001,Gaye Holud,Barishal,604,1327,138.1,529,478,no,6,8,0
+W0002,Bou-bhat,Dhaka,166,104,35.0,172,445,yes,3,3,0
+W0003,Biye,Mymensingh,67,59,16.7,72,116,yes,2,3,0
+W0004,Biye,Dhaka,466,1206,122.3,668,1586,no,1,4,0
+W0005,Biye,Khulna,287,209,81.9,278,646,yes,0,9,0
+W0006,Bou-bhat,Mymensingh,354,738,95.4,439,780,yes,1,3,0
+W0007,Gaye Holud,Chattogram,101,136,25.4,81,৩৯৯,no,1,9,1
+W0008,Gaye Holud,Sylhet,291,703,91.4,300,618,yes,6,9,0
+W0009,Gaye Holud,Rajshahi,468,261,106.9,508,1020,yes,5,8,0
+W0010,Gaye Holud,Dhaka,281,,54.4,328,527,yes,6,4,0
+W0011,Biye,Khulna,591,1528,187.8,880,979,no,6,8,0
+W0012,Bou-bhat,Barishal,564,1135,155.5,457,1383,no,3,5,0
+W0013,Biye,Rangpur,508,628,137.1,631,1448,yes,8,8,1
+W0014,Gaye Holud,Rajshahi,639,1677,124.6,926,2152,no,6,9,0
+W0015,Gaye Holud,Dhaka,519,1166,150.4,683,1398,no,3,7,0
+W0016,Bou-bhat,Dhaka,165,323,43.3,175,685,no,8,6,0
+W0017,Gaye Holud,Chattogram,608,617,155.8,800,1951,no,2,4,1
+W0018,Biye,Rajshahi,474,1011,122.5,616,578,no,8,3,0
+W0019,Gaye Holud,Dhaka,114,283,25.2,118,196,yes,1,11,0
+W0020,Bou-bhat,Rajshahi,244,456,54.8,241,889,yes,5,3,1
+W0021,Biye,Sylhet,157,201,40.8,195,184,no,3,3,1
+W0022,Biye,Sylhet,679,,149.7,887,570,no,4,7,0
+W0023,Gaye Holud,Rajshahi,523,280,155.1,549,825,yes,6,8,0
+W0024,Biye,Barishal,648,739,185.8,920,2174,yes,5,9,1
+W0025,Biye,Mymensingh,233,609,42.4,280,402,no,2,11,0
+W0026,Gaye Holud,Dhaka,463,845,94.9,507,513,yes,4,6,1
+W0027,Biye,Rangpur,443,277,138.6,553,1118,no,3,4,0
+W0028,Bou-bhat,Mymensingh,540,913,100.3,614,813,no,2,10,1
+W0029,Gaye Holud,Dhaka,126,340,37.1,124,328,no,5,9,0
+W0030,Biye,Dhaka,385,977,101.5,547,1131,yes,6,6,0
+W0031,Biye,Dhaka,469,521,144.5,439,1024,yes,5,4,1
+W0032,Biye,Chattogram,587,571,145.2,735,547,no,7,2,1
+W0033,Bou-bhat,Rajshahi,477,485,92.9,699,898,no,3,6,1
+W0034,Gaye Holud,Sylhet,341,308,84.1,284,870,no,5,8,0
+W0035,Bou-bhat,Dhaka,349,295,99.7,344,1362,yes,5,5,0
+W0036,Bou-bhat,Dhaka,270,296,54.8,395,304,no,5,3,1
+W0037,Biye,Dhaka,152,335,33.7,136,587,no,7,7,0
+W0038,Gaye Holud,Khulna,230,371,51.1,265,415,yes,7,6,1
+W0039,Bou-bhat,Sylhet,145,133,44.2,214,702,yes,8,8,0
+W0040,Biye,Dhaka,197,458,44.4,179,451,no,1,7,0
+W0041,Biye,Sylhet,605,,111.0,513,2015,no,2,10,1
+W0042,Gaye Holud,Dhaka,392,295,119.2,390,১৩৮৭,no,1,9,0
+W0043,Biye,Rajshahi,109,201,34.4,98,৫৯১,no,4,5,1
+W0044,Gaye Holud,Chattogram,330,173,93.4,265,863,yes,4,6,0
+W0045,Biye,Sylhet,226,102,44.6,258,679,no,2,6,0
+W0046,Gaye Holud,Dhaka,481,1056,126.8,546,1934,yes,6,7,0
+W0047,Biye,Khulna,590,654,180.3,878,1210,no,6,8,1
+W0048,Biye,Rangpur,58,106,16.8,84,115,yes,8,8,1
+W0049,Gaye Holud,Chattogram,353,503,106.3,283,1113,no,5,3,1
+W0050,Biye,Khulna,341,916,79.5,379,774,no,6,5,0
+W0051,Gaye Holud,Dhaka,694,418,221.3,650,1296,no,4,9,0
+W0052,Gaye Holud,Dhaka,287,,56.2,305,843,no,3,6,0
+W0053,Biye,Dhaka,157,314,39.5,164,423,no,8,4,1
+W0054,Gaye Holud,Rajshahi,177,477,54.5,207,828,yes,0,8,0
+W0055,Biye,Rangpur,360,298,106.2,316,1521,no,0,7,0
+W0056,Biye,Dhaka,437,471,109.2,638,1519,yes,2,6,1
+W0057,Biye,Chattogram,262,176,66.7,309,716,no,8,8,0
+W0058,Biye,Chattogram,333,891,86.2,310,1242,yes,2,12,0
+W0059,Bou-bhat,Dhaka,481,516,127.2,527,801,yes,0,10,1
+W0060,Bou-bhat,Rangpur,245,238,46.7,340,631,yes,8,3,1
+W0061,Gaye Holud,Rajshahi,678,1119,178.0,742,785,no,6,7,1
+W0062,Biye,Khulna,186,453,51.1,217,727,no,8,14,0
+W0063,Gaye Holud,Sylhet,658,1088,186.5,919,1116,no,0,5,1
+W0064,Biye,Sylhet,619,269,128.9,563,1330,yes,6,4,0
+W0065,Biye,Khulna,672,771,163.1,986,2649,no,7,5,1
+W0066,Gaye Holud,Mymensingh,569,1053,141.5,838,1412,no,7,5,1
+W0067,Bou-bhat,Barishal,394,590,110.0,386,1310,yes,8,4,1
+W0068,Biye,Rajshahi,444,396,101.6,451,1732,no,8,6,0
+W0069,Biye,Khulna,184,222,55.8,228,213,no,8,6,1
+W0070,Bou-bhat,Chattogram,274,379,70.0,392,926,yes,7,6,1
+W0071,Biye,Rangpur,351,149,89.3,337,1533,no,5,4,0
+W0072,Bou-bhat,Dhaka,666,1221,122.7,728,437,no,4,6,1
+W0073,Gaye Holud,Sylhet,567,1337,167.1,842,1509,yes,5,6,0
+W0074,Gaye Holud,Rangpur,416,326,99.6,615,584,no,8,4,0
+W0075,Gaye Holud,Dhaka,437,972,88.2,566,1173,yes,4,6,0
+W0076,Biye,Dhaka,331,435,68.8,368,671,no,4,6,1
+W0077,Biye,Chattogram,323,325,90.0,327,573,no,2,4,1
+W0078,Gaye Holud,Rangpur,636,1095,164.0,933,1195,no,0,7,1
+W0079,Gaye Holud,Chattogram,52,42,16.1,60,157,yes,4,7,0
+W0080,Biye,Chattogram,257,283,54.3,364,604,no,4,5,1
+W0081,Bou-bhat,Dhaka,315,7150,96.0,432,629,yes,0,6,0
+W0082,Gaye Holud,Mymensingh,503,707,111.9,560,518,no,7,6,1
+W0083,Biye,Khulna,318,831,92.9,281,512,no,5,8,0
+W0084,Bou-bhat,Rajshahi,254,261,49.0,279,864,yes,5,6,1
+W0085,Bou-bhat,Rajshahi,101,96,27.7,136,474,no,4,6,0
+W0086,Biye,Rajshahi,220,359,56.2,327,762,no,6,5,1
+W0087,Biye,Barishal,118,267,26.3,132,598,no,3,6,0
+W0088,Biye,Chattogram,506,1128,154.1,710,789,no,7,5,0
+W0089,Biye,Rangpur,328,310,79.1,322,1126,no,8,8,1
+W0090,Gaye Holud,Dhaka,198,169,62.2,284,১০৫০,yes,0,10,0
+W0091,Gaye Holud,Dhaka,401,467,87.6,403,1701,no,7,7,1
+W0092,Biye,Barishal,371,491,68.9,399,443,yes,0,5,1
+W0093,Bou-bhat,Chattogram,357,298,100.5,468,652,yes,6,9,0
+W0094,Bou-bhat,Dhaka,427,344,95.8,598,885,yes,5,3,0
+W0095,Biye,Dhaka,457,962,115.3,431,601,no,2,5,0
+W0096,Biye,Barishal,172,190,35.5,202,919,yes,3,9,1
+W0097,Bou-bhat,Barishal,150,380,43.5,176,402,yes,3,9,0
+W0098,Bou-bhat,Rajshahi,526,856,128.4,745,1236,no,3,10,1
+W0099,Biye,Barishal,683,326,170.8,820,2861,no,5,12,0
+W0100,Biye,Barishal,407,836,119.1,411,1815,no,2,5,0
+W0101,Gaye Holud,Dhaka,343,280,108.4,304,970,no,7,4,0
+W0102,Biye,Sylhet,454,614,87.7,514,873,no,7,10,1
+W0103,Gaye Holud,Khulna,72,101,15.3,61,286,no,5,5,1
+W0104,Gaye Holud,Barishal,292,146,88.3,411,525,yes,8,4,0
+W0105,Biye,Rajshahi,283,703,74.4,322,438,no,7,3,0
+W0106,Biye,Chattogram,323,338,89.4,380,990,no,3,6,1
+W0107,Gaye Holud,Khulna,534,956,136.8,524,719,no,7,6,1
+W0108,Biye,Khulna,372,368,83.2,514,527,yes,4,8,1
+W0109,Biye,Dhaka,607,1063,171.1,813,2425,no,7,5,1
+W0110,Bou-bhat,Dhaka,355,838,98.3,324,400,no,3,8,0
+W0111,Gaye Holud,Chattogram,72,59,19.7,105,329,yes,7,4,0
+W0112,Gaye Holud,Rangpur,489,669,117.9,522,817,no,1,3,1
+W0113,Bou-bhat,Dhaka,569,915,127.1,516,1520,no,4,4,1
+W0114,Biye,Chattogram,425,272,114.3,370,708,no,5,9,0
+W0115,Gaye Holud,Rajshahi,660,1169,181.3,855,1752,yes,0,2,1
+W0116,Bou-bhat,Rajshahi,320,864,97.9,311,995,yes,3,4,0
+W0117,Bou-bhat,Dhaka,568,1282,117.2,734,2052,yes,6,9,0
+W0118,Gaye Holud,Dhaka,51,81,14.4,67,343,yes,7,9,1
+W0119,Bou-bhat,Rangpur,75,65,16.4,60,328,yes,1,10,0
+W0120,Biye,Dhaka,566,366,137.3,789,1718,no,0,6,0
+W0121,Bou-bhat,Mymensingh,618,1493,140.3,841,1923,no,1,5,0
+W0122,Bou-bhat,Dhaka,388,814,120.9,423,1538,yes,5,3,0
+W0123,Biye,Dhaka,540,1171,120.1,710,1945,yes,5,7,0
+W0124,Biye,Chattogram,262,387,57.1,302,782,yes,0,7,1
+W0125,Biye,Dhaka,523,266,121.9,622,556,no,0,2,0
+W0126,Biye,Khulna,375,643,82.3,344,898,yes,5,4,1
+W0127,Gaye Holud,Rajshahi,247,386,66.8,284,1164,yes,7,4,1
+W0128,Gaye Holud,Dhaka,110,55,33.9,102,602,no,5,6,0
+W0129,Gaye Holud,Dhaka,163,210,46.5,224,330,yes,6,6,1
+W0130,Gaye Holud,Rajshahi,638,1207,193.4,575,1743,yes,2,6,1
+W0131,Bou-bhat,Rangpur,338,239,68.0,396,1127,no,0,2,0
+W0132,Biye,Dhaka,694,709,163.8,948,2470,yes,1,9,1
+W0133,Gaye Holud,Khulna,279,256,58.9,403,446,yes,6,6,0
+W0134,Gaye Holud,Sylhet,88,185,25.6,109,246,yes,2,7,0
+W0135,Biye,Dhaka,216,278,47.7,237,836,no,2,3,1
+W0136,Biye,Dhaka,283,531,59.2,322,1230,yes,3,2,1
+W0137,Gaye Holud,Khulna,506,667,125.4,728,649,no,3,5,1
+W0138,Biye,Barishal,525,727,153.7,727,1478,no,7,9,1
+W0139,Biye,Sylhet,529,362,100.7,612,2102,no,8,5,0
+W0140,Biye,Sylhet,254,352,57.4,367,623,yes,2,4,1
+W0141,Gaye Holud,Chattogram,297,801,67.6,297,323,no,6,6,0
+W0142,Biye,Dhaka,419,892,84.9,359,1012,no,4,7,0
+W0143,Biye,Rajshahi,444,885,96.7,660,548,no,8,5,1
+W0144,Biye,Chattogram,321,724,74.7,449,1203,yes,8,5,0
+W0145,Biye,Dhaka,173,94,54.0,208,467,no,0,4,0
+W0146,Biye,Chattogram,554,1241,162.8,458,1822,no,5,2,0
+W0147,Biye,Rajshahi,389,867,100.9,495,772,no,5,8,0
+W0148,Biye,Dhaka,673,1291,206.4,847,2276,no,7,10,1
+W0149,Bou-bhat,Mymensingh,665,1665,169.8,601,1311,no,7,16,0
+W0150,Gaye Holud,Chattogram,628,342,153.6,600,2132,yes,0,7,0
+W0151,Bou-bhat,Chattogram,675,409,202.3,673,1413,no,8,6,0
+W0152,Biye,Chattogram,454,1144,139.1,656,1700,no,3,9,0
+W0153,Biye,Dhaka,244,328,62.9,208,974,yes,7,7,1
+W0154,Biye,Chattogram,154,396,31.7,132,139,no,0,8,0
+W0155,Bou-bhat,Chattogram,118,176,30.7,117,585,no,4,9,1
+W0156,Biye,Dhaka,666,931,126.0,747,1209,yes,6,5,1
+W0157,Bou-bhat,Rajshahi,225,507,71.9,241,359,no,8,3,1
+W0158,Gaye Holud,Rajshahi,65,95,15.4,69,235,no,8,3,1
+W0159,Gaye Holud,Chattogram,74,60,20.0,92,186,yes,8,9,0
+W0160,Biye,Barishal,243,337,53.3,253,526,no,0,6,1
+W0161,Biye,Sylhet,687,602,171.5,822,385,yes,6,7,0
+W0162,Gaye Holud,Khulna,233,578,72.8,270,1060,no,5,4,0
+W0163,Bou-bhat,Sylhet,116,274,34.8,124,286,yes,3,10,0
+W0164,Bou-bhat,Chattogram,487,335,130.0,452,397,no,5,5,0
+W0165,Biye,Khulna,88,105,27.8,79,220,no,0,8,1
+W0166,Biye,Sylhet,367,832,90.2,369,460,no,1,14,0
+W0167,Gaye Holud,Rangpur,106,48,29.1,151,508,no,6,3,0
+W0168,Bou-bhat,Khulna,110,45,28.3,164,261,yes,8,4,0
+W0169,Bou-bhat,Rangpur,284,235,73.2,248,427,no,2,4,0
+W0170,Biye,Rajshahi,58,147,12.6,84,226,yes,8,5,0
+W0171,Biye,Rajshahi,603,909,109.9,610,2342,no,1,5,1
+W0172,Gaye Holud,Chattogram,443,355,92.7,425,1511,no,1,8,0
+W0173,Biye,Barishal,657,585,156.7,569,790,no,8,6,0
+W0174,Gaye Holud,Rangpur,369,263,74.5,345,1622,no,3,3,0
+W0175,Bou-bhat,Dhaka,412,708,119.4,362,1578,no,3,4,1
+W0176,Gaye Holud,Dhaka,441,381,134.7,445,681,no,5,6,0
+W0177,Gaye Holud,Dhaka,353,,84.0,523,1247,yes,3,7,1
+W0178,Gaye Holud,Dhaka,417,1104,120.8,599,1340,yes,8,8,0
+W0179,Biye,Chattogram,422,770,125.4,574,883,no,1,4,1
+W0180,Biye,Dhaka,629,592,162.1,837,1488,no,5,1,0
+W0181,Biye,Dhaka,247,192,76.4,279,1022,yes,5,12,0
+W0182,Biye,Rajshahi,647,678,196.8,647,710,no,0,6,1
+W0183,Gaye Holud,Dhaka,162,244,31.3,177,247,yes,8,7,1
+W0184,Biye,Sylhet,172,153,44.7,211,398,yes,0,4,0
+W0185,Gaye Holud,Rangpur,216,90,67.0,251,459,yes,8,5,0
+W0186,Bou-bhat,Dhaka,663,1471,188.5,781,2390,no,8,3,0
+W0187,Bou-bhat,Dhaka,209,353,43.5,214,371,yes,4,5,1
+W0188,Biye,Rajshahi,562,1164,151.3,510,501,yes,8,6,0
+W0189,Biye,Dhaka,429,562,101.0,529,1636,yes,0,5,1
+W0190,Biye,Khulna,466,430,101.1,604,517,no,7,1,0
+W0191,Gaye Holud,Rajshahi,100,180,28.5,149,457,no,8,5,1
+W0192,Gaye Holud,Dhaka,479,651,97.3,669,1394,no,5,5,1
+W0193,Biye,Khulna,95,99,26.7,118,474,yes,8,2,0
+W0194,Gaye Holud,Khulna,405,955,96.8,479,956,no,3,4,0
+W0195,Bou-bhat,Sylhet,562,1480,140.0,515,1972,yes,3,9,0
+W0196,Bou-bhat,Mymensingh,647,1425,137.2,793,2368,yes,0,2,0
+W0197,Bou-bhat,Dhaka,694,1710,166.7,570,1961,yes,7,6,0
+W0198,Bou-bhat,Barishal,201,355,64.0,209,942,yes,3,7,1
+W0199,Biye,Rajshahi,549,536,148.8,477,2172,yes,1,4,1
+W0200,Bou-bhat,Dhaka,440,1032,133.7,656,1597,no,5,3,0
+W0201,Biye,Barishal,527,1093,158.8,703,1535,no,7,9,0
+W0202,Gaye Holud,Sylhet,580,425,162.5,567,586,no,2,8,0
+W0203,Biye,Dhaka,358,953,70.4,493,568,no,0,2,0
+W0204,Gaye Holud,Rangpur,137,351,38.9,148,527,no,5,6,0
+W0205,Gaye Holud,Rajshahi,563,709,137.0,584,605,no,5,10,1
+W0206,Bou-bhat,Chattogram,450,644,131.1,563,1275,no,0,3,1
+W0207,Biye,Khulna,136,183,34.7,132,353,yes,1,12,1
+W0208,Biye,Sylhet,312,487,60.8,263,683,no,0,6,1
+W0209,Biye,Rajshahi,144,147,35.0,167,447,yes,0,9,1
+W0210,Gaye Holud,Rangpur,548,421,109.1,773,1348,yes,0,4,0
+W0211,Biye,Rangpur,267,684,77.2,260,532,no,4,7,0
+W0212,Biye,Dhaka,94,183,23.0,106,400,yes,5,6,1
+W0213,Gaye Holud,Sylhet,235,627,72.3,199,547,no,2,4,0
+W0214,Bou-bhat,Chattogram,445,893,89.4,662,1978,yes,4,9,1
+W0215,Bou-bhat,Chattogram,434,498,101.6,385,897,no,3,7,1
+W0216,Biye,Dhaka,607,1361,123.1,804,722,no,1,7,0
+W0217,Gaye Holud,Dhaka,285,273,54.6,300,567,no,4,5,0
+W0218,Gaye Holud,Barishal,459,1238,95.6,394,589,no,7,10,0
+W0219,Biye,Khulna,665,854,122.5,953,১৮২৯,yes,2,4,1
+W0220,Biye,Dhaka,259,352,54.4,226,577,yes,6,4,1
+W0221,Gaye Holud,Khulna,69,137,17.9,58,372,no,0,6,1
+W0222,Bou-bhat,Sylhet,476,524,115.2,507,420,yes,1,7,1
+W0223,Biye,Rangpur,440,626,80.8,401,1161,no,6,6,1
+W0224,Bou-bhat,Chattogram,270,325,55.1,349,554,no,2,8,1
+W0225,Bou-bhat,Dhaka,416,189,76.9,599,817,no,7,8,0
+W0226,Biye,Dhaka,485,850,135.1,448,1923,yes,7,6,1
+W0227,Gaye Holud,Dhaka,582,1003,127.1,781,714,yes,2,9,1
+W0228,Biye,Dhaka,133,160,39.4,153,546,yes,1,5,1
+W0229,Biye,Chattogram,356,446,83.5,312,1000,no,5,3,1
+W0230,Biye,Dhaka,232,113,63.7,256,847,no,0,6,0
+W0231,Biye,Chattogram,267,296,73.5,319,606,yes,6,8,1
+W0232,Gaye Holud,Dhaka,71,149,20.7,71,411,no,2,3,0
+W0233,Biye,Sylhet,324,495,84.2,286,1152,no,0,6,1
+W0234,Gaye Holud,Rajshahi,104,,23.8,125,180,no,1,8,0
+W0235,Bou-bhat,Chattogram,652,459,124.0,907,2605,no,0,5,0
+W0236,Gaye Holud,Dhaka,411,620,76.8,432,1569,yes,5,5,1
+W0237,Gaye Holud,Rajshahi,324,481,81.4,274,1375,yes,5,7,1
+W0238,Biye,Barishal,200,292,59.8,246,139,no,2,7,1
+W0239,Biye,Chattogram,661,1161,141.7,964,2075,yes,3,5,1
+W0240,Bou-bhat,Khulna,385,463,114.6,571,1037,yes,5,1,1
+W0241,Biye,Mymensingh,691,903,158.3,961,1377,yes,3,8,1
+W0242,Biye,Rajshahi,479,554,151.4,417,490,no,6,9,1
+W0243,Gaye Holud,Barishal,696,1275,208.1,800,1021,no,7,6,1
+W0244,Bou-bhat,Mymensingh,623,298,120.3,721,2610,no,2,7,0
+W0245,Gaye Holud,Chattogram,533,1076,145.2,481,690,no,6,5,0
+W0246,Gaye Holud,Mymensingh,281,631,86.3,240,425,yes,8,7,0
+W0247,Gaye Holud,Dhaka,556,690,124.6,690,598,no,6,5,1
+W0248,Biye,Sylhet,257,120,64.9,217,531,yes,8,7,0
+W0249,Gaye Holud,Chattogram,609,1229,178.5,867,488,no,1,3,0
+W0250,Bou-bhat,Chattogram,254,472,65.5,287,306,no,5,6,1
+W0251,Bou-bhat,Dhaka,100,213,28.9,88,199,yes,6,5,0
+W0252,Bou-bhat,Mymensingh,126,91,25.1,133,৪৮০,no,4,10,0
+W0253,Gaye Holud,Dhaka,345,592,106.7,436,1410,no,3,6,1
+W0254,Biye,Dhaka,481,619,94.9,463,2115,no,0,6,1
+W0255,Bou-bhat,Khulna,238,129,53.2,228,293,no,6,8,0
+W0256,Bou-bhat,Barishal,583,,161.2,611,1444,yes,5,7,1
+W0257,Gaye Holud,Chattogram,216,337,49.3,200,934,no,6,3,1
+W0258,Gaye Holud,Sylhet,357,804,110.5,292,395,no,8,3,0
+W0259,Biye,Khulna,268,,60.3,399,1178,yes,6,8,1
+W0260,Gaye Holud,Rangpur,413,553,90.1,524,1721,yes,4,3,1
+W0261,Gaye Holud,Dhaka,173,173,50.7,241,541,yes,6,4,0
+W0262,Gaye Holud,Khulna,673,1024,185.0,847,2707,yes,2,7,1
+W0263,Biye,Chattogram,652,973,143.6,629,1566,yes,3,3,1
+W0264,Biye,Rangpur,504,284,95.1,632,989,yes,1,6,0
+W0265,Gaye Holud,Sylhet,395,1029,94.0,453,508,yes,0,8,0
+W0266,Gaye Holud,Dhaka,535,1227,122.5,517,1923,yes,5,6,0
+W0267,Gaye Holud,Mymensingh,355,835,107.8,388,842,yes,1,4,0
+W0268,Bou-bhat,Mymensingh,629,959,192.9,672,1112,no,0,7,1
+W0269,Gaye Holud,Dhaka,93,118,23.8,139,321,no,4,10,1
+W0270,Gaye Holud,Dhaka,190,393,59.9,266,667,no,1,2,1
+W0271,Bou-bhat,Dhaka,347,927,78.3,335,1165,yes,0,9,0
+W0272,Biye,Chattogram,473,1011,125.9,389,892,no,1,8,0
+W0273,Gaye Holud,Dhaka,510,311,112.9,624,925,no,3,4,0
+W0274,Gaye Holud,Barishal,517,1159,96.7,420,558,no,8,11,0
+W0275,Bou-bhat,Chattogram,662,957,128.1,960,2560,no,7,6,1
+W0276,Gaye Holud,Rajshahi,598,256,108.8,894,2000,no,6,6,0
+W0277,Bou-bhat,Sylhet,646,636,124.8,726,790,no,1,4,1
+W0278,Biye,Mymensingh,273,678,87.2,243,334,no,6,5,0
+W0279,Bou-bhat,Barishal,502,763,96.4,632,1115,no,6,4,1
+W0280,Biye,Khulna,498,1054,150.7,704,865,no,4,3,0
+W0281,Biye,Dhaka,443,627,135.5,540,940,yes,2,2,1
+W0282,Gaye Holud,Chattogram,443,185,112.5,604,1283,no,6,8,0
+W0283,Biye,Rajshahi,391,701,98.7,520,978,no,7,9,1
+W0284,Bou-bhat,Chattogram,316,332,87.7,279,601,no,4,8,0
+W0285,Biye,Dhaka,139,100,29.9,169,472,yes,6,3,0
+W0286,Biye,Dhaka,116,229,25.5,120,612,yes,3,5,0
+W0287,Biye,Rajshahi,51,92,9.3,75,232,no,6,1,0
+W0288,Biye,Dhaka,279,270,56.9,371,972,no,1,3,0
+W0289,Bou-bhat,Sylhet,292,148,75.1,254,1143,yes,2,10,0
+W0290,Gaye Holud,Chattogram,677,1540,150.9,696,2261,no,5,7,0
+W0291,Bou-bhat,Dhaka,207,415,61.3,229,534,no,0,5,1
+W0292,Bou-bhat,Khulna,190,132,55.7,281,788,yes,4,9,0
+W0293,Biye,Rajshahi,78,172,18.4,103,350,yes,4,7,1
+W0294,Gaye Holud,Rangpur,123,,34.4,170,487,no,4,9,1
+W0295,Biye,Khulna,478,1054,141.2,443,1748,no,3,7,0
+W0296,Biye,Barishal,289,,83.6,347,1097,no,8,6,0
+W0297,Bou-bhat,Khulna,453,345,141.6,593,903,no,4,7,0
+W0298,Biye,Dhaka,115,173,24.1,116,403,no,8,2,1
+W0299,Biye,Rajshahi,546,1183,144.0,798,1698,no,8,4,0
+W0300,Biye,Khulna,223,580,54.7,215,829,no,3,8,0
+W0301,Gaye Holud,Rajshahi,88,169,15.9,123,334,no,4,3,0
+W0302,Bou-bhat,Dhaka,645,1229,180.9,872,1109,no,3,2,1
+W0303,Biye,Khulna,284,,54.6,414,236,no,3,6,0
+W0304,Biye,Mymensingh,257,178,52.9,352,710,yes,4,7,0
+W0305,Biye,Chattogram,81,147,23.1,102,469,yes,6,5,1
+W0306,Gaye Holud,Rajshahi,431,875,133.8,534,488,yes,3,1,1
+W0307,Biye,Dhaka,231,297,65.1,215,958,no,3,6,1
+W0308,Gaye Holud,Dhaka,205,359,62.2,177,683,no,3,11,1
+W0309,Gaye Holud,Barishal,490,702,123.4,535,967,yes,2,6,1
+W0310,Biye,Dhaka,484,271,120.1,525,1910,no,1,4,0
+W0311,Biye,Chattogram,145,186,31.9,149,830,yes,0,6,1
+W0312,Biye,Dhaka,133,54,25.2,145,676,no,0,7,0
+W0313,Bou-bhat,Sylhet,207,424,42.1,217,772,yes,5,6,0
+W0314,Biye,Sylhet,564,1384,119.2,521,1017,yes,5,4,0
+W0315,Biye,Rajshahi,223,181,67.4,286,1170,yes,3,7,0
+W0316,Biye,Dhaka,325,795,58.6,319,993,yes,4,5,0
+W0317,Bou-bhat,Chattogram,133,1290,31.8,148,669,no,0,5,0
+W0318,Biye,Dhaka,169,78,53.4,232,232,no,4,5,0
+W0319,Biye,Rangpur,483,547,148.3,423,1643,no,8,4,1
+W0320,Biye,Chattogram,543,769,106.2,765,2141,no,5,5,1
+W0321,Biye,Dhaka,613,1429,174.2,902,681,yes,2,4,0
+W0322,Biye,Rajshahi,410,707,123.9,495,995,no,1,6,1
+W0323,Bou-bhat,Khulna,230,136,47.4,272,361,no,2,10,0
+W0324,Gaye Holud,Sylhet,335,296,72.1,341,570,no,7,4,0
+W0325,Biye,Barishal,151,312,41.6,123,290,no,3,6,0
+W0326,Biye,Dhaka,206,315,58.9,256,767,no,0,5,1
+W0327,Biye,Mymensingh,363,652,109.8,292,873,yes,0,8,1
+W0328,Biye,Dhaka,558,407,131.5,828,1754,no,5,3,0
+W0329,Bou-bhat,Chattogram,218,378,40.7,191,604,yes,7,5,1
+W0330,Biye,Khulna,287,326,90.9,386,862,no,1,4,1
+W0331,Bou-bhat,Sylhet,74,38,16.0,60,318,yes,1,7,0
+W0332,Gaye Holud,Chattogram,78,98,22.4,113,306,yes,7,4,1
+W0333,Biye,Rangpur,405,713,125.0,328,1594,yes,8,7,1
+W0334,Biye,Dhaka,678,1174,173.4,741,1404,yes,8,8,1
+W0335,Biye,Khulna,424,468,107.4,369,1765,yes,5,5,1
+W0336,Gaye Holud,Dhaka,69,100,14.7,78,502,no,3,6,1
+W0337,Gaye Holud,Dhaka,423,488,79.7,575,1725,no,6,13,1
+W0338,Biye,Dhaka,128,190,25.0,129,459,no,2,4,1
+W0339,Gaye Holud,Rajshahi,500,1106,140.6,493,1780,no,5,8,0
+W0340,Biye,Dhaka,353,658,73.4,406,871,no,8,5,1
+W0341,Biye,Sylhet,286,407,71.3,386,833,no,8,5,1
+W0342,Bou-bhat,Rajshahi,185,150,46.7,236,339,yes,8,8,0
+W0343,Bou-bhat,Sylhet,164,151,50.8,218,645,no,6,6,0
+W0344,Biye,Dhaka,268,573,68.5,359,583,no,7,3,0
+W0345,Bou-bhat,Dhaka,342,363,91.0,473,1485,no,3,4,1
+W0346,Biye,Chattogram,419,840,123.0,492,1593,no,3,8,1
+W0347,Biye,Mymensingh,498,368,110.6,593,1655,yes,4,7,0
+W0348,Biye,Dhaka,673,488,185.9,863,936,yes,1,5,0
+W0349,Bou-bhat,Rajshahi,71,166,13.8,86,392,yes,7,10,0
+W0350,Gaye Holud,Dhaka,659,1256,125.2,684,1857,yes,6,4,1
+W0351,Gaye Holud,Dhaka,415,306,131.0,429,1160,yes,1,7,0
+W0352,Biye,Chattogram,98,244,22.0,79,৩৯১,yes,6,4,0
+W0353,Biye,Rajshahi,614,1447,149.9,893,630,no,0,8,0
+W0354,Gaye Holud,Dhaka,605,1011,121.8,700,1599,yes,0,1,1
+W0355,Bou-bhat,Rangpur,237,296,52.7,203,686,yes,0,3,1
+W0356,Bou-bhat,Rangpur,159,145,48.7,227,199,yes,4,4,0
+W0357,Gaye Holud,Dhaka,245,289,76.1,310,956,no,6,3,1
+W0358,Bou-bhat,Barishal,578,1157,154.5,855,1258,no,4,8,1
+W0359,Gaye Holud,Dhaka,648,563,135.1,588,464,no,4,6,0
+W0360,Bou-bhat,Chattogram,242,516,75.9,260,598,yes,4,10,0
+W0361,Gaye Holud,Khulna,359,947,104.0,347,1658,yes,1,11,0
+W0362,Gaye Holud,Chattogram,517,,100.2,544,748,no,5,10,0
+W0363,Biye,Khulna,167,97,46.0,158,618,yes,0,4,0
+W0364,Biye,Sylhet,517,508,123.0,472,727,no,4,4,1
+W0365,Biye,Rangpur,196,132,36.3,242,413,yes,4,10,0
+W0366,Biye,Dhaka,603,1054,129.4,521,2281,no,5,9,1
+W0367,Biye,Rangpur,136,133,34.9,141,658,yes,1,7,1
+W0368,Biye,Barishal,687,753,178.8,762,1992,no,5,7,1
+W0369,Biye,Rajshahi,519,242,163.5,770,2287,no,3,7,0
+W0370,Biye,Khulna,229,429,56.2,276,817,yes,1,7,1
+W0371,Biye,Rajshahi,575,1140,131.3,576,867,no,6,5,0
+W0372,Bou-bhat,Dhaka,459,775,139.7,460,1211,yes,4,4,1
+W0373,Gaye Holud,Dhaka,359,232,90.3,494,1087,no,7,9,0
+W0374,Bou-bhat,Chattogram,531,1069,136.1,714,1159,yes,6,6,0
+W0375,Gaye Holud,Dhaka,498,1263,103.3,593,1985,no,5,4,0
+W0376,Gaye Holud,Dhaka,101,251,29.3,127,524,yes,5,4,0
+W0377,Biye,Dhaka,199,522,57.6,232,709,yes,0,4,0
+W0378,Gaye Holud,Sylhet,481,1158,124.1,720,926,no,7,7,0
+W0379,Biye,Chattogram,313,635,72.6,467,1116,no,5,8,0
+W0380,Biye,Khulna,259,209,67.6,367,608,no,3,5,0
+W0381,Bou-bhat,Dhaka,404,1089,119.2,500,৭৪৬,no,2,6,0
+W0382,Bou-bhat,Dhaka,155,140,42.6,135,592,yes,4,4,0
+W0383,Biye,Dhaka,689,885,210.4,847,2464,yes,2,4,1
+W0384,Biye,Rangpur,407,1043,98.0,525,1355,yes,0,6,0
+W0385,Gaye Holud,Khulna,54,145,14.7,58,299,yes,1,5,0
+W0386,Biye,Rangpur,350,390,91.0,447,507,no,3,5,1
+W0387,Bou-bhat,Dhaka,534,1367,145.0,444,1968,yes,7,8,0
+W0388,Biye,Dhaka,425,329,105.9,453,816,no,5,3,0
+W0389,Biye,Khulna,381,358,98.3,314,488,yes,0,3,0
+W0390,Gaye Holud,Dhaka,467,,111.0,549,1467,yes,7,4,0
+W0391,Biye,Dhaka,66,131,16.8,62,350,yes,4,9,1
+W0392,Bou-bhat,Chattogram,374,212,81.8,332,444,no,3,6,0
+W0393,Biye,Chattogram,311,521,95.2,423,1114,no,2,5,1
+W0394,Gaye Holud,Dhaka,639,900,144.4,876,2129,no,4,10,1
+W0395,Biye,Mymensingh,429,475,129.6,587,968,yes,5,8,1
+W0396,Biye,Rajshahi,165,342,48.7,202,399,yes,0,8,0
+W0397,Biye,Rangpur,605,1133,169.1,616,851,yes,8,7,1
+W0398,Bou-bhat,Rajshahi,238,289,63.4,195,600,yes,0,3,1
+W0399,Bou-bhat,Dhaka,698,622,203.7,673,1261,yes,4,8,0
+W0400,Gaye Holud,Mymensingh,281,651,79.6,412,467,no,0,4,0
+W0401,Biye,Khulna,602,1139,153.7,669,1454,no,3,8,1
+W0402,Gaye Holud,Barishal,554,1473,102.0,708,1117,yes,2,11,0
+W0403,Biye,Rajshahi,520,440,126.6,635,1959,yes,6,4,0
+W0404,Biye,Dhaka,474,,107.4,654,1800,no,0,10,0
+W0405,Biye,Mymensingh,64,165,20.2,79,369,no,0,6,0
+W0406,Biye,Dhaka,184,462,42.3,237,406,no,3,7,0
+W0407,Biye,Dhaka,618,849,169.1,707,828,yes,6,13,1
+W0408,Gaye Holud,Chattogram,534,,115.8,438,1184,no,2,8,0
+W0409,Gaye Holud,Dhaka,350,531,110.4,428,679,no,1,7,1
+W0410,Biye,Sylhet,552,1262,174.7,682,1680,no,0,8,0
+W0411,Biye,Rajshahi,477,480,123.9,675,1354,yes,7,2,1
+W0412,Bou-bhat,Barishal,551,1186,175.9,702,1496,no,2,3,0
+W0413,Gaye Holud,Mymensingh,397,306,93.1,468,870,yes,6,8,0
+W0414,Bou-bhat,Khulna,101,108,18.5,122,243,no,4,8,1
+W0415,Gaye Holud,Rangpur,315,435,97.6,366,904,yes,2,5,1
+W0416,Biye,Mymensingh,188,140,40.7,252,383,yes,3,12,0
+W0417,Biye,Rajshahi,611,632,157.4,789,2159,no,1,6,0
+W0418,Bou-bhat,Dhaka,632,1292,195.5,767,863,no,7,5,0
+W0419,Gaye Holud,Dhaka,182,371,38.9,196,396,no,5,4,1
+W0420,Gaye Holud,Dhaka,622,1446,158.5,829,1180,no,1,6,0
+W0421,Biye,Rajshahi,264,657,67.8,310,433,yes,5,11,0
+W0422,Bou-bhat,Rangpur,183,181,47.0,178,322,yes,0,4,1
+W0423,Bou-bhat,Khulna,227,479,60.6,235,894,no,1,3,0
+W0424,Bou-bhat,Sylhet,408,310,97.8,349,1110,yes,5,8,0
+W0425,Biye,Rangpur,205,,49.9,182,605,yes,5,1,1
+W0426,Bou-bhat,Rajshahi,221,98,60.9,315,820,no,7,6,0
+W0427,Gaye Holud,Chattogram,505,245,157.5,679,1141,no,1,9,0
+W0428,Biye,Barishal,321,746,99.1,308,283,yes,2,8,0
+W0429,Gaye Holud,Khulna,503,1038,115.3,412,1197,no,3,11,0
+W0430,Biye,Rangpur,63,69,14.0,53,312,no,2,5,1
+W0431,Biye,Barishal,113,240,28.4,106,395,no,7,6,0
+W0432,Biye,Dhaka,233,261,68.4,321,166,yes,5,3,1
+W0433,Gaye Holud,Mymensingh,285,480,81.2,252,1130,yes,6,7,0
+W0434,Bou-bhat,Sylhet,226,493,44.9,208,612,no,0,9,0
+W0435,Biye,Dhaka,307,258,95.9,402,420,no,1,5,0
+W0436,Gaye Holud,Khulna,648,801,155.7,899,1759,yes,5,5,1
+W0437,Gaye Holud,Chattogram,349,423,76.0,488,1034,no,8,5,1
+W0438,Biye,Chattogram,432,841,114.4,638,1471,no,8,7,1
+W0439,Biye,Khulna,563,505,131.4,700,1276,no,7,7,0
+W0440,Bou-bhat,Sylhet,165,301,46.9,215,652,yes,6,4,0
+W0441,Gaye Holud,Chattogram,143,305,41.0,207,569,no,0,8,0
+W0442,Gaye Holud,Dhaka,328,305,98.6,478,1195,no,3,9,0
+W0443,Biye,Rajshahi,454,563,132.6,365,1875,yes,6,8,1
+W0444,Gaye Holud,Sylhet,370,186,118.2,487,1562,no,1,1,0
+W0445,Biye,Dhaka,127,208,27.0,161,548,yes,7,1,1
+W0446,Bou-bhat,Dhaka,464,724,119.6,648,1730,no,4,7,1
+W0447,Biye,Khulna,651,1287,156.2,620,999,yes,7,9,0
+W0448,Gaye Holud,Rangpur,396,6520,116.3,523,862,no,5,5,1
+W0449,Bou-bhat,Rajshahi,634,1513,175.8,904,1731,no,3,7,0
+W0450,Bou-bhat,Khulna,324,759,80.3,273,1289,no,0,8,0
+W0451,Biye,Chattogram,310,207,86.8,302,697,yes,6,8,0
+W0452,Biye,Dhaka,252,443,62.0,285,1078,no,6,7,1
+W0453,Gaye Holud,Chattogram,388,766,120.5,548,497,yes,4,12,1
+W0454,Bou-bhat,Chattogram,424,621,103.3,607,1243,no,2,5,1
+W0455,Gaye Holud,Khulna,118,122,26.9,123,355,yes,4,8,1
+W0456,Biye,Sylhet,685,511,170.6,1006,1594,yes,0,6,0
+W0457,Gaye Holud,Rajshahi,149,317,35.9,210,637,no,3,6,0
+W0458,Biye,Khulna,409,179,101.2,415,757,no,7,8,0
+W0459,Biye,Chattogram,252,406,71.0,366,879,no,4,6,1
+W0460,Bou-bhat,Dhaka,627,1684,151.7,560,2715,no,2,5,0
+W0461,Biye,Barishal,469,965,117.4,468,1414,yes,2,9,1
+W0462,Biye,Barishal,59,46,11.2,72,222,no,4,7,0
+W0463,Gaye Holud,Dhaka,67,158,19.2,59,394,no,6,4,0
+W0464,Biye,Chattogram,182,348,57.3,204,765,no,3,2,1
+W0465,Biye,Sylhet,584,1284,162.4,787,৫১০,no,8,2,0
+W0466,Biye,Dhaka,612,621,184.8,539,936,yes,8,4,1
+W0467,Biye,Dhaka,408,1048,91.8,531,1517,no,5,7,0
+W0468,Bou-bhat,Barishal,420,823,129.2,596,1798,no,6,5,1
+W0469,Gaye Holud,Chattogram,470,442,90.4,673,823,yes,0,4,1
+W0470,Biye,Khulna,367,439,116.9,494,409,no,1,10,1
+W0471,Gaye Holud,Dhaka,382,308,116.8,487,341,no,0,5,0
+W0472,Gaye Holud,Mymensingh,290,122,92.7,392,1019,no,0,10,0
+W0473,Gaye Holud,Barishal,369,211,84.8,327,841,no,2,5,0
+W0474,Bou-bhat,Sylhet,242,182,44.8,289,275,no,5,8,0
+W0475,Bou-bhat,Rangpur,536,1288,154.8,789,906,no,1,5,0
+W0476,Gaye Holud,Rangpur,491,884,97.5,722,961,no,5,4,1
+W0477,Biye,Rajshahi,516,734,146.9,628,1990,no,0,5,1
+W0478,Gaye Holud,Khulna,288,459,67.0,354,997,yes,6,2,1
+W0479,Biye,Rangpur,307,788,61.7,374,1021,no,4,7,0
+W0480,Biye,Khulna,333,433,74.7,369,1067,no,5,12,1
+W0481,Bou-bhat,Khulna,442,585,85.6,443,1886,yes,5,7,1
+W0482,Biye,Sylhet,555,447,138.4,539,1338,yes,5,7,0
+W0483,Biye,Rajshahi,55,41,12.1,62,272,yes,3,6,0
+W0484,Biye,Chattogram,665,301,143.5,632,894,yes,7,3,0
+W0485,Bou-bhat,Chattogram,611,1023,110.3,589,558,yes,4,2,1
+W0486,Biye,Chattogram,696,1189,199.5,599,758,yes,0,6,1
+W0487,Biye,Dhaka,230,371,66.9,256,561,no,2,5,1
+W0488,Biye,Dhaka,365,766,93.9,444,1395,no,0,3,0
+W0489,Biye,Sylhet,405,300,105.8,471,1158,yes,1,3,0
+W0490,Gaye Holud,Rajshahi,139,240,39.6,125,434,no,8,2,1
+W0491,Bou-bhat,Barishal,282,726,89.0,390,1033,no,4,8,0
+W0492,Gaye Holud,Khulna,66,118,19.6,84,264,yes,6,7,1
+W0493,Gaye Holud,Dhaka,127,278,32.7,157,643,no,6,1,0
+W0494,Biye,Sylhet,372,583,116.2,349,1021,yes,1,1,1
+W0495,Biye,Dhaka,255,166,69.6,335,861,yes,5,4,0
+W0496,Bou-bhat,Dhaka,99,264,22.8,128,96,no,6,6,0
+W0497,Biye,Chattogram,593,712,165.5,655,2054,yes,3,2,1
+W0498,Biye,Barishal,126,101,35.0,162,586,yes,1,5,0
+W0499,Bou-bhat,Sylhet,200,343,62.9,195,508,yes,0,7,1
+W0500,Bou-bhat,Dhaka,202,137,51.0,242,250,no,0,8,0
+W0501,Biye,Rangpur,386,485,94.4,420,923,no,3,1,1
+W0502,Gaye Holud,Chattogram,695,11520,126.7,792,2561,no,4,5,1
+W0503,Biye,Dhaka,68,28,17.4,78,545,no,2,6,0
+W0504,Bou-bhat,Khulna,155,378,33.8,168,597,no,2,7,0
+W0505,Biye,Khulna,266,254,77.0,257,269,no,5,5,0
+W0506,Gaye Holud,Dhaka,121,208,37.1,134,523,no,8,3,1
+W0507,Biye,Rajshahi,54,105,16.4,71,108,yes,8,7,1
+W0508,Biye,Rajshahi,646,863,124.4,794,2482,no,0,6,1
+W0509,Biye,Rangpur,195,486,52.1,236,666,yes,1,9,0
+W0510,Biye,Sylhet,454,995,123.8,504,569,no,3,8,0
+W0511,Bou-bhat,Dhaka,625,1202,135.5,892,2413,yes,2,7,1
+W0512,Gaye Holud,Chattogram,531,932,134.1,507,1429,no,0,10,1
+W0513,Biye,Dhaka,77,172,20.3,101,495,yes,5,8,0
+W0514,Bou-bhat,Dhaka,280,171,60.8,307,1056,no,2,6,0
+W0515,Biye,Dhaka,82,199,19.6,66,163,no,5,6,0
+W0516,Biye,Dhaka,657,755,195.8,707,1766,no,0,7,1
+W0517,Biye,Khulna,351,180,72.9,435,740,yes,3,5,0
+W0518,Biye,Barishal,685,850,219.1,1016,896,no,1,7,1
+W0519,Bou-bhat,Rangpur,310,365,83.7,435,592,yes,5,6,1
+W0520,Bou-bhat,Dhaka,413,1115,132.0,563,1394,no,8,7,0
+W0521,Biye,Chattogram,90,96,23.1,133,513,no,5,6,1
+W0522,Biye,Dhaka,692,824,199.1,839,2665,no,2,1,1
+W0523,Bou-bhat,Mymensingh,608,1408,180.4,493,2160,yes,1,6,0
+W0524,Gaye Holud,Rajshahi,379,858,84.1,366,1229,yes,8,8,0
+W0525,Biye,Barishal,201,294,61.8,276,285,yes,6,7,1
+W0526,Bou-bhat,Rangpur,336,808,65.8,354,997,yes,2,11,0
+W0527,Biye,Chattogram,334,145,95.8,456,680,yes,6,8,0
+W0528,Bou-bhat,Sylhet,561,1159,140.4,588,1759,yes,4,2,0
+W0529,Biye,Chattogram,244,142,76.2,233,633,no,0,1,0
+W0530,Gaye Holud,Rangpur,469,372,118.9,493,760,yes,2,5,0
+W0531,Biye,Rajshahi,577,1507,163.6,537,1746,yes,6,9,0
+W0532,Bou-bhat,Dhaka,180,481,41.6,163,433,no,8,3,0
+W0533,Biye,Rajshahi,555,1034,126.6,619,750,no,4,4,1
+W0534,Biye,Dhaka,385,551,107.4,571,588,no,8,4,1
+W0535,Biye,Dhaka,182,438,38.6,265,909,no,8,6,0
+W0536,Biye,Barishal,60,81,13.3,80,163,no,0,8,1
+W0537,Gaye Holud,Rajshahi,625,1042,159.8,829,2751,yes,5,12,1
+W0538,Bou-bhat,Rangpur,620,405,178.6,776,2434,no,7,4,0
+W0539,Biye,Dhaka,91,145,24.5,119,611,yes,1,4,1
+W0540,Bou-bhat,Rangpur,403,286,83.6,420,1361,yes,3,5,0
+W0541,Biye,Chattogram,110,125,33.8,155,366,yes,4,5,1
+W0542,Biye,Dhaka,80,77,19.4,108,503,yes,2,3,0
+W0543,Bou-bhat,Mymensingh,87,181,17.4,117,577,yes,1,5,0
+W0544,Gaye Holud,Dhaka,660,1250,187.4,730,2171,yes,4,2,1
+W0545,Biye,Dhaka,380,883,109.0,413,380,yes,7,2,0
+W0546,Gaye Holud,Dhaka,700,1712,130.4,986,1508,yes,2,3,0
+W0547,Bou-bhat,Barishal,552,361,160.9,802,2269,no,5,6,0
+W0548,Bou-bhat,Rajshahi,529,1416,128.3,750,1103,no,0,4,0
+W0549,Biye,Rangpur,119,281,26.7,141,177,no,8,6,0
+W0550,Gaye Holud,Khulna,330,399,89.5,300,930,yes,0,5,1
+W0551,Biye,Mymensingh,416,713,104.1,502,469,yes,5,4,1
+W0552,Bou-bhat,Rangpur,435,247,121.0,418,1037,no,1,3,0
+W0553,Biye,Sylhet,140,124,44.2,198,২৯৭,no,5,6,0
+W0554,Bou-bhat,Barishal,56,63,11.5,82,211,yes,1,5,1
+W0555,Bou-bhat,Barishal,449,706,97.5,543,792,no,4,10,1
+W0556,Gaye Holud,Dhaka,120,73,34.1,151,294,yes,6,4,0
+W0557,Biye,Khulna,659,1764,185.9,596,2106,no,1,1,0
+W0558,Gaye Holud,Chattogram,265,657,52.4,256,418,no,0,5,0
+W0559,Gaye Holud,Dhaka,653,845,146.1,931,1155,no,3,3,1
+W0560,Gaye Holud,Chattogram,317,727,83.0,432,406,no,6,4,0
+W0561,Bou-bhat,Dhaka,325,507,99.9,438,1508,no,6,9,1
+W0562,Bou-bhat,Chattogram,542,519,157.4,459,568,no,0,6,0
+W0563,Bou-bhat,Dhaka,635,1054,200.6,583,2512,no,8,5,1
+W0564,Gaye Holud,Barishal,161,114,39.3,205,366,no,2,2,0
+W0565,Gaye Holud,Dhaka,338,629,98.7,436,853,no,7,8,1
+W0566,Gaye Holud,Dhaka,125,292,38.3,133,375,no,3,3,0
+W0567,Biye,Rangpur,505,251,121.7,517,578,yes,5,5,0
+W0568,Bou-bhat,Chattogram,504,299,156.1,611,781,no,8,11,0
+W0569,Biye,Dhaka,142,141,33.1,123,666,no,2,6,0
+W0570,Biye,Dhaka,628,486,152.4,658,950,no,1,4,0
+W0571,Bou-bhat,Rajshahi,688,421,149.4,798,767,no,0,3,0
+W0572,Biye,Khulna,622,1327,118.9,600,2091,no,8,9,0
+W0573,Bou-bhat,Dhaka,572,547,148.9,477,518,no,5,7,0
+W0574,Bou-bhat,Rangpur,532,1130,156.6,626,1254,no,7,4,0
+W0575,Biye,Dhaka,231,247,69.0,221,523,no,4,7,1
+W0576,Biye,Sylhet,690,982,209.2,756,1492,yes,4,5,1
+W0577,Bou-bhat,Dhaka,249,522,47.9,226,929,yes,6,5,0
+W0578,Gaye Holud,Khulna,389,972,115.3,477,890,no,4,11,0
+W0579,Biye,Barishal,507,739,143.4,501,1208,yes,3,8,1
+W0580,Gaye Holud,Dhaka,554,665,169.2,524,1008,yes,2,3,1
+W0581,Bou-bhat,Rajshahi,262,502,51.3,390,585,no,5,5,1
+W0582,Biye,Rajshahi,321,311,76.7,287,653,no,2,6,0
+W0583,Biye,Mymensingh,359,,77.0,521,1507,no,8,12,0
+W0584,Gaye Holud,Sylhet,279,207,54.4,313,935,no,0,8,0
+W0585,Bou-bhat,Chattogram,262,276,70.8,324,989,no,2,5,1
+W0586,Biye,Dhaka,642,1084,174.4,904,2022,no,0,5,1
+W0587,Gaye Holud,Dhaka,207,384,61.5,229,৩১০,no,2,5,1
+W0588,Biye,Dhaka,330,840,104.6,400,1370,yes,3,3,0
+W0589,Biye,Dhaka,146,155,32.5,123,393,no,2,8,1
+W0590,Biye,Sylhet,535,1135,104.8,797,2110,yes,7,5,1
+W0591,Biye,Barishal,574,1061,144.0,459,715,no,2,6,1
+W0592,Gaye Holud,Barishal,373,962,118.0,542,1537,yes,1,7,0
+W0593,Gaye Holud,Dhaka,90,236,28.3,102,361,no,2,2,0
+W0594,Gaye Holud,Chattogram,123,182,27.1,166,463,no,6,10,1
+W0595,Biye,Barishal,214,285,46.5,272,979,no,5,4,1
+W0596,Biye,Dhaka,132,307,33.1,170,602,yes,0,7,0
+W0597,Gaye Holud,Chattogram,196,88,58.6,258,599,no,4,8,0
+W0598,Biye,Chattogram,382,800,111.4,366,362,yes,5,5,0
+W0599,Bou-bhat,Rangpur,430,,94.8,525,1023,no,0,1,0
+W0600,Gaye Holud,Rajshahi,510,1248,121.2,489,১১১৪,no,5,4,0
+W0601,Bou-bhat,Khulna,657,293,144.5,547,2635,no,4,9,0
+W0602,Gaye Holud,Rangpur,533,964,169.7,540,1651,no,5,5,1
+W0603,Bou-bhat,Dhaka,358,477,64.8,368,538,no,7,11,1
+W0604,Biye,Dhaka,268,150,61.7,398,815,yes,3,8,0
+W0605,Biye,Barishal,616,1374,192.9,586,528,yes,0,9,0
+W0606,Gaye Holud,Rajshahi,55,74,14.9,45,293,yes,5,6,1
+W0607,Bou-bhat,Rajshahi,525,905,104.9,745,1183,yes,5,4,1
+W0608,Biye,Chattogram,397,492,73.3,455,1374,no,2,4,1
+W0609,Biye,Barishal,370,402,114.2,320,953,no,4,6,1
+W0610,Bou-bhat,Barishal,173,389,47.0,165,628,no,6,5,0
+W0611,Gaye Holud,Rajshahi,235,541,73.7,348,1137,no,4,6,0
+W0612,Bou-bhat,Chattogram,258,,77.5,240,572,no,5,3,0
+W0613,Gaye Holud,Dhaka,76,119,15.4,81,148,no,5,11,1
+W0614,Bou-bhat,Barishal,418,303,96.3,597,769,no,3,7,0
+W0615,Biye,Dhaka,420,282,111.5,621,1516,yes,5,4,0
+W0616,Bou-bhat,Sylhet,305,210,67.8,453,426,no,4,4,0
+W0617,Gaye Holud,Chattogram,636,1407,148.2,542,608,no,7,3,0
+W0618,Biye,Dhaka,348,767,109.2,287,390,no,8,13,0
+W0619,Bou-bhat,Dhaka,97,138,26.9,136,568,yes,1,4,1
+W0620,Gaye Holud,Rajshahi,82,67,25.2,112,321,no,2,5,0
+W0621,Gaye Holud,Khulna,289,132,64.7,285,295,yes,8,4,0
+W0622,Biye,Sylhet,169,98,51.5,161,322,yes,3,5,0
+W0623,Biye,Khulna,610,1530,136.5,500,2173,no,5,6,0
+W0624,Gaye Holud,Dhaka,598,689,161.9,741,1740,no,2,1,0
+W0625,Gaye Holud,Dhaka,677,457,188.3,761,1520,no,1,7,0
+W0626,Biye,Dhaka,383,970,80.7,547,732,yes,0,7,0
+W0627,Biye,Dhaka,368,930,94.5,399,439,no,5,1,0
+W0628,Biye,Chattogram,626,875,195.8,739,1091,no,0,8,1
+W0629,Biye,Dhaka,464,539,133.1,533,1827,no,6,6,1
+W0630,Biye,Mymensingh,608,566,130.3,651,792,yes,0,6,0
+W0631,Biye,Dhaka,176,305,36.0,190,395,no,5,7,1
+W0632,Biye,Dhaka,175,164,31.9,202,624,no,5,6,0
+W0633,Biye,Barishal,86,83,25.9,126,238,no,7,4,0
+W0634,Gaye Holud,Dhaka,310,786,61.0,462,573,yes,2,9,0
+W0635,Biye,Dhaka,563,303,106.5,604,1515,yes,1,3,0
+W0636,Gaye Holud,Dhaka,392,327,84.4,494,1556,no,3,5,0
+W0637,Biye,Barishal,407,236,73.8,561,1542,yes,5,4,0
+W0638,Biye,Dhaka,113,55,24.7,96,403,yes,7,9,0
+W0639,Gaye Holud,Dhaka,132,83,24.4,158,769,yes,0,8,0
+W0640,Gaye Holud,Khulna,105,264,24.5,150,81,no,3,4,0
+W0641,Gaye Holud,Rajshahi,289,746,83.6,354,476,no,1,6,0
+W0642,Gaye Holud,Chattogram,597,1584,173.5,736,602,yes,7,5,0
+W0643,Biye,Dhaka,531,632,141.9,636,861,no,5,10,1
+W0644,Biye,Dhaka,588,1553,121.2,622,2053,yes,4,8,0
+W0645,Biye,Rajshahi,243,612,76.3,236,971,yes,7,11,0
+W0646,Bou-bhat,Rajshahi,299,342,77.4,375,837,yes,3,8,1
+W0647,Gaye Holud,Rajshahi,674,1179,128.1,795,2664,no,1,7,1
+W0648,Biye,Dhaka,509,946,139.2,680,1924,yes,2,6,1
+W0649,Biye,Dhaka,498,401,158.2,452,327,no,7,8,0
+W0650,Gaye Holud,Khulna,387,840,119.7,535,597,no,7,4,0
+W0651,Biye,Barishal,119,215,26.9,111,208,no,3,7,1
+W0652,Gaye Holud,Barishal,536,610,106.7,462,2064,yes,3,4,1
+W0653,Bou-bhat,Chattogram,290,609,89.9,351,465,no,5,1,0
+W0654,Bou-bhat,Rangpur,255,,64.0,317,616,no,6,8,1
+W0655,Biye,Barishal,521,363,158.5,590,802,yes,1,7,0
+W0656,Biye,Mymensingh,358,489,102.4,320,734,yes,0,4,1
+W0657,Biye,Dhaka,160,107,44.7,177,300,no,4,7,0
+W0658,Biye,Dhaka,631,847,194.5,880,779,yes,1,10,1
+W0659,Bou-bhat,Rajshahi,306,299,94.1,253,686,no,2,3,1
+W0660,Bou-bhat,Rajshahi,581,329,185.5,561,1914,no,8,11,0
+W0661,Bou-bhat,Chattogram,314,229,67.9,318,1281,yes,4,5,0
+W0662,Biye,Dhaka,251,159,74.0,213,272,no,8,6,0
+W0663,Biye,Barishal,572,1210,105.9,733,1044,no,2,3,0
+W0664,Gaye Holud,Chattogram,624,1500,191.3,720,984,no,3,5,0
+W0665,Bou-bhat,Dhaka,254,252,69.1,300,1024,no,5,3,0
+W0666,Biye,Dhaka,309,418,82.8,352,690,no,8,4,1
+W0667,Biye,Rajshahi,409,1010,79.6,486,837,yes,6,6,0
+W0668,Gaye Holud,Dhaka,494,583,114.0,609,1250,no,5,3,1
+W0669,Bou-bhat,Khulna,376,690,76.4,314,441,yes,7,7,0
+W0670,Biye,Dhaka,513,1055,159.1,648,2072,no,8,9,0
+W0671,Biye,Dhaka,588,1045,158.5,828,1209,yes,2,8,1
+W0672,Biye,Chattogram,311,8320,59.0,290,৮১৬,no,7,6,0
+W0673,Gaye Holud,Chattogram,601,327,141.1,570,1190,no,5,3,0
+W0674,Biye,Chattogram,588,381,111.6,502,637,no,8,5,0
+W0675,Biye,Sylhet,686,1831,191.9,610,2153,no,4,5,0
+W0676,Biye,Rajshahi,352,599,97.9,336,1021,yes,4,2,1
+W0677,Bou-bhat,Dhaka,600,754,110.0,627,2114,no,0,4,1
+W0678,Biye,Dhaka,675,1732,158.5,710,1342,yes,8,8,0
+W0679,Gaye Holud,Mymensingh,662,1650,125.6,571,1910,no,2,7,0
+W0680,Biye,Rajshahi,659,1602,180.2,892,2362,yes,2,6,0
+W0681,Biye,Dhaka,304,142,71.2,332,941,no,6,7,0
+W0682,Gaye Holud,Sylhet,636,851,135.9,777,2517,yes,7,2,1
+W0683,Biye,Dhaka,334,773,66.8,362,457,no,5,7,0
+W0684,Bou-bhat,Khulna,641,879,186.6,699,2030,no,5,6,1
+W0685,Biye,Dhaka,577,1148,184.5,518,576,no,0,9,1
+W0686,Bou-bhat,Barishal,145,332,30.7,162,640,yes,7,5,0
+W0687,Biye,Dhaka,133,260,40.2,149,379,yes,3,4,1
+W0688,Bou-bhat,Dhaka,472,494,119.2,479,889,yes,6,8,0
+W0689,Bou-bhat,Chattogram,209,429,57.0,250,664,no,7,6,1
+W0690,Biye,Khulna,532,1366,156.4,450,1176,yes,2,3,0
+W0691,Biye,Sylhet,558,771,111.3,727,421,no,5,5,1
+W0692,Gaye Holud,Chattogram,394,438,76.3,350,1022,no,6,9,1
+W0693,Biye,Khulna,556,1043,121.1,631,1901,no,4,5,1
+W0694,Biye,Khulna,394,378,115.4,396,565,yes,3,5,1
+W0695,Bou-bhat,Chattogram,420,492,86.8,474,1327,yes,1,8,1
+W0696,Bou-bhat,Khulna,181,228,52.7,159,492,no,0,7,1
+W0697,Bou-bhat,Khulna,431,1003,115.5,563,334,yes,8,9,0
+W0698,Gaye Holud,Rajshahi,154,326,40.8,136,458,no,8,8,0
+W0699,Biye,Dhaka,453,1074,87.0,585,621,no,7,10,0
+W0700,Biye,Rangpur,559,228,155.9,597,1952,yes,8,13,0
+W0701,Gaye Holud,Khulna,549,449,143.9,501,777,yes,3,7,0
+W0702,Bou-bhat,Dhaka,147,,41.7,119,540,no,0,11,0
+W0703,Bou-bhat,Rajshahi,563,999,128.2,599,951,no,3,2,1
+W0704,Gaye Holud,Rajshahi,524,1350,141.6,683,1807,no,0,8,0
+W0705,Gaye Holud,Khulna,146,189,26.6,164,239,no,5,8,1
+W0706,Bou-bhat,Dhaka,100,,24.7,103,413,yes,1,9,0
+W0707,Biye,Dhaka,473,890,106.2,631,743,no,7,5,1
+W0708,Gaye Holud,Rajshahi,318,278,99.3,293,1153,no,5,4,0
+W0709,Gaye Holud,Chattogram,374,392,108.7,536,722,no,5,3,1
+W0710,Bou-bhat,Sylhet,65,87,20.7,56,195,yes,3,1,1
+W0711,Gaye Holud,Mymensingh,205,438,49.0,266,842,yes,5,10,0
+W0712,Biye,Chattogram,479,789,105.3,590,564,no,4,5,1
+W0713,Gaye Holud,Dhaka,462,786,122.9,467,435,no,8,6,1
+W0714,Gaye Holud,Dhaka,240,365,64.6,313,1059,yes,1,9,1
+W0715,Biye,Mymensingh,272,703,59.6,322,277,no,6,7,0
+W0716,Bou-bhat,Dhaka,354,953,91.4,484,1103,no,2,4,0
+W0717,Gaye Holud,Rangpur,271,421,52.4,303,937,no,2,7,1
+W0718,Gaye Holud,Dhaka,236,387,73.4,278,899,no,8,9,1
+W0719,Gaye Holud,Khulna,253,106,48.3,314,492,no,8,8,0
+W0720,Biye,Chattogram,385,830,120.1,326,1439,no,3,7,0
+W0721,Biye,Sylhet,411,826,104.9,364,1531,no,7,7,1
+W0722,Biye,Dhaka,478,276,132.8,427,1029,no,6,6,0
+W0723,Gaye Holud,Rajshahi,212,148,55.9,269,516,no,8,4,0
+W0724,Biye,Khulna,158,84,31.5,219,406,no,5,9,0
+W0725,Gaye Holud,Dhaka,254,353,70.2,255,440,yes,6,4,1
+W0726,Gaye Holud,Dhaka,555,947,148.1,723,765,no,8,5,1
+W0727,Gaye Holud,Rajshahi,594,346,126.7,578,2436,no,0,8,0
+W0728,Gaye Holud,Dhaka,559,1445,160.7,666,1858,yes,0,9,0
+W0729,Biye,Rajshahi,305,159,96.4,411,926,no,1,9,0
+W0730,Biye,Chattogram,663,503,160.0,827,1239,no,0,7,0
+W0731,Gaye Holud,Sylhet,421,932,123.3,579,390,no,3,6,0
+W0732,Bou-bhat,Dhaka,297,566,61.3,250,1112,no,7,9,1
+W0733,Bou-bhat,Chattogram,430,1012,98.6,473,895,no,7,5,0
+W0734,Biye,Dhaka,618,1537,190.2,874,1230,yes,1,5,0
+W0735,Gaye Holud,Dhaka,332,884,75.3,337,775,no,5,7,0
+W0736,Biye,Sylhet,110,198,29.0,154,536,yes,1,8,1
+W0737,Biye,Dhaka,249,429,48.3,243,672,yes,8,6,1
+W0738,Gaye Holud,Dhaka,697,303,213.4,817,1304,yes,4,8,0
+W0739,Gaye Holud,Dhaka,352,524,92.2,423,746,yes,6,6,1
+W0740,Gaye Holud,Rajshahi,188,197,38.4,207,276,yes,4,11,1
+W0741,Gaye Holud,Dhaka,623,338,167.0,776,2490,no,7,6,0
+W0742,Biye,Barishal,293,535,92.3,241,1151,no,2,4,1
+W0743,Bou-bhat,Chattogram,258,130,55.0,242,1081,no,4,5,0
+W0744,Biye,Chattogram,110,203,23.6,144,282,no,5,4,1
+W0745,Bou-bhat,Khulna,665,1739,128.5,617,1949,yes,7,6,0
+W0746,Biye,Dhaka,593,806,130.9,668,415,no,7,3,1
+W0747,Biye,Chattogram,303,578,85.7,372,515,yes,3,3,1
+W0748,Biye,Dhaka,366,154,105.5,522,531,no,0,10,0
+W0749,Biye,Chattogram,215,262,44.7,269,500,no,7,6,1
+W0750,Bou-bhat,Barishal,676,442,210.7,747,২৪০৯,yes,7,6,0
+W0751,Gaye Holud,Barishal,648,638,159.6,940,1950,no,3,8,0
+W0752,Gaye Holud,Dhaka,144,66,45.1,148,350,no,7,7,0
+W0753,Biye,Sylhet,208,318,65.2,301,581,no,5,10,1
+W0754,Bou-bhat,Khulna,630,1378,145.7,619,2434,no,6,2,0
+W0755,Biye,Sylhet,192,400,50.6,215,339,no,4,10,0
+W0756,Biye,Khulna,284,756,56.2,339,700,yes,6,5,0
+W0757,Bou-bhat,Dhaka,576,1425,180.0,774,2197,no,6,5,0
+W0758,Bou-bhat,Rajshahi,203,411,61.6,262,557,yes,1,7,0
+W0759,Biye,Dhaka,600,1289,127.9,533,1031,yes,1,8,0
+W0760,Biye,Chattogram,477,830,144.0,415,804,yes,8,4,0
+W0761,Gaye Holud,Dhaka,170,75,38.1,215,569,no,6,8,0
+W0762,Biye,Dhaka,69,149,19.4,56,496,yes,8,3,0
+W0763,Gaye Holud,Rajshahi,161,292,43.8,143,276,yes,8,5,1
+W0764,Gaye Holud,Mymensingh,392,998,83.8,406,448,yes,3,8,0
+W0765,Biye,Rangpur,674,559,177.8,922,2438,no,0,3,0
+W0766,Biye,Chattogram,358,911,105.2,356,১২৫৩,no,4,8,0
+W0767,Bou-bhat,Dhaka,133,103,41.6,143,265,no,2,3,0
+W0768,Gaye Holud,Rajshahi,81,44,23.8,100,550,no,7,5,0
+W0769,Biye,Khulna,172,319,53.6,243,447,yes,7,6,1
+W0770,Biye,Rajshahi,332,380,69.9,460,699,no,7,4,1
+W0771,Biye,Chattogram,337,548,79.2,420,1007,no,2,4,1
+W0772,Biye,Sylhet,248,,71.5,342,1154,no,6,5,1
+W0773,Biye,Mymensingh,454,370,134.6,420,1303,no,5,5,0
+W0774,Bou-bhat,Dhaka,211,500,50.3,211,838,no,2,7,0
+W0775,Biye,Barishal,215,483,51.6,255,648,no,4,5,0
+W0776,Biye,Dhaka,655,693,130.2,592,1673,no,0,4,0
+W0777,Gaye Holud,Rajshahi,397,464,110.6,456,1658,no,6,3,1
+W0778,Gaye Holud,Rangpur,439,949,88.9,647,860,no,8,6,0
+W0779,Bou-bhat,Rangpur,422,611,111.6,479,1727,yes,0,7,1
+W0780,Biye,Dhaka,150,302,42.0,128,570,no,2,12,0
+W0781,Biye,Rangpur,428,1074,108.7,560,1611,yes,1,4,0
+W0782,Biye,Chattogram,542,1260,129.1,617,2098,no,2,3,0
+W0783,Biye,Dhaka,77,137,16.4,91,307,yes,4,5,1
+W0784,Biye,Dhaka,290,642,85.7,379,472,yes,4,7,0
+W0785,Biye,Sylhet,231,191,65.3,213,1061,no,4,4,0
+W0786,Gaye Holud,Dhaka,439,10270,106.0,402,1212,no,4,2,0
+W0787,Gaye Holud,Dhaka,639,,157.9,816,373,no,5,7,0
+W0788,Bou-bhat,Barishal,297,408,81.3,311,519,no,6,5,1
+W0789,Biye,Dhaka,92,166,19.6,111,442,no,7,6,1
+W0790,Biye,Barishal,465,533,90.3,670,2113,no,1,2,1
+W0791,Gaye Holud,Sylhet,251,578,49.9,223,465,no,7,6,0
+W0792,Gaye Holud,Dhaka,493,871,146.2,663,1822,no,7,4,1
+W0793,Biye,Barishal,141,364,41.9,182,357,yes,7,7,0
+W0794,Biye,Dhaka,234,244,56.9,316,922,no,7,4,0
+W0795,Gaye Holud,Dhaka,302,607,58.2,282,650,no,3,2,0
+W0796,Biye,Mymensingh,591,446,173.9,562,2044,no,2,5,0
+W0797,Gaye Holud,Chattogram,408,324,112.7,438,521,no,3,6,0
+W0798,Biye,Khulna,452,717,123.8,662,1800,no,4,6,1
+W0799,Biye,Rajshahi,509,1258,143.1,431,1430,yes,8,2,0
+W0800,Gaye Holud,Khulna,444,660,122.4,409,711,yes,8,4,1

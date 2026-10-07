@@ -1,0 +1,10 @@
+{
+ "N_public_candidates": [
+  181,
+  362
+ ],
+ "N_public": 181,
+ "N_private_if_rest": 219,
+ "public_negatives": 98,
+ "public_positives": 83
+}

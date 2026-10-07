@@ -1,0 +1,222 @@
+
+######## CELL 0 [markdown] ########
+# The Aloo Theory: guests go back for seconds when the potatoes are *just right*
+
+**Short answer:** count the potatoes per guest (`aloo_count / guests`).
+- Around **1 to 2 aloo per guest** → guests go back for seconds.
+- **Less than ~1** → not enough aloo to go around, nobody is excited.
+- **More than ~2** → too much aloo (and, we guess, less room for mutton), guests are full or disappointed.
+
+It is a **Goldilocks band**: not too few, not too many. Nothing else Mitu wrote down (mutton, borhani, fairy lights, dhol, aunties, drone, city, event) adds anything once you know aloo per guest.
+
+This notebook shows how we found it, the three data traps in Mitu's notebook, and why a 2-number rule beats fancy models here.
+
+######## CELL 1 [code] ########
+import glob, os
+import numpy as np, pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import StratifiedKFold
+
+def find(name):
+    hits = glob.glob(f'/kaggle/input/**/{name}', recursive=True) or glob.glob(f'../data/{name}')
+    return hits[0]
+
+train_raw = pd.read_csv(find('train.csv'), dtype=str)
+test_raw = pd.read_csv(find('test.csv'), dtype=str)
+sample = pd.read_csv(find('sample_submission.csv'))
+print(train_raw.shape, test_raw.shape)
+train_raw.head()
+
+######## CELL 2 [markdown] ########
+## 1. Three traps in Mitu's notebook (all from her field notes)
+
+1. **Bangla digits.** Tutul wrote some `fairy_lights` like ৩৯৯ instead of 399.
+2. **Empty aloo boxes.** Some `aloo_count` cells are empty (Mitu was busy serving food!).
+3. **An extra zero.** Some potato counts are 10× too big. Real weddings in this data have at most ~2.7 aloo per guest, so a ratio like 10 or 25 aloo per guest is a typo, not a party.
+
+######## CELL 3 [code] ########
+BN = str.maketrans('০১২৩৪৫৬৭৮৯', '0123456789')
+NUM = ['guests','aloo_count','mutton_kg','borhani_glasses','fairy_lights','dhol_players','aunties_asking_when_marriage']
+
+print('fairy_lights with Bangla digits:', train_raw.fairy_lights.str.contains('[০-৯]').sum(), '(train)',
+      test_raw.fairy_lights.str.contains('[০-৯]').sum(), '(test)')
+print('empty aloo_count:', train_raw.aloo_count.isna().sum(), '(train)', test_raw.aloo_count.isna().sum(), '(test)')
+
+def clean(raw, is_train):
+    d = raw.copy()
+    for c in NUM:
+        d[c] = pd.to_numeric(d[c].str.strip().str.translate(BN))
+    d['drone'] = (d.drone_photographer == 'yes').astype(int)
+    ratio = d.aloo_count / d.guests
+    typo = ratio > 3
+    print('extra-zero aloo rows fixed:', list(d.wedding_id[typo]), 'ratios:', ratio[typo].round(1).tolist())
+    d.loc[typo, 'aloo_count'] /= 10
+    d['aloo_per_guest'] = d.aloo_count / d.guests
+    for c, n in [('mutton_kg','mutton_per_guest'), ('borhani_glasses','borhani_per_guest'), ('fairy_lights','lights_per_guest')]:
+        d[n] = d[c] / d.guests
+    if is_train:
+        d['y'] = d.went_back_for_seconds.astype(int)
+        d = d[d.aloo_count.notna()].reset_index(drop=True)   # can't guess the one number that matters
+    return d
+
+train = clean(train_raw, True)
+test = clean(test_raw, False)
+print('train rows used:', len(train), '| test rows:', len(test))
+
+######## CELL 4 [markdown] ########
+## 2. Why "per guest"?
+
+Mitu's note says the test set has **much bigger weddings** than training. If a model learns "aloo_count > 800 means X", it breaks on a 1,500-guest wedding. Dividing by guests turns every wedding into the same question: *how many potatoes did each guest get?* That ratio covers the same range in train and test.
+
+######## CELL 5 [code] ########
+print(pd.DataFrame({'train guests': train.guests.describe(), 'test guests': test.guests.describe(),
+                    'train aloo/guest': train.aloo_per_guest.describe(), 'test aloo/guest': test.aloo_per_guest.describe()}).round(2))
+
+######## CELL 6 [markdown] ########
+## 3. The picture that solves the mystery
+
+Each dot is a wedding: x = aloo per guest, y = went back for seconds (jittered so dots don't overlap). The line is the share of "yes" in small bins.
+
+######## CELL 7 [code] ########
+fig, ax = plt.subplots(1, 2, figsize=(13, 4))
+rng = np.random.default_rng(0)
+ax[0].scatter(train.aloo_per_guest, train.y + rng.uniform(-.08, .08, len(train)), s=8, alpha=.5)
+bins = np.arange(0.4, 2.8, 0.1)
+g = train.groupby(pd.cut(train.aloo_per_guest, bins), observed=True).y.mean()
+ax[0].plot([i.mid for i in g.index], g.values, 'k-', lw=2, label='share going back')
+ax[0].set_xlabel('aloo per guest'); ax[0].set_ylabel('went back for seconds'); ax[0].legend()
+ax[0].set_title('The Goldilocks band')
+other = ['mutton_per_guest','borhani_per_guest','lights_per_guest','dhol_players','aunties_asking_when_marriage']
+corr = [abs(np.corrcoef(train[c], train.y)[0,1]) for c in other]
+ax[1].barh(other, corr); ax[1].set_xlabel('|correlation with going back|'); ax[1].set_title('Everything else: almost nothing')
+plt.tight_layout(); plt.show()
+
+######## CELL 8 [markdown] ########
+## 4. Turning the picture into a rule
+
+Rule: **go back for seconds = 1 if `low ≤ aloo per guest ≤ high`, else 0.**
+We pick `low` by trying every cut point on the weddings below 1.5 aloo/guest, and `high` on the weddings above 1.5, keeping the cut that gets the most weddings right.
+
+######## CELL 9 [code] ########
+def best_cut(x, y, side):
+    xs = np.sort(np.unique(x)); cands = (xs[:-1] + xs[1:]) / 2
+    accs = np.array([((x >= c) == y).mean() if side == 'lo' else ((x <= c) == y).mean() for c in cands])
+    best = np.flatnonzero(accs == accs.max())
+    return cands[best[len(best) // 2]]
+
+def fit_band(d):
+    a, b = d[d.aloo_per_guest < 1.5], d[d.aloo_per_guest >= 1.5]
+    return best_cut(a.aloo_per_guest.values, a.y.values, 'lo'), best_cut(b.aloo_per_guest.values, b.y.values, 'hi')
+
+def band_predict(d, lo, hi):
+    return ((d.aloo_per_guest >= lo) & (d.aloo_per_guest <= hi)).astype(int).values
+
+lo, hi = fit_band(train)
+print(f'low = {lo:.3f} aloo/guest, high = {hi:.3f} aloo/guest')
+
+######## CELL 10 [markdown] ########
+## 5. Where does the rule go wrong?
+
+Only right next to the two edges. Far from the edges it is basically never wrong. That tells us the "mistakes" are noisy counting near the edge (a few potatoes more or less flips the answer), not a hidden extra cause we could find with more features.
+
+######## CELL 11 [code] ########
+dist = np.minimum(abs(train.aloo_per_guest - lo), abs(train.aloo_per_guest - hi))
+wrong = band_predict(train, lo, hi) != train.y.values
+print(pd.DataFrame({'distance from edge': pd.cut(dist, [0, .02, .05, .1, .2, .5, 2]), 'wrong': wrong})
+      .groupby('distance from edge', observed=True).wrong.agg(['mean', 'size']).rename(columns={'mean': 'error rate', 'size': 'weddings'}).round(3))
+
+######## CELL 12 [markdown] ########
+## 6. Fancy model vs. two numbers
+
+5-fold cross-validation repeated with 3 different shuffles, same folds for every model. Every model learns only from the training folds and is scored on the held-out fold. The band rule re-learns `low`/`high` inside each fold. LightGBM uses one reasonable fixed setting (not tuned), so this shows that extra features don't help here; it is not a tuned-vs-tuned benchmark.
+
+######## CELL 13 [code] ########
+import lightgbm as lgb
+feats = ['guests','aloo_count','mutton_kg','borhani_glasses','fairy_lights','dhol_players',
+         'aunties_asking_when_marriage','drone','aloo_per_guest','mutton_per_guest','borhani_per_guest','lights_per_guest']
+X = train[feats].copy()
+for c in ['event','city']:
+    X[c] = train[c].astype('category')
+
+scores = {'band rule (2 numbers)': [], 'fixed 1.0-2.0 rule': [], 'LightGBM, all features': []}
+for seed in range(3):
+    for tri, vai in StratifiedKFold(5, shuffle=True, random_state=seed).split(train, train.y):
+        tr, va = train.iloc[tri], train.iloc[vai]
+        l, h = fit_band(tr)
+        scores['band rule (2 numbers)'].append((band_predict(va, l, h) == va.y.values).mean())
+        scores['fixed 1.0-2.0 rule'].append((band_predict(va, 1.0, 2.0) == va.y.values).mean())
+        m = lgb.LGBMClassifier(n_estimators=300, learning_rate=.05, num_leaves=8, min_child_samples=10, random_state=seed, verbose=-1)
+        m.fit(X.iloc[tri], tr.y)
+        scores['LightGBM, all features'].append((m.predict(X.iloc[vai]) == va.y.values).mean())
+print(pd.DataFrame({k: [np.mean(v), np.std(v)] for k, v in scores.items()}, index=['mean accuracy', 'std']).T.round(4))
+
+######## CELL 14 [markdown] ########
+## 7. Nodi's "but WHY?" checks: testing the other theories
+
+A good theory should survive attempts to break it. Three questions:
+
+**(a) Is it really a *ratio*?** If seconds depend on `aloo / guests`, then near each edge a logistic model on `log(aloo)` and `log(guests)` should give the two the **same size weight with opposite signs** (because log(aloo/guests) = log(aloo) − log(guests)).
+
+**(b) Babul Baburchi's mutton theory.** The cook in the starter notebook says *"too MUCH aloo? Then people think I saved money on the mutton!"* If the top edge were about aloo vs **mutton**, adding `log(mutton)` near the top edge should matter.
+
+**(c) Do the dhol players or the aunties eat too?** Maybe the real count of eaters is `guests + dhol_players` (or + aunties...). Then a slightly different ratio would separate the classes better.
+
+######## CELL 15 [code] ########
+import statsmodels.api as sm
+d = train.copy()
+for c in ['aloo_count', 'guests', 'mutton_kg', 'borhani_glasses']:
+    d['log_' + c] = np.log(d[c])
+for name, zone in [('lower edge (0.7-1.3 aloo/guest)', d.aloo_per_guest.between(0.7, 1.3)),
+                   ('upper edge (1.7-2.4 aloo/guest)', d.aloo_per_guest.between(1.7, 2.4))]:
+    z = d[zone]
+    m = sm.Logit(z.y, sm.add_constant(z[['log_aloo_count', 'log_guests', 'log_mutton_kg']])).fit(disp=0)
+    print(f'{name}: n={len(z)}')
+    print('   weights:', m.params.round(1).to_dict())
+    print('   p-values:', m.pvalues.round(3).to_dict())
+
+######## CELL 16 [markdown] ########
+Read the output like this: the `log_aloo_count` and `log_guests` weights are about the same size with opposite signs at both edges, so it really is the ratio. The `log_mutton_kg` weight has a large p-value, which means it is not reliably different from zero. Sorry Babul, the mutton theory doesn't hold up in this data.
+
+######## CELL 17 [code] ########
+def best_band_accuracy(r, y):
+    # best possible training accuracy of a two-cut band on ratio r (lower cut below 1.5, upper above)
+    total = 0
+    for part, rising in [(r < 1.5, True), (r >= 1.5, False)]:
+        ys = y[part][np.argsort(r[part])]
+        zeros = np.concatenate([[0], np.cumsum(ys == 0)]); ones = np.concatenate([[0], np.cumsum(ys == 1)])
+        total += (zeros + ones[-1] - ones).max() if rising else (ones + zeros[-1] - zeros).max()
+    return total / len(r)
+
+A, G, Y = train.aloo_count.values, train.guests.values, train.y.values
+tries = {'aloo / guests': A / G}
+for col in ['dhol_players', 'aunties_asking_when_marriage', 'drone']:
+    for k in [1, 2, 3]:
+        tries[f'aloo / (guests + {k}*{col})'] = A / (G + k * train[col].values)
+for c in [10, 20, 50]:
+    tries[f'aloo / (guests + {c})'] = A / (G + c)
+print(pd.Series({k: best_band_accuracy(v, Y) for k, v in tries.items()}).sort_values(ascending=False).round(4).to_string())
+
+######## CELL 18 [markdown] ########
+Plain `aloo / guests` is at the top (or tied). Adding dhol players, aunties or a fixed number of extra eaters never helps. The theory survives all three checks: **it's the potatoes per guest, nothing else.**
+
+## 8. Submission
+
+Fit `low`/`high` on all clean training weddings and apply them to the test weddings.
+
+######## CELL 19 [code] ########
+sub = pd.DataFrame({'wedding_id': test.wedding_id, 'went_back_for_seconds': band_predict(test, lo, hi)})
+assert (sub.wedding_id.values == sample.wedding_id.values).all()
+sub.to_csv('submission.csv', index=False)
+print(sub.went_back_for_seconds.value_counts().to_dict())
+sub.head()
+
+######## CELL 20 [markdown] ########
+## The Aloo Theory, in plain words
+
+- Guests go back for a second plate when each guest got **about 1 to 2 potatoes** in their kacchi.
+- Too few aloo → people feel cheated of the best part. Too many aloo → the plate is mostly potato and they are full (or miss the mutton).
+- Big or small wedding doesn't matter, the **share per guest** does. That's why dividing by guests is the key step.
+- The other things Mitu counted (dhol, aunties, fairy lights, drone...) make the wedding fun but don't decide seconds. Even the cook's mutton theory and "the dhol players eat too" failed the tests in section 7.
+- The rule is only unsure for weddings sitting right on the edge (about 1 or about 2 aloo per guest). No model can be sure there, because a couple of potatoes either way flips the answer.
+
+*Nodi's "but why?" answered: it's not how much food, it's how the aloo is shared.*

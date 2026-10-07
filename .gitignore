@@ -1,0 +1,11 @@
+# Secrets / API tokens
+token.txt
+*token*.txt
+kaggle.json
+.env
+.env.*
+*.pem
+*.key
+
+# macOS
+.DS_Store
