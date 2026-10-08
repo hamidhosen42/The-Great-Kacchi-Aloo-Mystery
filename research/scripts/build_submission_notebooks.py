@@ -9,6 +9,7 @@ Scores come from outputs/kaggle_submissions.csv; refresh it first:
 """
 import argparse
 import hashlib
+import importlib.util
 import json
 import os
 
@@ -167,6 +168,16 @@ pred[o[START:START + WIDTH]] ^= 1
 print(te.assign(P=P.round(3), A=A, ticket=pred).loc[A != pred, ["wedding_id", "guests", "aloo_count", "apg", "P", "A", "ticket"]]
       .sort_values("apg").to_string(index=False))'''
 
+TICKET_RANKED = r'''SIDE, START, WIDTH, RANKING = {side!r}, {start}, {width}, {ranking!r}   # ticket {name}: flip {ranking} ranks {r1}-{r2} ({edge})
+A = band(te.apg.values, LO, HI)
+order = np.lexsort((np.minimum(abs(te.apg.values - LO), abs(te.apg.values - HI)), np.abs(RANKING_P[RANKING] - 0.5)))
+low = te.apg.values < 1.5
+o = {{"both": order, "lower": order[low[order]], "upper": order[~low[order]]}}[SIDE]
+pred = A.copy()
+pred[o[START:START + WIDTH]] ^= 1
+print(te.assign(P=RANKING_P[RANKING].round(3), A=A, ticket=pred).loc[A != pred, ["wedding_id", "guests", "aloo_count", "apg", "P", "A", "ticket"]]
+      .sort_values("apg").to_string(index=False))'''
+
 SUBS = os.path.join(ROOT, "outputs/kaggle_submissions.csv")
 PORT = os.path.join(ROOT, "outputs/portfolio25")
 EDGE = {"both": "both edges", "lower": "lower edge", "upper": "upper edge"}
@@ -253,11 +264,14 @@ def main():
     entries.append(dict(label="A_theory_notebook", method="band", score=score, when=when,
                         nb=run(nb, "A_theory_notebook", "outputs/sub_A_primary_sharpband.csv")))
 
-    # E23 portfolio tickets, one notebook each (all 22 were produced together by Kaggle notebook kacchi-aloo-portfolio v1)
+    # E23 portfolio tickets, one notebook each (produced together by Kaggle notebook kacchi-aloo-portfolio v1);
+    # P21/P22 were replaced by Q01/Q02 (E38) before being submitted, so only submitted P tickets are kept
     specs = json.load(open(os.path.join(PORT, "specs.json")))
     for k, sp in enumerate(specs, 1):
         tk = f"P{k:02d}"
         score, when = lookup(subs, f"{tk}.csv")
+        if when is None:
+            continue
         ref = f"outputs/portfolio25/{tk}.csv"
         if sp["family"] == "band":
             rule, method = f"{sp['lo']} ≤ aloo/guest ≤ {sp['hi']}", "band"
@@ -274,6 +288,36 @@ def main():
                 f"Submitted as `{tk}.csv` from the Kaggle notebook "
                 "[kacchi-aloo-portfolio](https://www.kaggle.com/code/hosen42/kacchi-aloo-portfolio) v1 "
                 "(source: `solution/kaggle_portfolio_kernel/`), which writes all 22 tickets.")
+        nb = new_nb(f"# Submission {tk}: {rule}", info_table(f"{tk}.csv", when, score, rule), text, cells, ref)
+        entries.append(dict(label=label, method=method, score=score, when=when, nb=run(nb, tk, ref)))
+
+    # E38 tickets Q01.. (Kaggle notebook kacchi-aloo-final-tickets v2): windows on the E16 / E30 / E31 rankings or bands
+    fdir = os.path.join(ROOT, "outputs/portfolio_final")
+    q_names = json.load(open(os.path.join(fdir, "q_names.json")))
+    q_specs = {t["name"]: t["spec"] for t in json.load(open(os.path.join(fdir, "selection.json")))["new"]}
+    _s = importlib.util.spec_from_file_location("bfk", os.path.join(ROOT, "solution/build_final_kernel.py"))
+    bfk = importlib.util.module_from_spec(_s)
+    _s.loader.exec_module(bfk)
+    for tk, nname in q_names.items():
+        sp = q_specs[nname]
+        score, when = lookup(subs, f"{tk}.csv")
+        ref = f"outputs/portfolio_final/{nname}.csv"
+        if sp["family"] == "band":
+            rule, method = f"{sp['lo']} ≤ aloo/guest ≤ {sp['hi']}", "band"
+            label = f"{tk}_band_{sp['lo']}-{sp['hi']}"
+            cells = [MIDCUT, TICKET_BAND.format(lo=sp["lo"], hi=sp["hi"], name=tk)]
+        else:
+            r1, r2 = sp["start"] + 1, sp["start"] + sp["width"]
+            rule, method = f"A with {sp['ranking']} uncertainty ranks {r1}–{r2} flipped ({EDGE[sp['side']]})", "flip"
+            label = f"{tk}_flip_{sp['ranking']}_{sp['side']}_r{r1}-{r2}"
+            cells = [MIDCUT, B_PROBS, bfk.EDGE_MODELS,
+                     TICKET_RANKED.format(side=sp["side"], start=sp["start"], width=sp["width"], ranking=sp["ranking"],
+                                          name=tk, r1=r1, r2=r2, edge=EDGE[sp["side"]])]
+        text = ("Added by E38 (`solution/portfolio_final.py`), which re-weighs the 25 final selections over three label "
+                "models of the noisy band edges by how well each explains the known public scores; it filled the two "
+                f"slots left after P01–P20. Submitted as `{tk}.csv` from the Kaggle notebook "
+                "[kacchi-aloo-final-tickets](https://www.kaggle.com/code/hosen42/kacchi-aloo-final-tickets) v2 "
+                "(source: `solution/kaggle_final_kernel/`).")
         nb = new_nb(f"# Submission {tk}: {rule}", info_table(f"{tk}.csv", when, score, rule), text, cells, ref)
         entries.append(dict(label=label, method=method, score=score, when=when, nb=run(nb, tk, ref)))
     os.remove(os.path.join(OUT, "submission.csv"))

@@ -1146,3 +1146,55 @@ This analysis was grounded in the uploaded project materials, especially:
 - the latest leaderboard screenshot supplied in the conversation.
 
 Where the uploaded materials contained an unsupported simulation claim without its referenced script (for example external `solution/...` scripts not present in the uploaded set), this document does not treat the exact claimed probability as independently verified.
+
+---
+
+# 32. Results (run 2026-10-07 19:00–19:45 UTC)
+
+Scripts: `solution/edge_models.py` (E29–E36), `solution/portfolio_robust.py` (E37), `solution/portfolio_final.py` (E38). Outputs: `outputs/edge_models/`, `outputs/portfolio_robust/`, `outputs/portfolio_final/`. Training data only; no public score was used to build any vector.
+
+## 32.1 Edge models under the frozen protocol (10×5 CV, seed 2026)
+
+| Model | CV acc | Δ vs A (corrected p) | Edge log-loss (d < 0.1) | Test rows ≠ A |
+|---|---:|---:|---:|---:|
+| A midcut band | 0.9543 | — | hard 0/1 | 0 |
+| E16 B's distance model | 0.9536 | −0.0006 (0.79) | **0.495** | 0 |
+| E29 bootstrap hard band | 0.9539 | −0.0004 (0.71) | 0.825 | 0 |
+| E30 isotonic edges | 0.9536 | −0.0006 (0.60) | 0.543 | 0 |
+| E31 Bayes change-point | 0.9532 | −0.0010 (0.47) | 0.528 | 0 |
+| E32 jackknife hard band | 0.9543 | 0.0000 (1.00) | hard | 0 |
+| E34 four-sided posterior | 0.9492 | −0.0050 (0.15) | 0.528 | 1 |
+| E35 consensus | 0.9543 | 0.0000 (1.00) | 0.531 | 0 |
+| E33 nested 1-SE band | 0.9482 | −0.0061 (0.18) | hard | 0 |
+| E36 P02-range band | 0.9459 | **−0.0084 (0.04)** | hard | 4 |
+
+* Every independent model makes **the same 400 test decisions as A** (E34 differs on 1 row, E36 on 4). Submitting E29/E30/E31/E35 would only duplicate A.
+* E34 does not beat E16 on edge log-loss and loses CV accuracy, so B's ranking stays the best-calibrated one.
+* Cut uncertainty is small: bootstrap lower cut 95% range 0.959–1.004 (median 0.9707), upper 2.006–2.053 (median 2.0098); E31 posterior lower 0.968–0.975, upper 2.006–2.013.
+* **P02 structural test (E36):** with the grid forced to lo ∈ [0.98, 1.02], hi ∈ [1.98, 2.04], nested CV picks hi > 2.01 in only 20% of outer folds (lo > 1.00 in 48%), median cuts (0.9996, 2.0098), and the band is significantly worse than A. P02's upper cut (2.0235) is not supported by the training data; its 174/181 is best read as sampling luck. E33 (1-SE) median cuts (0.9767, 2.0082).
+
+## 32.2 Robustness of the 25 finals to the label model (E37)
+
+Held-out scenarios conditioned on A = 172, B = 173, C = 173 and 83 public ones. P(private rank 1) / P(top 5):
+
+| Portfolio | E16 OOF | parametric band | E30 isotonic | E31 change-point |
+|---|---:|---:|---:|---:|
+| A + B + C | 4.7% / 15.9% | 8.5% / 22.9% | 1.7% / 10.7% | 1.0% / 21.9% |
+| current 25 (A, B, C, P01–P22) | 25.6% / 61.3% | 33.9% / 71.1% | 14.0% / 48.7% | 6.3% / 40.5% |
+| re-chosen 25 (equal weights) | 21.8% / 59.6% | 30.4% / 71.2% | 18.0% / 59.9% | 13.7% / 61.0% |
+
+How often each generator reproduces our known public scores (evidence): E16 1.6e-4, parametric 1.1e-4, isotonic 0.7e-4, change-point 0.08e-4. The change-point model explains the public facts ~20× worse than E16, so it gets ~2% weight. The re-chosen set kept P06 and P12, the two lowest public scorers: public score is not a good guide to a hedge's private value.
+
+## 32.3 Decision (E38, evidence-weighted: E16 0.46, parametric 0.32, isotonic 0.22)
+
+| Final 25 | P(rank 1) | P(top 3) | P(top 5) |
+|---|---:|---:|---:|
+| A, B, C, P01–P22 | 25.8% | 47.2% | 62.2% |
+| **A, B, C, P01–P20, Q01, Q02** | **26.1%** | **48.0%** | **63.4%** |
+| same, A swapped for one more window | 26.5% | 48.7% | 63.5% |
+
+* P21/P22 (not yet submitted) are replaced by two windows on the E30 isotonic ranking: **Q01** = A + flip ranks 1–7 (W0968, W0972, W1022, W1119, W1157, W1163, W1179) and **Q02** = A + flip ranks 8–13 (W0832, W0846, W0886, W1153, W1191, W1199). Notebook: `hosen42/kacchi-aloo-final-tickets` v2, outputs verified identical.
+* A is kept: dropping it gains < 0.5 points, less than the model uncertainty, and A is the anchor with the earliest timestamp.
+* No other swap improves the objective by more than 0.3 points.
+
+**Final selection (25):** `sub_A_primary_sharpband.csv` (10:28), `sub_B_hedge.csv` (10:29), `sub_C_band_1p00_1p975.csv` (16:35), `P01.csv`–`P20.csv`, `Q01.csv`, `Q02.csv`. Not the duplicate `submission.csv` entries (10:53 = A, 17:45 = C). All probabilities above are model-based; none is a guarantee.

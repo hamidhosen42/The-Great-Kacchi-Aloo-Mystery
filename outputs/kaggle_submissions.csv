@@ -1,4 +1,6 @@
 ref,fileName,date,description,status,publicScore,privateScore
+56925656,Q02.csv,2026-10-08 00:12:22.040000,Q02 (E38): A + flip E30 uncertainty ranks 8-13 (both edges),SubmissionStatus.COMPLETE,0.93922,
+56925647,Q01.csv,2026-10-08 00:12:12.320000,Q01 (E38): A + flip E30 uncertainty ranks 1-7 (both edges),SubmissionStatus.COMPLETE,0.96685,
 56918618,P20.csv,2026-10-07 18:17:10.570000,P20 (E23 portfolio): band 0.96938 <= aloo/guest <= 1.95509,SubmissionStatus.COMPLETE,0.95027,
 56918610,P19.csv,2026-10-07 18:17:03.270000,P19 (E23 portfolio): A + flip uncertainty ranks 16-22 (both edges),SubmissionStatus.COMPLETE,0.96132,
 56918606,P18.csv,2026-10-07 18:16:56.973000,P18 (E23 portfolio): A + flip uncertainty ranks 24-28 (both edges),SubmissionStatus.COMPLETE,0.96132,

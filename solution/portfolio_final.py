@@ -37,6 +37,9 @@ def main():
     ap.add_argument("--out", default="../outputs")
     ap.add_argument("--s", type=int, default=6000, help="accepted scenarios per generator and half")
     ap.add_argument("--max-swaps", type=int, default=6)
+    ap.add_argument("--start-final", action="store_true",
+                    help="start from the submitted final 25 (A, B, C, P01-P20, Q01, Q02) and only search swaps")
+    ap.add_argument("--extra", default=None, help="directory of extra candidate CSVs (e.g. ../outputs/edge_models2)")
     args, _ = ap.parse_known_args()
     rng = np.random.default_rng(2032)
     t0 = time.time()
@@ -103,6 +106,10 @@ def main():
             l5, h5 = round(float(cl), 5), round(float(ch), 5)
             cands.append((dict(family="band", lo=l5, hi=h5), ((X >= l5) & (X <= h5)).astype(int)))
     cands += [(dict(family="E34"), E34), (dict(family="E36"), E36)]
+    if args.extra:
+        for f in sorted(os.listdir(args.extra)):
+            if f.endswith(".csv") and f != "test_probabilities.csv" and f != "cv_metrics.csv":
+                cands.append((dict(family="extra", file=f), pd.read_csv(f"{args.extra}/{f}").went_back_for_seconds.values.astype(int)))
     seen = {v.tobytes() for v in vecs}
     for sp, v in cands:
         if v.tobytes() not in seen:
@@ -141,7 +148,11 @@ def main():
     fixed = list(range(23))
     port = fixed.copy()
     pool_idx = np.array([j for j in range(len(V)) if j >= 23])
-    for _ in range(2):                                      # 1. fill the two open slots
+    if args.start_final:                                    # Q01/Q02 are already submitted
+        for q in ("N0567", "N0610"):
+            qv = pd.read_csv(f"{args.out}/portfolio_final/{q}.csv").went_back_for_seconds.values.astype(int)
+            port.append(int(np.where((V == qv).all(1))[0][0]))
+    for _ in range(0 if args.start_final else 2):           # 1. fill the two open slots
         s, t = state(port, 0)
         obj = objective_add(s, t, 0, pool_idx)
         obj[np.isin(pool_idx, port)] = -1
@@ -178,7 +189,7 @@ def main():
         v = V[j]
         print(f"  {names[j]}: {specs[j] or 'portfolio ticket'} ({int((v != A).sum())} rows vs A): "
               + " ".join(f"{te.wedding_id[i]}:{A[i]}>{v[i]}" for i in np.where(v != A)[0]))
-    od = f"{args.out}/portfolio_final"
+    od = f"{args.out}/portfolio_final" + ("_check" if args.start_final else "")
     os.makedirs(od, exist_ok=True)
     res.to_csv(f"{od}/comparison.csv", index=False)
     with open(f"{od}/selection.json", "w") as f:
