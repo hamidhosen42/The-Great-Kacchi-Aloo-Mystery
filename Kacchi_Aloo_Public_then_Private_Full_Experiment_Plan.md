@@ -1541,3 +1541,28 @@ All public-specialist experiments above are designed as **coherent pre-registere
 
 That keeps the workflow focused on modelling rather than leaderboard reconstruction and, more importantly, protects the private result.
 
+
+---
+
+# 52. Results (run 2026-10-08 01:55–02:10 UTC)
+
+Scripts: `solution/edge_models2.py` (E39–E41), `solution/portfolio_final.py --start-final --extra ../outputs/edge_models2` (swap check). Training data only; no public score used.
+
+* **Q02 vs P12 audit:** the vectors differ on **11** rows. They only share a public score; both stay.
+* **E30 audit (P-01, cross-fitted, same 10×5 folds):** E30 edge log-loss 0.543 vs E16 0.495, Brier 0.165 vs 0.158. E30 is materially worse calibrated, so by this plan's own rule Q01 stays a hedge and the E30 family is not expanded further.
+
+| Model | CV acc | Edge log-loss | Edge Brier | Test rows ≠ A |
+|---|---:|---:|---:|---:|
+| E16 (B's model) | 0.9536 | **0.495** | **0.158** | — |
+| E30 isotonic | 0.9536 | 0.543 | 0.165 | 0 |
+| E39 bagged E30 (P-02) | 0.9534 | 0.527 | 0.165 | 0 |
+| E40 window ensemble (P-03) | 0.9536 | 0.552 | 0.165 | 0 |
+| E41 OOF-weighted E16/E30/E31 (P-05) | 0.9539 | 0.498 | 0.159 | 0 |
+
+* E41's nested weights: E16 ≈ 0.64, E30 ≈ 0.33, E31 ≈ 0.04. OOF prefers E16.
+* All three MAP vectors equal A exactly; no new anchor exists.
+* Bagged-E30 hedges (sizes 5/7/9/11) are Q01 variants: sizes 7 and 9 differ from Q01 on only 2 rows. Submitting them would test individual rows next to Q01, which §51 rules out.
+* **Swap check from the submitted final 25:** with the E39 hedges added as candidates, none enters the portfolio. The only swap above 0.3 points is A → one more E16 window (+0.4 point rank-1), rejected to keep the anchor. Final 25 unchanged: A, B, C, P01–P20, Q01, Q02 (evidence-weighted P(rank 1) ≈ 26%, P(top 5) ≈ 63%).
+* Public chase: no coherent new candidate exists, so per §38 the public search stops at 175/181.
+* **P-09 batch submitted once (2026-10-08 02:09 UTC, notebook `hosen42/kacchi-aloo-bagged-e30-batch` v1):** R05 0.95580, R07 0.96132, R09 0.96685, R11 0.96685. None reached 176/181; per the pre-registration the batch is closed and no follow-up is submitted. The R tickets are not added to the final 25.
+* **Second pre-registered batch S01–S19** (the next 19 tickets by private marginal value after the final 25, `portfolio_final.py --start-final --max-swaps 0 --extend 19`; notebook `hosen42/kacchi-aloo-extra-tickets` v1): public 0.93370–0.96132, none above Q01. Public search ends at 175/181; finals unchanged.

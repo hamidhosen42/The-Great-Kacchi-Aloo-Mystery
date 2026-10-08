@@ -1,0 +1,241 @@
+{
+ "evidence": {
+  "oof": 0.4644339297630785,
+  "param": 0.3207077091989873,
+  "iso": 0.21485836103793418
+ },
+ "selection": [
+  "A",
+  "B",
+  "C",
+  "P01",
+  "P02",
+  "P03",
+  "P04",
+  "P05",
+  "P06",
+  "P07",
+  "P08",
+  "P09",
+  "P10",
+  "P11",
+  "P12",
+  "P13",
+  "P14",
+  "P15",
+  "P16",
+  "P17",
+  "P18",
+  "P19",
+  "P20",
+  "N0567",
+  "N0610"
+ ],
+ "new": [
+  {
+   "name": "N0567",
+   "spec": {
+    "family": "window",
+    "ranking": "E30",
+    "side": "both",
+    "start": 0,
+    "width": 7
+   }
+  },
+  {
+   "name": "N0610",
+   "spec": {
+    "family": "window",
+    "ranking": "E30",
+    "side": "both",
+    "start": 7,
+    "width": 6
+   }
+  }
+ ],
+ "swaps": [],
+ "extend": [
+  {
+   "name": "N0052",
+   "spec": {
+    "family": "window",
+    "ranking": "E16",
+    "side": "both",
+    "start": 6,
+    "width": 5
+   }
+  },
+  {
+   "name": "N1186",
+   "spec": {
+    "family": "band",
+    "lo": 0.95109,
+    "hi": 2.01193
+   }
+  },
+  {
+   "name": "N0034",
+   "spec": {
+    "family": "window",
+    "ranking": "E16",
+    "side": "both",
+    "start": 4,
+    "width": 3
+   }
+  },
+  {
+   "name": "N0107",
+   "spec": {
+    "family": "window",
+    "ranking": "E16",
+    "side": "both",
+    "start": 13,
+    "width": 6
+   }
+  },
+  {
+   "name": "N0972",
+   "spec": {
+    "family": "window",
+    "ranking": "E31",
+    "side": "upper",
+    "start": 0,
+    "width": 5
+   }
+  },
+  {
+   "name": "N0004",
+   "spec": {
+    "family": "window",
+    "ranking": "E16",
+    "side": "both",
+    "start": 0,
+    "width": 4
+   }
+  },
+  {
+   "name": "N0206",
+   "spec": {
+    "family": "window",
+    "ranking": "E16",
+    "side": "lower",
+    "start": 0,
+    "width": 8
+   }
+  },
+  {
+   "name": "N0636",
+   "spec": {
+    "family": "window",
+    "ranking": "E30",
+    "side": "both",
+    "start": 11,
+    "width": 5
+   }
+  },
+  {
+   "name": "N0143",
+   "spec": {
+    "family": "window",
+    "ranking": "E16",
+    "side": "both",
+    "start": 18,
+    "width": 4
+   }
+  },
+  {
+   "name": "N0090",
+   "spec": {
+    "family": "window",
+    "ranking": "E16",
+    "side": "both",
+    "start": 11,
+    "width": 4
+   }
+  },
+  {
+   "name": "N1258",
+   "spec": {
+    "family": "band",
+    "lo": 0.96938,
+    "hi": 1.98867
+   }
+  },
+  {
+   "name": "N0488",
+   "spec": {
+    "family": "window",
+    "ranking": "E16",
+    "side": "upper",
+    "start": 16,
+    "width": 5
+   }
+  },
+  {
+   "name": "N0697",
+   "spec": {
+    "family": "window",
+    "ranking": "E30",
+    "side": "both",
+    "start": 19,
+    "width": 4
+   }
+  },
+  {
+   "name": "N1385",
+   "spec": {
+    "family": "band",
+    "lo": 1.00347,
+    "hi": 1.98378
+   }
+  },
+  {
+   "name": "N1238",
+   "spec": {
+    "family": "band",
+    "lo": 0.96462,
+    "hi": 2.01429
+   }
+  },
+  {
+   "name": "N0991",
+   "spec": {
+    "family": "window",
+    "ranking": "E31",
+    "side": "upper",
+    "start": 3,
+    "width": 4
+   }
+  },
+  {
+   "name": "N0457",
+   "spec": {
+    "family": "window",
+    "ranking": "E16",
+    "side": "upper",
+    "start": 12,
+    "width": 4
+   }
+  },
+  {
+   "name": "N0050",
+   "spec": {
+    "family": "window",
+    "ranking": "E16",
+    "side": "both",
+    "start": 6,
+    "width": 3
+   }
+  },
+  {
+   "name": "N0120",
+   "spec": {
+    "family": "window",
+    "ranking": "E16",
+    "side": "both",
+    "start": 15,
+    "width": 3
+   }
+  }
+ ]
+}

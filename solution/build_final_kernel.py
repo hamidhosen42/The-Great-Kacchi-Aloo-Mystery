@@ -129,26 +129,30 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dir", default=os.path.join(HERE, "kaggle_final_kernel"))
     ap.add_argument("--exec-dir", default=None, help="run the notebook here (needs ../data) to verify before pushing")
-    ap.add_argument("--names", required=True, help="comma-separated optimizer tickets to include, in order (e.g. N0567,N0610)")
+    ap.add_argument("--names", default=None, help="comma-separated optimizer tickets to include, in order (e.g. N0567,N0610)")
+    ap.add_argument("--pdir", default=os.path.join(ROOT, "outputs/portfolio_final"))
+    ap.add_argument("--key", default="new", help="selection.json list to read: new or extend")
+    ap.add_argument("--prefix", default="Q")
+    ap.add_argument("--kernel-id", default=KERNEL_ID)
     a = ap.parse_args()
-    pdir = os.path.join(ROOT, "outputs/portfolio_final")
+    pdir = a.pdir
     sel = json.load(open(os.path.join(pdir, "selection.json")))
-    by_name = {t["name"]: t for t in sel["new"]}
-    new = [by_name[n] for n in a.names.split(",")]
-    specs = {f"Q{k:02d}": t["spec"] for k, t in enumerate(new, 1)}
+    by_name = {t["name"]: t for t in sel[a.key]}
+    new = [by_name[n] for n in a.names.split(",")] if a.names else sel[a.key]
+    specs = {f"{a.prefix}{k:02d}": t["spec"] for k, t in enumerate(new, 1)}
     assert all(s["family"] in ("band", "window") for s in specs.values()), "E34/E36 tickets need their own cells"
-    expected = {f"Q{k:02d}": fingerprint(os.path.join(pdir, f"{t['name']}.csv")) for k, t in enumerate(new, 1)}
-    head = ("# Kacchi Aloo: final tickets Q01–Q%02d\n\n"
+    expected = {f"{a.prefix}{k:02d}": fingerprint(os.path.join(pdir, f"{t['name']}.csv")) for k, t in enumerate(new, 1)}
+    head = (f"# Kacchi Aloo: tickets {a.prefix}01–{a.prefix}{len(specs):02d}\n\n"
             "This competition lets a team select up to 25 final submissions and the private leaderboard counts the "
-            "best of them. These tickets were added by E38 (`solution/portfolio_final.py`), which re-weighs the final "
-            "selection over three label models of the noisy band edges (B's out-of-fold distance model E16, a "
+            "best of them. These tickets were chosen in order of marginal value by E38 (`solution/portfolio_final.py`), "
+            "which weighs the final selection over three label models of the noisy band edges (B's out-of-fold distance model E16, a "
             "parametric band, and edge-wise isotonic regression E30) by how well each explains our known public "
             "scores. Each ticket is a rule computed from the training data:\n\n"
             "* **band(lo, hi)**: predict 1 when lo ≤ aloo/guest ≤ hi;\n"
             "* **window**: the sharp band A with a block of rows flipped, taken from the uncertainty ranking of E16 "
             "(out-of-fold error by distance), E30 (isotonic edges) or E31 (Bayesian change-point).\n\n"
             "No test row is labelled by hand. Run on Kaggle with the competition data attached; it writes one CSV "
-            "per ticket." % len(specs))
+            "per ticket.")
     nb = new_notebook(metadata={"kernelspec": {"name": "python3", "display_name": "Python 3", "language": "python"},
                                 "language_info": {"name": "python"}})
     nb.cells = [new_markdown_cell(head), new_code_cell(bsn.LOAD), new_code_cell(bsn.MIDCUT), new_code_cell(bsn.B_PROBS),
@@ -164,14 +168,14 @@ def main():
         nb = run
     os.makedirs(a.dir, exist_ok=True)
     nbformat.write(nb, os.path.join(a.dir, "kacchi-aloo-final-tickets.ipynb"))
-    meta = {"id": KERNEL_ID, "title": "Kacchi Aloo Final Tickets", "code_file": "kacchi-aloo-final-tickets.ipynb",
+    meta = {"id": a.kernel_id, "title": " ".join(w.capitalize() for w in a.kernel_id.split("/")[1].split("-")), "code_file": "kacchi-aloo-final-tickets.ipynb",
             "language": "python", "kernel_type": "notebook", "is_private": True, "enable_gpu": False, "enable_tpu": False,
             "enable_internet": False, "dataset_sources": [], "competition_sources": ["the-great-kacchi-aloo-mystery"],
             "kernel_sources": [], "model_sources": [], "docker_image": DOCKER}
     with open(os.path.join(a.dir, "kernel-metadata.json"), "w") as f:
         json.dump(meta, f, indent=2)
-    with open(os.path.join(pdir, "q_names.json"), "w") as f:
-        json.dump({f"Q{k:02d}": t["name"] for k, t in enumerate(new, 1)}, f, indent=1)
+    with open(os.path.join(pdir, f"{a.prefix.lower()}_names.json"), "w") as f:
+        json.dump({f"{a.prefix}{k:02d}": t["name"] for k, t in enumerate(new, 1)}, f, indent=1)
     print("wrote", a.dir)
 
 

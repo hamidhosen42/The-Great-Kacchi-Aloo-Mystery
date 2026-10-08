@@ -39,6 +39,7 @@ def main():
     ap.add_argument("--max-swaps", type=int, default=6)
     ap.add_argument("--start-final", action="store_true",
                     help="start from the submitted final 25 (A, B, C, P01-P20, Q01, Q02) and only search swaps")
+    ap.add_argument("--extend", type=int, default=0, help="after the final portfolio, greedily rank this many further tickets")
     ap.add_argument("--extra", default=None, help="directory of extra candidate CSVs (e.g. ../outputs/edge_models2)")
     args, _ = ap.parse_known_args()
     rng = np.random.default_rng(2032)
@@ -176,6 +177,14 @@ def main():
         swaps.append((names[best[1]], names[best[2]], best[0]))
         print(f"  swap out {names[best[1]]} for {names[best[2]]}: +{best[0]:.4f} (train)", flush=True)
 
+    extend = []
+    for _ in range(args.extend):                            # 3. further tickets in order of marginal value
+        s, t = state(port + extend, 0)
+        cand = np.array([j for j in pool_idx if j not in port + extend])
+        obj = objective_add(s, t, 0, cand)
+        extend.append(int(cand[obj.argmax()]))
+        print(f"  extend {names[extend[-1]]}: objective {obj.max():.4f}", flush=True)
+
     rows = []
     for pname, idx in (("A+B+C", [0, 1, 2]), ("current 25 (A,B,C,P01-P22)", list(range(25))),
                        ("23 submitted + 2 best", fill), ("after swaps", port)):
@@ -194,8 +203,9 @@ def main():
     res.to_csv(f"{od}/comparison.csv", index=False)
     with open(f"{od}/selection.json", "w") as f:
         json.dump(dict(evidence=dict(zip(GENS, map(float, evid))), selection=[names[j] for j in port],
-                       new=[dict(name=names[j], spec=specs[j]) for j in new], swaps=swaps), f, indent=1)
-    for j in new:
+                       new=[dict(name=names[j], spec=specs[j]) for j in new], swaps=swaps,
+                       extend=[dict(name=names[j], spec=specs[j]) for j in extend]), f, indent=1)
+    for j in new + extend:
         pd.DataFrame({"wedding_id": te.wedding_id, "went_back_for_seconds": V[j]}).to_csv(f"{od}/{names[j]}.csv", index=False)
     print(f"wrote {od}   done in {time.time() - t0:.0f}s")
 
