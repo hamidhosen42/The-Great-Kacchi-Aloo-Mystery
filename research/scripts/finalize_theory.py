@@ -33,8 +33,14 @@ Run all cells to reproduce the analysis. The rule and validation below use train
         s=''.join(cell['source'])
         if cell['cell_type']=='markdown':
             for old,new in replacements.items(): s=s.replace(old,new)
-            if i==9:
+            if i==12:
                 s=s.replace("Babul Baburchi's mutton theory doesn't hold up.","This fit gives little evidence for a separate mutton effect.")
+            if i==4:s='## 1. Why potatoes per guest is a useful starting point'
+            if i==6:s='''**What this shows:** most raw counts have weak monotonic correlation with the label. That alone does not rule out a nonlinear relationship. Dividing potatoes by guests reveals a clear middle band: the same potato count can be generous for a small wedding and insufficient for a large one. The model tests below check whether this pattern predicts held-out labels.'''
+            if i==7:s='## 2. Larger weddings: a stress test for raw counts'
+            if i==13:s='## 4. Training observations that motivate sharp edges'
+            if i==16:s='## 5. Comparing sharp, smooth, and fixed bands on held-out rows'
+            if i==18:s='''**What this shows:** over 50 held-out folds, mean accuracy is about **95.43%** for the fitted sharp band, **94.00%** for the fitted smooth band, and **94.46%** for fixed limits of 1 and 2. The corrected repeated-CV p-value is about **0.0095** against the smooth model and **0.0673** against fixed limits. The comparison supports the sharp rule among these implementations; it does not prove the hidden program must use exactly these cut points.'''
             if s.startswith('**What this shows:** each theory'):
                 s='''**What this shows:** the listed features are allowed to move each edge within a specified grid. Validation does not show a clear improvement over the ratio rule. This is evidence about these tested models, not proof that every possible model or interaction would fail. Unexplained errors should not automatically be called irreducible randomness.'''
             if s.startswith('**What this shows:** right at each edge'):
@@ -56,15 +62,18 @@ This is a useful predictive explanation of this dataset. The story about sharing
 '''
             cell['source']=s.splitlines(True)
         else:
+            before=s
             if '"smooth (soft) band, max-likelihood"' in s:
                 old='(lambda th: ((v.apg > th[0]) & (v.apg < th[1])).astype(int))(soft_band_fit(t.apg.values, t.y.values))'
                 new='(lambda th: (expit(th[2] * (np.log(v.apg) - np.log(th[0]))) * expit(th[2] * (np.log(th[1]) - np.log(v.apg))) >= 0.5).astype(int))(soft_band_fit(t.apg.values, t.y.values))'
-                assert old in s
+                assert old in s or new in s
                 s=s.replace(old,new)
             s=s.replace('"expected accuracy on these 400 test weddings"','"simulated expected test accuracy under ring-error assumptions"')
             s=s.replace('"test weddings within 0.1 of an edge (where luck lives)"','"test weddings within 0.1 of an edge"')
-            cell['source']=s.splitlines(True);cell['outputs']=[];cell['execution_count']=None
-            cell['metadata'].pop('execution',None)
+            cell['source']=s.splitlines(True)
+            if before!=s:
+                cell['outputs']=[];cell['execution_count']=None
+                cell['metadata'].pop('execution',None)
     nb['metadata'].pop('widgets',None)
     p.write_text(json.dumps(nb,indent=1,ensure_ascii=False)+'\n')
     kernel=ROOT/'solution/kaggle_theory_kernel'

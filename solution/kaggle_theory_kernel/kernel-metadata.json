@@ -1,10 +1,10 @@
 {
-  "id": "hosen42/aloo-theory-sharp-edges-and-a-noisy-ring",
+  "id": "hosen42/the-aloo-theory-count-potatoes-per-guest",
   "title": "The Aloo Theory: Count Potatoes per Guest",
   "code_file": "aloo-theory.ipynb",
   "language": "python",
   "kernel_type": "notebook",
-  "is_private": true,
+  "is_private": false,
   "enable_gpu": false,
   "enable_tpu": false,
   "enable_internet": false,
