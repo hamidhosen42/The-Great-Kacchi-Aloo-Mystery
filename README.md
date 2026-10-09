@@ -4,19 +4,22 @@ My solution for the Kaggle competition [The Great Kacchi Aloo Mystery](https://w
 (Bangladesh AI Olympiad, World AI Week 2026): predict whether guests at a Bangladeshi wedding
 `went_back_for_seconds` (binary; metric = accuracy).
 
-> **Keep this repository private until the competition closes (2026-10-09 17:59 UTC).**
-> Kaggle rule 6a forbids sharing competition code outside Kaggle during the competition.
+## Result
 
-## Status (2026-10-09, 03:30 UTC)
+**1st place on the private leaderboard: 0.94063 (206 / 219 private rows)**, provisional until the host's review.
+The score ties with the second team and the leaderboard lists this entry first.
 
 | | |
 |---|---|
-| Best public score, model-derived | **0.96685** (175 / 181 public rows): Q01, R09, R11 |
-| Best public score, any submission | 0.99447 (OPT01, a leaderboard experiment; see [Integrity note](#integrity-note)) |
-| Public / private split | ~45% / ~55% (181 / ~219 test rows; one public row = 0.55 points) |
-| Final selections | 25 (see [Final selection](#final-selection)); tick them on the Kaggle Submissions page |
-| Best Aloo Theory notebook | [The Aloo Theory: Count Potatoes per Guest](https://www.kaggle.com/code/hosen42/the-aloo-theory-count-potatoes-per-guest) (public) |
-| Deadline | 2026-10-09 17:59 UTC (23:59 Bangladesh time) |
+| Private score (best of the 25 selected) | **0.94063** (206 / 219) from ticket **S04** |
+| Plain sharp band (A) on private | 0.93150 (204 / 219) |
+| Best public score, model-derived | 0.96685 (175 / 181): Q01, R09, R11; Q01 scored 200 / 219 on private |
+| Best public score, any submission | 0.99447 (OPT01, a leaderboard experiment; 200 / 219 on private; see [Integrity note](#integrity-note)) |
+| Public / private split | ~45% / ~55% (181 / 219 test rows) |
+| Winning notebook | [Kacchi Aloo Extra Tickets](https://www.kaggle.com/code/hosen42/kacchi-aloo-extra-tickets?scriptVersionId=356238353) (its `S04.csv` output) |
+| Best Aloo Theory notebook | [The Aloo Theory: Count Potatoes per Guest](https://www.kaggle.com/code/hosen42/the-aloo-theory-count-potatoes-per-guest) |
+| Solution writeup | [kaggle_writeup.md](kaggle_writeup.md), figures in [writeup_media/](writeup_media/) |
+| Competition closed | 2026-10-09 17:59 UTC |
 
 Winners are decided by the **private** leaderboard only (rule 7a); the public leaderboard is a sanity check.
 
@@ -88,6 +91,7 @@ other than S04, or the two duplicate `submission.csv` entries (copies of A and C
 
 Simulated chances for this set (model-based, not a guarantee): private rank 1 ≈ 21%, rank ≤ 2 ≈ 31%,
 top 5 ≈ 55%, with the two leaderboard leaders modelled as holding 25 tickets each (E42, `solution/reselect.py`).
+On the private leaderboard S04 scored 206, P03 / P14 / P19 205, A 204, and the rest 198–203.
 
 ## Experiments
 
@@ -142,8 +146,8 @@ outputs/
   portfolio25/, portfolio_final/, portfolio_final_check/, edge_models2/
                               ticket vectors and specs (P, Q, S and R tickets)
   kaggle_kernels/             the two leaderboard-experiment notebooks, downloaded as-is from Kaggle
-final_handoff/, FINAL_HANDOFF.zip
-                              final-selection handoff: list with Kaggle refs, verification, theory notebook export
+writeup_media/                Kaggle writeup figures, the winning S04 file and the final-25 table with private scores
+kaggle_writeup.md             Kaggle solution writeup
 research/scripts/
   build_submission_notebooks.py           rebuilds submission_notebooks/
   finalize_theory.py, execute_final_theory.py   finalise and execute the theory notebook
@@ -182,8 +186,8 @@ python research/scripts/build_submission_notebooks.py
 - [Kacchi_Aloo_Public_then_Private_Full_Experiment_Plan.md](Kacchi_Aloo_Public_then_Private_Full_Experiment_Plan.md): public / private plan and results E39–E42 (§52).
 - [Kacchi_Aloo_Full_Analysis_and_Experiment_Design.md](Kacchi_Aloo_Full_Analysis_and_Experiment_Design.md): submission audit and results E29–E38 (§32).
 - [The_Great_Kacchi_Aloo_Mystery_Deep_Analysis.md](The_Great_Kacchi_Aloo_Mystery_Deep_Analysis.md): first deep analysis, rules and data audit.
-- [TOP_100_RESOURCES.md](TOP_100_RESOURCES.md): curated external resources (also `external_resources.csv`,
-  `public_notebooks.csv`, `important_discussions.csv`).
+- `external_resources.csv`, `public_notebooks.csv`, `important_discussions.csv`: curated external resources,
+  public notebooks and discussions.
 
 ## License
 
