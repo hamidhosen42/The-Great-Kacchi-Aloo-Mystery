@@ -1,0 +1,668 @@
+{
+  "public_rows_assumed": 181,
+  "baseline_correct": 175,
+  "equations": 72,
+  "files": [
+    "LBP05.csv",
+    "LBP04.csv",
+    "LBP03.csv",
+    "LBP02.csv",
+    "LBP01.csv",
+    "S19.csv",
+    "S18.csv",
+    "S17.csv",
+    "S16.csv",
+    "S15.csv",
+    "S14.csv",
+    "S13.csv",
+    "S12.csv",
+    "S11.csv",
+    "S10.csv",
+    "S09.csv",
+    "S08.csv",
+    "S07.csv",
+    "S06.csv",
+    "S05.csv",
+    "S04.csv",
+    "S03.csv",
+    "S02.csv",
+    "S01.csv",
+    "R11.csv",
+    "R09.csv",
+    "R07.csv",
+    "R05.csv",
+    "Q02.csv",
+    "Q01.csv",
+    "P20.csv",
+    "P19.csv",
+    "P18.csv",
+    "P17.csv",
+    "P16.csv",
+    "P15.csv",
+    "P14.csv",
+    "P13.csv",
+    "P12.csv",
+    "P11.csv",
+    "P10.csv",
+    "P09.csv",
+    "P08.csv",
+    "P07.csv",
+    "P06.csv",
+    "P05.csv",
+    "P04.csv",
+    "P03.csv",
+    "P02.csv",
+    "P01.csv",
+    "sub_C_band_1p00_1p975.csv",
+    "sub_B_hedge.csv",
+    "sub_A_primary_sharpband.csv",
+    "XP19.csv",
+    "XP18.csv",
+    "XP17.csv",
+    "XP16.csv",
+    "XP15.csv",
+    "XP14.csv",
+    "XP13.csv",
+    "XP12.csv",
+    "XP11.csv",
+    "XP10.csv",
+    "XP09.csv",
+    "XP08.csv",
+    "XP07.csv",
+    "XP06.csv",
+    "XP05.csv",
+    "XP04.csv",
+    "XP03.csv",
+    "XP02.csv",
+    "XP01.csv"
+  ],
+  "active_rows": 63,
+  "matrix_rank": 60,
+  "rows": [
+    {
+      "index": 1,
+      "wedding_id": "W0802",
+      "baseline": 0,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 2,
+      "wedding_id": "W0803",
+      "baseline": 0,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 14,
+      "wedding_id": "W0815",
+      "baseline": 1,
+      "min_contribution": 1,
+      "max_contribution": 1
+    },
+    {
+      "index": 19,
+      "wedding_id": "W0820",
+      "baseline": 1,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 22,
+      "wedding_id": "W0823",
+      "baseline": 1,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 23,
+      "wedding_id": "W0824",
+      "baseline": 0,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 31,
+      "wedding_id": "W0832",
+      "baseline": 1,
+      "min_contribution": -1,
+      "max_contribution": 0
+    },
+    {
+      "index": 38,
+      "wedding_id": "W0839",
+      "baseline": 1,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 45,
+      "wedding_id": "W0846",
+      "baseline": 1,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 47,
+      "wedding_id": "W0848",
+      "baseline": 1,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 50,
+      "wedding_id": "W0851",
+      "baseline": 0,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 60,
+      "wedding_id": "W0861",
+      "baseline": 0,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 64,
+      "wedding_id": "W0865",
+      "baseline": 1,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 65,
+      "wedding_id": "W0866",
+      "baseline": 0,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 79,
+      "wedding_id": "W0880",
+      "baseline": 1,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 85,
+      "wedding_id": "W0886",
+      "baseline": 1,
+      "min_contribution": -1,
+      "max_contribution": 0
+    },
+    {
+      "index": 97,
+      "wedding_id": "W0898",
+      "baseline": 1,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 107,
+      "wedding_id": "W0908",
+      "baseline": 1,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 111,
+      "wedding_id": "W0912",
+      "baseline": 1,
+      "min_contribution": -1,
+      "max_contribution": 0
+    },
+    {
+      "index": 125,
+      "wedding_id": "W0926",
+      "baseline": 1,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 162,
+      "wedding_id": "W0963",
+      "baseline": 1,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 163,
+      "wedding_id": "W0964",
+      "baseline": 1,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 167,
+      "wedding_id": "W0968",
+      "baseline": 1,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 169,
+      "wedding_id": "W0970",
+      "baseline": 1,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 171,
+      "wedding_id": "W0972",
+      "baseline": 0,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 173,
+      "wedding_id": "W0974",
+      "baseline": 0,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 183,
+      "wedding_id": "W0984",
+      "baseline": 1,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 192,
+      "wedding_id": "W0993",
+      "baseline": 0,
+      "min_contribution": -1,
+      "max_contribution": 0
+    },
+    {
+      "index": 201,
+      "wedding_id": "W1002",
+      "baseline": 1,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 205,
+      "wedding_id": "W1006",
+      "baseline": 0,
+      "min_contribution": 1,
+      "max_contribution": 1
+    },
+    {
+      "index": 208,
+      "wedding_id": "W1009",
+      "baseline": 1,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 211,
+      "wedding_id": "W1012",
+      "baseline": 1,
+      "min_contribution": 1,
+      "max_contribution": 1
+    },
+    {
+      "index": 221,
+      "wedding_id": "W1022",
+      "baseline": 0,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 222,
+      "wedding_id": "W1023",
+      "baseline": 0,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 224,
+      "wedding_id": "W1025",
+      "baseline": 1,
+      "min_contribution": -1,
+      "max_contribution": 0
+    },
+    {
+      "index": 232,
+      "wedding_id": "W1033",
+      "baseline": 1,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 236,
+      "wedding_id": "W1037",
+      "baseline": 0,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 257,
+      "wedding_id": "W1058",
+      "baseline": 0,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 271,
+      "wedding_id": "W1072",
+      "baseline": 0,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 272,
+      "wedding_id": "W1073",
+      "baseline": 0,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 278,
+      "wedding_id": "W1079",
+      "baseline": 0,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 279,
+      "wedding_id": "W1080",
+      "baseline": 1,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 284,
+      "wedding_id": "W1085",
+      "baseline": 1,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 289,
+      "wedding_id": "W1090",
+      "baseline": 1,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 304,
+      "wedding_id": "W1105",
+      "baseline": 0,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 306,
+      "wedding_id": "W1107",
+      "baseline": 1,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 308,
+      "wedding_id": "W1109",
+      "baseline": 0,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 309,
+      "wedding_id": "W1110",
+      "baseline": 0,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 311,
+      "wedding_id": "W1112",
+      "baseline": 1,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 318,
+      "wedding_id": "W1119",
+      "baseline": 0,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 334,
+      "wedding_id": "W1135",
+      "baseline": 1,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 340,
+      "wedding_id": "W1141",
+      "baseline": 1,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 347,
+      "wedding_id": "W1148",
+      "baseline": 1,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 351,
+      "wedding_id": "W1152",
+      "baseline": 1,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 352,
+      "wedding_id": "W1153",
+      "baseline": 1,
+      "min_contribution": 1,
+      "max_contribution": 1
+    },
+    {
+      "index": 356,
+      "wedding_id": "W1157",
+      "baseline": 0,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 362,
+      "wedding_id": "W1163",
+      "baseline": 1,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 365,
+      "wedding_id": "W1166",
+      "baseline": 0,
+      "min_contribution": 0,
+      "max_contribution": 0
+    },
+    {
+      "index": 378,
+      "wedding_id": "W1179",
+      "baseline": 0,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 379,
+      "wedding_id": "W1180",
+      "baseline": 0,
+      "min_contribution": 1,
+      "max_contribution": 1
+    },
+    {
+      "index": 390,
+      "wedding_id": "W1191",
+      "baseline": 1,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 397,
+      "wedding_id": "W1198",
+      "baseline": 1,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 398,
+      "wedding_id": "W1199",
+      "baseline": 1,
+      "min_contribution": -1,
+      "max_contribution": -1
+    }
+  ],
+  "certain_gains": [
+    {
+      "index": 14,
+      "wedding_id": "W0815",
+      "baseline": 1,
+      "min_contribution": 1,
+      "max_contribution": 1
+    },
+    {
+      "index": 205,
+      "wedding_id": "W1006",
+      "baseline": 0,
+      "min_contribution": 1,
+      "max_contribution": 1
+    },
+    {
+      "index": 211,
+      "wedding_id": "W1012",
+      "baseline": 1,
+      "min_contribution": 1,
+      "max_contribution": 1
+    },
+    {
+      "index": 352,
+      "wedding_id": "W1153",
+      "baseline": 1,
+      "min_contribution": 1,
+      "max_contribution": 1
+    },
+    {
+      "index": 379,
+      "wedding_id": "W1180",
+      "baseline": 0,
+      "min_contribution": 1,
+      "max_contribution": 1
+    }
+  ],
+  "anchors": [
+    {
+      "index": 19,
+      "wedding_id": "W0820",
+      "baseline": 1,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 50,
+      "wedding_id": "W0851",
+      "baseline": 0,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 64,
+      "wedding_id": "W0865",
+      "baseline": 1,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 107,
+      "wedding_id": "W0908",
+      "baseline": 1,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 163,
+      "wedding_id": "W0964",
+      "baseline": 1,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 167,
+      "wedding_id": "W0968",
+      "baseline": 1,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 171,
+      "wedding_id": "W0972",
+      "baseline": 0,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 173,
+      "wedding_id": "W0974",
+      "baseline": 0,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 236,
+      "wedding_id": "W1037",
+      "baseline": 0,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 306,
+      "wedding_id": "W1107",
+      "baseline": 1,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 309,
+      "wedding_id": "W1110",
+      "baseline": 0,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 378,
+      "wedding_id": "W1179",
+      "baseline": 0,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 390,
+      "wedding_id": "W1191",
+      "baseline": 1,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 397,
+      "wedding_id": "W1198",
+      "baseline": 1,
+      "min_contribution": -1,
+      "max_contribution": -1
+    },
+    {
+      "index": 398,
+      "wedding_id": "W1199",
+      "baseline": 1,
+      "min_contribution": -1,
+      "max_contribution": -1
+    }
+  ]
+}

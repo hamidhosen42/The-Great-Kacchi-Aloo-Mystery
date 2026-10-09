@@ -1,0 +1,47 @@
+[
+  {
+    "file": "LBP05.csv",
+    "ref": 56985979,
+    "status": "SubmissionStatus.COMPLETE",
+    "public_score": "0.96685",
+    "delta": 0.0,
+    "net_correct_change": 0,
+    "interpretation": "unresolved: private or public cancellation"
+  },
+  {
+    "file": "LBP04.csv",
+    "ref": 56985977,
+    "status": "SubmissionStatus.COMPLETE",
+    "public_score": "0.96132",
+    "delta": -0.00553,
+    "net_correct_change": -1,
+    "interpretation": "net public decline"
+  },
+  {
+    "file": "LBP03.csv",
+    "ref": 56985974,
+    "status": "SubmissionStatus.COMPLETE",
+    "public_score": "0.96132",
+    "delta": -0.00553,
+    "net_correct_change": -1,
+    "interpretation": "net public decline"
+  },
+  {
+    "file": "LBP02.csv",
+    "ref": 56985972,
+    "status": "SubmissionStatus.COMPLETE",
+    "public_score": "0.96685",
+    "delta": 0.0,
+    "net_correct_change": 0,
+    "interpretation": "unresolved: private or public cancellation"
+  },
+  {
+    "file": "LBP01.csv",
+    "ref": 56985968,
+    "status": "SubmissionStatus.COMPLETE",
+    "public_score": "0.96132",
+    "delta": -0.00553,
+    "net_correct_change": -1,
+    "interpretation": "net public decline"
+  }
+]

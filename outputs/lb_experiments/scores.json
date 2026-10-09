@@ -1,0 +1,135 @@
+[
+  {
+    "file": "XP19.csv",
+    "ref": 56986602,
+    "status": "SubmissionStatus.COMPLETE",
+    "score": "0.96132",
+    "net": -1
+  },
+  {
+    "file": "XP18.csv",
+    "ref": 56986598,
+    "status": "SubmissionStatus.COMPLETE",
+    "score": "0.95580",
+    "net": -2
+  },
+  {
+    "file": "XP17.csv",
+    "ref": 56986594,
+    "status": "SubmissionStatus.COMPLETE",
+    "score": "0.96132",
+    "net": -1
+  },
+  {
+    "file": "XP16.csv",
+    "ref": 56986592,
+    "status": "SubmissionStatus.COMPLETE",
+    "score": "0.96132",
+    "net": -1
+  },
+  {
+    "file": "XP15.csv",
+    "ref": 56986590,
+    "status": "SubmissionStatus.COMPLETE",
+    "score": "0.96132",
+    "net": -1
+  },
+  {
+    "file": "XP14.csv",
+    "ref": 56986589,
+    "status": "SubmissionStatus.COMPLETE",
+    "score": "0.96132",
+    "net": -1
+  },
+  {
+    "file": "XP13.csv",
+    "ref": 56986585,
+    "status": "SubmissionStatus.COMPLETE",
+    "score": "0.96132",
+    "net": -1
+  },
+  {
+    "file": "XP12.csv",
+    "ref": 56986538,
+    "status": "SubmissionStatus.COMPLETE",
+    "score": "0.96132",
+    "net": -1
+  },
+  {
+    "file": "XP11.csv",
+    "ref": 56986536,
+    "status": "SubmissionStatus.COMPLETE",
+    "score": "0.96132",
+    "net": -1
+  },
+  {
+    "file": "XP10.csv",
+    "ref": 56986534,
+    "status": "SubmissionStatus.COMPLETE",
+    "score": "0.95580",
+    "net": -2
+  },
+  {
+    "file": "XP09.csv",
+    "ref": 56986530,
+    "status": "SubmissionStatus.COMPLETE",
+    "score": "0.96132",
+    "net": -1
+  },
+  {
+    "file": "XP08.csv",
+    "ref": 56986529,
+    "status": "SubmissionStatus.COMPLETE",
+    "score": "0.96132",
+    "net": -1
+  },
+  {
+    "file": "XP07.csv",
+    "ref": 56986528,
+    "status": "SubmissionStatus.COMPLETE",
+    "score": "0.96132",
+    "net": -1
+  },
+  {
+    "file": "XP06.csv",
+    "ref": 56986526,
+    "status": "SubmissionStatus.COMPLETE",
+    "score": "0.95580",
+    "net": -2
+  },
+  {
+    "file": "XP05.csv",
+    "ref": 56986525,
+    "status": "SubmissionStatus.COMPLETE",
+    "score": "0.96685",
+    "net": 0
+  },
+  {
+    "file": "XP04.csv",
+    "ref": 56986386,
+    "status": "SubmissionStatus.COMPLETE",
+    "score": "0.96132",
+    "net": -1
+  },
+  {
+    "file": "XP03.csv",
+    "ref": 56986384,
+    "status": "SubmissionStatus.COMPLETE",
+    "score": "0.95580",
+    "net": -2
+  },
+  {
+    "file": "XP02.csv",
+    "ref": 56986381,
+    "status": "SubmissionStatus.COMPLETE",
+    "score": "0.96132",
+    "net": -1
+  },
+  {
+    "file": "XP01.csv",
+    "ref": 56986379,
+    "status": "SubmissionStatus.COMPLETE",
+    "score": "0.96132",
+    "net": -1
+  }
+]

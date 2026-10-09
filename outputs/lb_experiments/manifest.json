@@ -1,0 +1,211 @@
+[
+  {
+    "file": "XP01.csv",
+    "indices": [
+      50,
+      47
+    ],
+    "wedding_ids": [
+      "W0851",
+      "W0848"
+    ]
+  },
+  {
+    "file": "XP02.csv",
+    "indices": [
+      50,
+      311
+    ],
+    "wedding_ids": [
+      "W0851",
+      "W1112"
+    ]
+  },
+  {
+    "file": "XP03.csv",
+    "indices": [
+      50,
+      107
+    ],
+    "wedding_ids": [
+      "W0851",
+      "W0908"
+    ]
+  },
+  {
+    "file": "XP04.csv",
+    "indices": [
+      50,
+      162
+    ],
+    "wedding_ids": [
+      "W0851",
+      "W0963"
+    ]
+  },
+  {
+    "file": "XP05.csv",
+    "indices": [
+      50,
+      211
+    ],
+    "wedding_ids": [
+      "W0851",
+      "W1012"
+    ]
+  },
+  {
+    "file": "XP06.csv",
+    "indices": [
+      50,
+      163
+    ],
+    "wedding_ids": [
+      "W0851",
+      "W0964"
+    ]
+  },
+  {
+    "file": "XP07.csv",
+    "indices": [
+      50,
+      351
+    ],
+    "wedding_ids": [
+      "W0851",
+      "W1152"
+    ]
+  },
+  {
+    "file": "XP08.csv",
+    "indices": [
+      50,
+      284
+    ],
+    "wedding_ids": [
+      "W0851",
+      "W1085"
+    ]
+  },
+  {
+    "file": "XP09.csv",
+    "indices": [
+      50,
+      208
+    ],
+    "wedding_ids": [
+      "W0851",
+      "W1009"
+    ]
+  },
+  {
+    "file": "XP10.csv",
+    "indices": [
+      50,
+      306
+    ],
+    "wedding_ids": [
+      "W0851",
+      "W1107"
+    ]
+  },
+  {
+    "file": "XP11.csv",
+    "indices": [
+      50,
+      289
+    ],
+    "wedding_ids": [
+      "W0851",
+      "W1090"
+    ]
+  },
+  {
+    "file": "XP12.csv",
+    "indices": [
+      50,
+      183
+    ],
+    "wedding_ids": [
+      "W0851",
+      "W0984"
+    ]
+  },
+  {
+    "file": "XP13.csv",
+    "indices": [
+      50,
+      340
+    ],
+    "wedding_ids": [
+      "W0851",
+      "W1141"
+    ]
+  },
+  {
+    "file": "XP14.csv",
+    "indices": [
+      50,
+      279
+    ],
+    "wedding_ids": [
+      "W0851",
+      "W1080"
+    ]
+  },
+  {
+    "file": "XP15.csv",
+    "indices": [
+      50,
+      232
+    ],
+    "wedding_ids": [
+      "W0851",
+      "W1033"
+    ]
+  },
+  {
+    "file": "XP16.csv",
+    "indices": [
+      50,
+      79
+    ],
+    "wedding_ids": [
+      "W0851",
+      "W0880"
+    ]
+  },
+  {
+    "file": "XP17.csv",
+    "indices": [
+      50,
+      125
+    ],
+    "wedding_ids": [
+      "W0851",
+      "W0926"
+    ]
+  },
+  {
+    "file": "XP18.csv",
+    "indices": [
+      50,
+      19
+    ],
+    "wedding_ids": [
+      "W0851",
+      "W0820"
+    ]
+  },
+  {
+    "file": "XP19.csv",
+    "indices": [
+      50,
+      97
+    ],
+    "wedding_ids": [
+      "W0851",
+      "W0898"
+    ]
+  }
+]

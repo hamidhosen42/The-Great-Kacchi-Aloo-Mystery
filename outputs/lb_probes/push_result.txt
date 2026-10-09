@@ -1,0 +1,1 @@
+{"ref": "/code/hosen42/kacchi-aloo-two-row-probes", "url": "https://www.kaggle.com/code/hosen42/kacchi-aloo-two-row-probes", "versionNumber": 1, "error": null, "invalidTags": [], "invalidDatasetSources": [], "invalidCompetitionSources": [], "invalidKernelSources": [], "invalidModelSources": [], "kernelId": 137786939}
