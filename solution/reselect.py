@@ -42,7 +42,7 @@ NEW_TEAMS = [("Rafiur Rahman", 173, 40.25, 25), ("FOYSAL", 175, 27.38, 25), ("Da
 CURRENT = ["A", "B", "C"] + [f"P{k:02d}" for k in range(1, 21)] + ["Q01", "Q02"]
 
 
-def submitted_tickets(out):
+def submitted_tickets(out, extra_dir=None):
     """name -> (vector, entry time in hours since 2026-10-06 00:00 UTC) for every distinct submitted ticket."""
     subs = pd.read_csv(f"{out}/kaggle_submissions.csv", parse_dates=["date"])
     t0 = pd.Timestamp("2026-10-06")
@@ -59,6 +59,10 @@ def submitted_tickets(out):
         tk[f"R{m:02d}"] = (rd(f"edge_models2/E39_hedge{m}.csv"), when(f"R{m:02d}.csv"))
     for s, n in json.load(open(f"{out}/portfolio_final_check/s_names.json")).items():
         tk[s] = (rd(f"portfolio_final_check/{n}.csv"), when(f"{s}.csv"))
+    if extra_dir:                                         # other submitted files, named <file name>.csv
+        for f in sorted(os.listdir(extra_dir)):
+            if f.endswith(".csv"):
+                tk[f[:-4]] = (pd.read_csv(f"{extra_dir}/{f}").went_back_for_seconds.values.astype(int), when(f))
     seen = {}
     for name, (v, _) in tk.items():
         assert v.tobytes() not in seen, f"{name} duplicates {seen.get(v.tobytes())}"
@@ -71,6 +75,8 @@ def main():
     ap.add_argument("--data", default="../data")
     ap.add_argument("--out", default="../outputs")
     ap.add_argument("--s", type=int, default=6000, help="accepted scenarios per generator and half")
+    ap.add_argument("--extra-dir", default=None, help="extra submitted ticket CSVs to include (file name = Kaggle file name)")
+    ap.add_argument("--evaluate", default=None, help="JSON {label: [ticket names]}: score these portfolios, no swap search")
     ap.add_argument("--pin", default="", help="comma-separated tickets that may not be swapped out (e.g. A)")
     args, _ = ap.parse_known_args()
     rng = np.random.default_rng(2033)
@@ -94,7 +100,7 @@ def main():
         Pb.append(p2.p_band(X, p2.fit(x[ii], y[ii], f, th0=fits[f][0])[0], f))
     Pb = np.array(Pb)
 
-    tk = submitted_tickets(args.out)
+    tk = submitted_tickets(args.out, args.extra_dir)
     assert (tk["A"][0] == A).all()
     names = list(tk)
     V = np.array([tk[n][0] for n in names]); T = np.array([tk[n][1] for n in names])
@@ -145,6 +151,20 @@ def main():
     def objective(idx, h=0, label="new"):
         hh = hits(idx, h, label)
         return float(((0.5 * hh[1] + 0.5 * hh[2]) * w[half == h]).sum())
+
+    if args.evaluate:
+        rows = []
+        for pname, idx_names in json.load(open(args.evaluate)).items():
+            idx = [names.index(n) for n in idx_names]
+            assert len(set(idx)) == len(idx) == 25, f"{pname}: {len(set(idx))} distinct tickets"
+            for label in ("new", "old"):
+                hh = hits(idx, 1, label)
+                rows.append(dict(portfolio=pname, competitors=label,
+                                 **{f"P_top{R}": float((hh[R] * w[half == 1]).sum()) for R in (1, 2, 3, 5)}))
+        pd.set_option("display.width", 200)
+        print(pd.DataFrame(rows).round(4).to_string(index=False))
+        print(f"done in {time.time() - t0:.0f}s")
+        return
 
     port = [names.index(n) for n in CURRENT]
     swaps = []

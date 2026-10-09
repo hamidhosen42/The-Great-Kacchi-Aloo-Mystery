@@ -1,0 +1,223 @@
+{
+  "applied": true,
+  "selection": [
+    {
+      "fileName": "sub_A_primary_sharpband.csv",
+      "ref": "56908203",
+      "date": "2026-10-07T10:28:50.607Z",
+      "dateBangladesh": "2026-10-07T16:28:50.607000+06:00",
+      "publicScore": "0.95027",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "sub_B_hedge.csv",
+      "ref": "56908214",
+      "date": "2026-10-07T10:29:09.537Z",
+      "dateBangladesh": "2026-10-07T16:29:09.537000+06:00",
+      "publicScore": "0.95580",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "sub_C_band_1p00_1p975.csv",
+      "ref": "56916345",
+      "date": "2026-10-07T16:35:34.773Z",
+      "dateBangladesh": "2026-10-07T22:35:34.773000+06:00",
+      "publicScore": "0.95580",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "P01.csv",
+      "ref": "56918533",
+      "date": "2026-10-07T18:14:03.200Z",
+      "dateBangladesh": "2026-10-08T00:14:03.200000+06:00",
+      "publicScore": "0.94475",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "P02.csv",
+      "ref": "56918549",
+      "date": "2026-10-07T18:14:55.757Z",
+      "dateBangladesh": "2026-10-08T00:14:55.757000+06:00",
+      "publicScore": "0.96132",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "P03.csv",
+      "ref": "56918552",
+      "date": "2026-10-07T18:15:05.270Z",
+      "dateBangladesh": "2026-10-08T00:15:05.270000+06:00",
+      "publicScore": "0.96132",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "P04.csv",
+      "ref": "56918555",
+      "date": "2026-10-07T18:15:12.170Z",
+      "dateBangladesh": "2026-10-08T00:15:12.170000+06:00",
+      "publicScore": "0.95580",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "P05.csv",
+      "ref": "56918557",
+      "date": "2026-10-07T18:15:18.960Z",
+      "dateBangladesh": "2026-10-08T00:15:18.960000+06:00",
+      "publicScore": "0.95027",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "P06.csv",
+      "ref": "56918561",
+      "date": "2026-10-07T18:15:25.837Z",
+      "dateBangladesh": "2026-10-08T00:15:25.837000+06:00",
+      "publicScore": "0.93370",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "P07.csv",
+      "ref": "56918566",
+      "date": "2026-10-07T18:15:35.297Z",
+      "dateBangladesh": "2026-10-08T00:15:35.297000+06:00",
+      "publicScore": "0.93922",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "P08.csv",
+      "ref": "56918570",
+      "date": "2026-10-07T18:15:43.813Z",
+      "dateBangladesh": "2026-10-08T00:15:43.813000+06:00",
+      "publicScore": "0.96132",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "P09.csv",
+      "ref": "56918574",
+      "date": "2026-10-07T18:15:51.460Z",
+      "dateBangladesh": "2026-10-08T00:15:51.460000+06:00",
+      "publicScore": "0.95580",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "P10.csv",
+      "ref": "56918577",
+      "date": "2026-10-07T18:15:58.137Z",
+      "dateBangladesh": "2026-10-08T00:15:58.137000+06:00",
+      "publicScore": "0.95027",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "P12.csv",
+      "ref": "56918584",
+      "date": "2026-10-07T18:16:14.167Z",
+      "dateBangladesh": "2026-10-08T00:16:14.167000+06:00",
+      "publicScore": "0.93922",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "P13.csv",
+      "ref": "56918589",
+      "date": "2026-10-07T18:16:21.657Z",
+      "dateBangladesh": "2026-10-08T00:16:21.657000+06:00",
+      "publicScore": "0.94475",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "P14.csv",
+      "ref": "56918591",
+      "date": "2026-10-07T18:16:29.240Z",
+      "dateBangladesh": "2026-10-08T00:16:29.240000+06:00",
+      "publicScore": "0.95580",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "P15.csv",
+      "ref": "56918594",
+      "date": "2026-10-07T18:16:36.400Z",
+      "dateBangladesh": "2026-10-08T00:16:36.400000+06:00",
+      "publicScore": "0.95580",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "P16.csv",
+      "ref": "56918598",
+      "date": "2026-10-07T18:16:44.280Z",
+      "dateBangladesh": "2026-10-08T00:16:44.280000+06:00",
+      "publicScore": "0.95027",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "P17.csv",
+      "ref": "56918601",
+      "date": "2026-10-07T18:16:50.663Z",
+      "dateBangladesh": "2026-10-08T00:16:50.663000+06:00",
+      "publicScore": "0.95027",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "P18.csv",
+      "ref": "56918606",
+      "date": "2026-10-07T18:16:56.973Z",
+      "dateBangladesh": "2026-10-08T00:16:56.973000+06:00",
+      "publicScore": "0.96132",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "P19.csv",
+      "ref": "56918610",
+      "date": "2026-10-07T18:17:03.270Z",
+      "dateBangladesh": "2026-10-08T00:17:03.270000+06:00",
+      "publicScore": "0.96132",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "P20.csv",
+      "ref": "56918618",
+      "date": "2026-10-07T18:17:10.570Z",
+      "dateBangladesh": "2026-10-08T00:17:10.570000+06:00",
+      "publicScore": "0.95027",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "Q01.csv",
+      "ref": "56925647",
+      "date": "2026-10-08T00:12:12.320Z",
+      "dateBangladesh": "2026-10-08T06:12:12.320000+06:00",
+      "publicScore": "0.96685",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "Q02.csv",
+      "ref": "56925656",
+      "date": "2026-10-08T00:12:22.040Z",
+      "dateBangladesh": "2026-10-08T06:12:22.040000+06:00",
+      "publicScore": "0.93922",
+      "status": "COMPLETE"
+    },
+    {
+      "fileName": "S04.csv",
+      "ref": "56929480",
+      "date": "2026-10-08T02:22:01.830Z",
+      "dateBangladesh": "2026-10-08T08:22:01.830000+06:00",
+      "publicScore": "0.96132",
+      "status": "COMPLETE"
+    }
+  ],
+  "source": "User exact final instruction",
+  "selection_status": "Applied in Chrome and verified after reload using the Selected filter: exact user list, 25/25",
+  "deadline_bangladesh": "2026-10-09T23:59:00+06:00",
+  "excluded": [
+    "P11.csv",
+    "OPT01.csv",
+    "LBP01-LBP05",
+    "XP01-XP19",
+    "R05.csv",
+    "R07.csv",
+    "R09.csv",
+    "R11.csv",
+    "All S except S04",
+    "Both submission.csv entries"
+  ],
+  "verified_count": 25,
+  "persisted_after_reload": true,
+  "verified_at_utc": "2026-10-09T03:30:46.787079+00:00"
+}
