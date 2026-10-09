@@ -123,5 +123,3 @@ To rebuild `submission_notebooks/` after new scores arrive (run from the reposit
 kaggle competitions submissions the-great-kacchi-aloo-mystery --csv --page-size 100 > outputs/kaggle_submissions.csv
 python research/scripts/build_submission_notebooks.py
 ```
-
-The Kaggle API token (`token.txt`, `kaggle.json`) is git-ignored. Never commit it.

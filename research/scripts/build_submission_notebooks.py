@@ -1,7 +1,8 @@
 """Build a self-contained notebook per Kaggle submission, execute each, check that it reproduces the submitted file
 exactly (prediction fingerprint), then write them to submission_notebooks/ ranked by public score (01 = best, ties by
 submission time) as <rank>_<score>_<submission>_<rule>.ipynb. Of submissions with the same score and the same method
-(band rule / flipped rows) only the earliest is kept (--all keeps every one). Nothing else is left in the folder.
+(a band rule, or rows flipped by one model's uncertainty ranking: E16 / E30 / E31 / bagged E30) only the earliest is
+kept (--all keeps every one). Nothing else is left in the folder.
 
 Scores come from outputs/kaggle_submissions.csv; refresh it first:
     kaggle competitions submissions the-great-kacchi-aloo-mystery --csv --page-size 100 > outputs/kaggle_submissions.csv
@@ -178,6 +179,20 @@ pred[o[START:START + WIDTH]] ^= 1
 print(te.assign(P=RANKING_P[RANKING].round(3), A=A, ticket=pred).loc[A != pred, ["wedding_id", "guests", "aloo_count", "apg", "P", "A", "ticket"]]
       .sort_values("apg").to_string(index=False))'''
 
+TICKET_BAGGED = r'''M = {m}   # ticket {name}: flip the {m} most uncertain rows of the bagged-E30 ranking
+rng = np.random.default_rng(0)
+P39 = np.zeros(len(x_te))
+for _ in range(1000):                       # bagged E30: refit the isotonic edges on 1000 bootstrap samples, average
+    ii = rng.integers(len(r_tr), size=len(r_tr))
+    P39 += isotonic_edges(r_tr[ii], y_tr[ii], x_te)
+P39 /= 1000
+A = band(x_te, LO, HI)
+order = np.lexsort((np.minimum(abs(x_te - LO), abs(x_te - HI)), np.abs(P39 - 0.5)))
+pred = A.copy()
+pred[order[:M]] ^= 1
+print(te.assign(P=P39.round(3), A=A, ticket=pred).loc[A != pred, ["wedding_id", "guests", "aloo_count", "apg", "P", "A", "ticket"]]
+      .sort_values("apg").to_string(index=False))'''
+
 SUBS = os.path.join(ROOT, "outputs/kaggle_submissions.csv")
 PORT = os.path.join(ROOT, "outputs/portfolio25")
 EDGE = {"both": "both edges", "lower": "lower edge", "upper": "upper edge"}
@@ -188,7 +203,7 @@ BASE = [  # (label, Kaggle file name, time filter, local reference file, rule, m
      "Guests go back for seconds when the potatoes per guest fall inside a band. Each edge is placed at the midpoint "
      "between the two neighbouring training ratios that maximises training accuracy on its side. 10×5 CV accuracy "
      "0.954; every other column, soft edges and boosting scored the same or worse.", [MIDCUT, A_MODEL]),
-    ("B_hedge", "sub_B_hedge.csv", None, "outputs/sub_B_hedge.csv", "A with its 9 most uncertain rows flipped", "flip",
+    ("B_hedge", "sub_B_hedge.csv", None, "outputs/sub_B_hedge.csv", "A with its 9 most uncertain rows flipped", "flip-E16",
      "B is A with the m most uncertain test rows flipped; m is chosen by Monte Carlo to maximise the expected best-of-two "
      "private score, with each row's probability taken from the sharp band's out-of-fold error rate at that distance "
      "from the edge. The rows are picked by this algorithm, not by hand.", [MIDCUT, B_PROBS, B_HEDGE]),
@@ -279,7 +294,7 @@ def main():
             cells = [MIDCUT, TICKET_BAND.format(lo=sp["lo"], hi=sp["hi"], name=tk)]
         else:
             r1, r2 = sp["start"] + 1, sp["start"] + sp["width"]
-            rule, method = f"A with uncertainty ranks {r1}–{r2} flipped ({EDGE[sp['side']]})", "flip"
+            rule, method = f"A with uncertainty ranks {r1}–{r2} flipped ({EDGE[sp['side']]})", "flip-E16"
             label = f"{tk}_flip_{sp['side']}_r{r1}-{r2}"
             cells = [MIDCUT, B_PROBS, TICKET_WINDOW.format(side=sp["side"], start=sp["start"], width=sp["width"], name=tk,
                                                            r1=r1, r2=r2, edge=EDGE[sp["side"]])]
@@ -291,36 +306,72 @@ def main():
         nb = new_nb(f"# Submission {tk}: {rule}", info_table(f"{tk}.csv", when, score, rule), text, cells, ref)
         entries.append(dict(label=label, method=method, score=score, when=when, nb=run(nb, tk, ref)))
 
-    # E38 tickets Q01.. (Kaggle notebook kacchi-aloo-final-tickets v2): windows on the E16 / E30 / E31 rankings or bands
-    fdir = os.path.join(ROOT, "outputs/portfolio_final")
-    q_names = json.load(open(os.path.join(fdir, "q_names.json")))
-    q_specs = {t["name"]: t["spec"] for t in json.load(open(os.path.join(fdir, "selection.json")))["new"]}
     _s = importlib.util.spec_from_file_location("bfk", os.path.join(ROOT, "solution/build_final_kernel.py"))
     bfk = importlib.util.module_from_spec(_s)
     _s.loader.exec_module(bfk)
-    for tk, nname in q_names.items():
-        sp = q_specs[nname]
+    groups = [  # (directory, names file, selection key, Kaggle notebook + version, how the tickets were chosen)
+        ("outputs/portfolio_final", "q_names.json", "new", "kacchi-aloo-final-tickets", 2,
+         "Added by E38 (`solution/portfolio_final.py`), which re-weighs the 25 final selections over three label models of "
+         "the noisy band edges by how well each explains the known public scores."),
+        ("outputs/portfolio_final_check", "s_names.json", "extend", "kacchi-aloo-extra-tickets", 1,
+         "One of the 19 tickets ranked next by private marginal value after the final 25 (E38 extension, "
+         "`solution/portfolio_final.py --extend 19`), submitted as one pre-registered batch."),
+    ]
+    for gdir, names_file, key, kernel, ver, why in groups:
+        tnames = json.load(open(os.path.join(ROOT, gdir, names_file)))
+        tspecs = {t["name"]: t["spec"] for t in json.load(open(os.path.join(ROOT, gdir, "selection.json")))[key]}
+        for tk, nname in tnames.items():
+            sp = tspecs[nname]
+            score, when = lookup(subs, f"{tk}.csv")
+            if when is None:
+                continue
+            ref = f"{gdir}/{nname}.csv"
+            if sp["family"] == "band":
+                rule, method = f"{sp['lo']} ≤ aloo/guest ≤ {sp['hi']}", "band"
+                label = f"{tk}_band_{sp['lo']}-{sp['hi']}"
+                cells = [MIDCUT, TICKET_BAND.format(lo=sp["lo"], hi=sp["hi"], name=tk)]
+            else:
+                r1, r2 = sp["start"] + 1, sp["start"] + sp["width"]
+                rule, method = f"A with {sp['ranking']} uncertainty ranks {r1}–{r2} flipped ({EDGE[sp['side']]})", f"flip-{sp['ranking']}"
+                label = f"{tk}_flip_{sp['ranking']}_{sp['side']}_r{r1}-{r2}"
+                cells = [MIDCUT, B_PROBS, bfk.EDGE_MODELS,
+                         TICKET_RANKED.format(side=sp["side"], start=sp["start"], width=sp["width"], ranking=sp["ranking"],
+                                              name=tk, r1=r1, r2=r2, edge=EDGE[sp["side"]])]
+            text = (f"{why} Submitted as `{tk}.csv` from the Kaggle notebook "
+                    f"[{kernel}](https://www.kaggle.com/code/hosen42/{kernel}) v{ver}.")
+            nb = new_nb(f"# Submission {tk}: {rule}", info_table(f"{tk}.csv", when, score, rule), text, cells, ref)
+            entries.append(dict(label=label, method=method, score=score, when=when, nb=run(nb, tk, ref)))
+
+    # R05-R11: the one pre-registered bagged-E30 batch (Kaggle notebook kacchi-aloo-bagged-e30-batch v1)
+    for m in (5, 7, 9, 11):
+        tk = f"R{m:02d}"
         score, when = lookup(subs, f"{tk}.csv")
-        ref = f"outputs/portfolio_final/{nname}.csv"
-        if sp["family"] == "band":
-            rule, method = f"{sp['lo']} ≤ aloo/guest ≤ {sp['hi']}", "band"
-            label = f"{tk}_band_{sp['lo']}-{sp['hi']}"
-            cells = [MIDCUT, TICKET_BAND.format(lo=sp["lo"], hi=sp["hi"], name=tk)]
-        else:
-            r1, r2 = sp["start"] + 1, sp["start"] + sp["width"]
-            rule, method = f"A with {sp['ranking']} uncertainty ranks {r1}–{r2} flipped ({EDGE[sp['side']]})", "flip"
-            label = f"{tk}_flip_{sp['ranking']}_{sp['side']}_r{r1}-{r2}"
-            cells = [MIDCUT, B_PROBS, bfk.EDGE_MODELS,
-                     TICKET_RANKED.format(side=sp["side"], start=sp["start"], width=sp["width"], ranking=sp["ranking"],
-                                          name=tk, r1=r1, r2=r2, edge=EDGE[sp["side"]])]
-        text = ("Added by E38 (`solution/portfolio_final.py`), which re-weighs the 25 final selections over three label "
-                "models of the noisy band edges by how well each explains the known public scores; it filled the two "
-                f"slots left after P01–P20. Submitted as `{tk}.csv` from the Kaggle notebook "
-                "[kacchi-aloo-final-tickets](https://www.kaggle.com/code/hosen42/kacchi-aloo-final-tickets) v2 "
-                "(source: `solution/kaggle_final_kernel/`).")
+        if when is None:
+            continue
+        ref = f"outputs/edge_models2/E39_hedge{m}.csv"
+        rule = f"A with the {m} most uncertain bagged-E30 rows flipped"
+        text = ("Bagged E30 averages 1000 bootstrap refits of the edge-wise isotonic model (E39, `solution/edge_models2.py`). "
+                "The four hedge sizes 5 / 7 / 9 / 11 were fixed before any of them was submitted, and the batch was "
+                f"submitted once. Submitted as `{tk}.csv` from the Kaggle notebook "
+                "[kacchi-aloo-bagged-e30-batch](https://www.kaggle.com/code/hosen42/kacchi-aloo-bagged-e30-batch) v1.")
+        cells = [MIDCUT, B_PROBS, bfk.EDGE_MODELS, TICKET_BAGGED.format(m=m, name=tk)]
         nb = new_nb(f"# Submission {tk}: {rule}", info_table(f"{tk}.csv", when, score, rule), text, cells, ref)
-        entries.append(dict(label=label, method=method, score=score, when=when, nb=run(nb, tk, ref)))
+        entries.append(dict(label=f"{tk}_flip_bagged-E30_top{m}", method="flip-bagged-E30", score=score, when=when,
+                            nb=run(nb, tk, ref)))
     os.remove(os.path.join(OUT, "submission.csv"))
+
+    # notebooks made outside these scripts, downloaded as-is from Kaggle (kaggle kernels pull) into
+    # outputs/kaggle_kernels/<slug>/; one notebook wrote several submissions, so it is named after its best one
+    external = [("kacchi-aloo-paired-experiments", ["OPT01.csv"] + [f"XP{k:02d}.csv" for k in range(1, 20)], "OPT01-XP_paired-experiments"),
+                ("kacchi-aloo-two-row-probes", [f"LBP{k:02d}.csv" for k in range(1, 6)], "LBP_two-row-probes")]
+    for slug, files, label in external:
+        path = os.path.join(ROOT, "outputs/kaggle_kernels", slug, f"{slug}.ipynb")
+        got = [g for g in (lookup(subs, f) for f in files) if g[0] is not None]
+        if not os.path.exists(path) or not got:
+            continue
+        score = max(sc for sc, _ in got)
+        when = min(w for sc, w in got if sc == score)
+        entries.append(dict(label=label, method="lb-probe", score=score, when=when, nb=nbformat.read(path, as_version=4)))
 
     # rank: best public score first, ties by submission time; unscored last
     entries.sort(key=lambda e: (e["score"] is None, -(e["score"] or 0), e["when"] or "9999"))
