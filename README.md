@@ -86,8 +86,8 @@ used in any selected ticket.
 | 25 | `S04.csv` | 56929480 | 10-08 02:22 | 0.96132 | A + E16 ranks 14–19 flipped |
 
 "E16 ranks" order test rows by the sharp band's out-of-fold error rate at their distance from the edge;
-unmarked windows span both edges. Do **not** select P11, OPT01, LBP01–05, XP01–XP19, R05–R11, any S ticket
-other than S04, or the two duplicate `submission.csv` entries (copies of A and C).
+unmarked windows span both edges. Not selected: P11, OPT01, LBP01–05, XP01–XP19, R05–R11, the S tickets other than S04, and the two duplicate
+`submission.csv` entries (copies of A and C).
 
 Simulated chances for this set (model-based, not a guarantee): private rank 1 ≈ 21%, rank ≤ 2 ≈ 31%,
 top 5 ≈ 55%, with the two leaderboard leaders modelled as holding 25 tickets each (E42, `solution/reselect.py`).
